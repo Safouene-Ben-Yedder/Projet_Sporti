@@ -4,10 +4,17 @@
             "es2021": true,
             "commonjs":true,
             "node":true
+         
         },
+<<<<<<< HEAD
+         "extends": ["eslint:recommended","plugin:jest/recommended"],
+        // 	"plugin:react/recommended"
+=======
          "extends": ["eslint:recommended",
         	"plugin:jest/recommended"],
+>>>>>>> f72a6116e84da0c9cf9b97e37d2efcf727e78ca7
          
+        
         "parserOptions": {
             "ecmaFeatures": {
                 "jsx": true
@@ -21,6 +28,8 @@
         "rules": {
             // "indent": [
              "no-unused-vars": ["error" ],
+             "react/jsx-uses-react": "error",   
+             "react/jsx-uses-vars": "error" ,
             // ],
             "linebreak-style": [
                 "error",
