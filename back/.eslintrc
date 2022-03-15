@@ -17,24 +17,5 @@
 	},
 	"plugins": [
 		"react"
-	],
-	"rules": {
-//		 "indent": ["error",
-       //     "tab"
-       // ],
-		 "no-unused-vars": ["error" ],
-    
-		"linebreak-style": [
-			"error",
-			"windows"
-		],
-		"quotes": [
-			"error",
-			"single"
-		],
-		"semi": [
-			"error",
-			"never"
-		]
-	}
+	]
 }
