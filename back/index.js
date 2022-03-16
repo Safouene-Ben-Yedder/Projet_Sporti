@@ -4,8 +4,9 @@ const PORT = process.env.PORT || 5000;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = express();
-
+app.use(express.json());
 dotenv.config();
+const programmeSeanceRoute = require("./routes/programmeSeance");
 
 mongoose
 	.connect(process.env.MONGO_URL, {
@@ -20,6 +21,8 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use("/api/programme", programmeSeanceRoute);
 
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
