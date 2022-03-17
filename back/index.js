@@ -8,6 +8,7 @@ app.use(express.json());
 dotenv.config();
 const programmeSeanceRoute = require("./routes/programmeSeance");
 const competenceRoute = require("./routes/competence");
+const authRoute = require("./routes/auth");
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -24,6 +25,8 @@ app.use(cors(corsOptions));
 
 app.use("/api/programme", programmeSeanceRoute);
 app.use("/api/competence", competenceRoute);
+app.use("/api/auth", authRoute);
+
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });
