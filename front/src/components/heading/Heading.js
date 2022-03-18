@@ -5,11 +5,11 @@ import { Navbar, Nav, NavItem, NavbarBrand } from "reactstrap";
 export const Heading = () => {
 	return (
 		<Navbar color="dark" dark>
-			<NavbarBrand href="/">My Team</NavbarBrand>
+			<NavbarBrand href="/">Sporti</NavbarBrand>
 			<Nav>
 				<NavItem>
-					<Link className="btn btn-primary " to="/add">
-						Add User
+					<Link className="btn btn-primary " to="/">
+						Profil
 					</Link>
 				</NavItem>
 			</Nav>

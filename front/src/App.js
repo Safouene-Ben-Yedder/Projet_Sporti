@@ -1,16 +1,17 @@
 import "./App.css";
+import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AddProgrammeSeance } from "./components/programmeSeance/AddProgrammeSeance";
-import { EditProgrammeSeance } from "./components/programmeSeance/EditProgrammeSeance";
-import { Home } from "./components/home/Home";
+import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
 function App() {
 	return (
-		<div className="App">
+		<div>
 			<Router>
 				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/add" component={AddProgrammeSeance} />
-					<Route path="/edit/:id" component={EditProgrammeSeance} />
+					<Route exact path="/add" component={ProgrammeSeanceForm} />
+
+					<Route exact path="/prog-page">
+						<ProgrammeSeancePage />
+					</Route>
 				</Switch>
 			</Router>
 		</div>
