@@ -21,7 +21,7 @@ function App() {
 
 					<Route path="/paiement">
 						<Paiementform />
-
+					</Route>
 					{/* <Route exact path="/">
 						<Redirect to="/lieu-page" />
 					</Route>
