@@ -1,0 +1,15 @@
+.Lieu {
+    border: 1px solid gray;
+    padding: 20px;
+    margin: 20px;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.actions {
+    color: blue;
+}
