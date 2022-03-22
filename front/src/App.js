@@ -8,6 +8,7 @@ import { Paiementform } from "./components/paiementform/Paiementform";
 
 import LieuForm from "./components/lieuForm/LieuForm";
 
+import RegisterPage from "./pages/RegisterCoach/RegisterPage";
 function App() {
 	return (
 		<div>
@@ -33,6 +34,9 @@ function App() {
 					<Route exact path="/lieu-page">
 						<LieuPage />
 
+					</Route>
+					<Route exact path="/register-page">
+						<RegisterPage />
 					</Route>
 				</Switch>
 			</Router>
