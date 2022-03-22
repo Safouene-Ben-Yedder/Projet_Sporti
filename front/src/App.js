@@ -3,7 +3,11 @@ import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage
 import LieuPage from "./pages/lieupage/LieuPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
+
+import { Paiementform } from "./components/paiementform/Paiementform";
+
 import LieuForm from "./components/lieuForm/LieuForm";
+
 function App() {
 	return (
 		<div>
@@ -14,6 +18,10 @@ function App() {
 					<Route exact path="/prog-page">
 						<ProgrammeSeancePage />
 					</Route>
+
+					<Route path="/paiement">
+						<Paiementform />
+
 					{/* <Route exact path="/">
 						<Redirect to="/lieu-page" />
 					</Route>
@@ -24,6 +32,7 @@ function App() {
 
 					<Route exact path="/lieu-page">
 						<LieuPage />
+
 					</Route>
 				</Switch>
 			</Router>
