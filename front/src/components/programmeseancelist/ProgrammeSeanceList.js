@@ -14,6 +14,7 @@ function ProgrammeSeanceList(props) {
 						image={x.image}
 						lienVideo={x.lienVideo}
 						UpdateProgSeance={props.UpdateProgSeance}
+						deleteProgSeance={props.deleteProgSeance}
 					/>
 				);
 			})}

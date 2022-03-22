@@ -10,6 +10,8 @@ export default function ProgrammeSeance({
 	UpdateProgSeance,
 	lienVideo,
 	id,
+	deleteProgSeance,
+	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
@@ -31,7 +33,9 @@ export default function ProgrammeSeance({
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
 						</Button>
-						<Button color="danger">Supprimer</Button>
+						<Button color="danger" onClick={() => deleteProgSeance(id)}>
+							Supprimer
+						</Button>
 					</div>
 				</>
 			) : (

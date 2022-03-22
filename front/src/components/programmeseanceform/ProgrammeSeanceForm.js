@@ -15,7 +15,7 @@ export default function ProgrammeSeanceForm(props) {
 	}
 	return (
 		<>
-			<Form>
+			<Form className="ajout">
 				<FormGroup>
 					<Label> Titre </Label>
 					<Input

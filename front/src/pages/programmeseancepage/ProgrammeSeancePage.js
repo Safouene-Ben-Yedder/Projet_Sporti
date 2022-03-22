@@ -58,7 +58,9 @@ export default function ProgrammeSeancePage() {
 		);
 		setProgrammesSeance(newProgrammesSeance);
 	}
-
+	function deleteProgSeance(id) {
+		setProgrammesSeance(programmesSeance.filter((index) => index.id !== id));
+	}
 	return (
 		<div className="App">
 			<>
@@ -70,6 +72,7 @@ export default function ProgrammeSeancePage() {
 				<ProgrammeSeanceList
 					programmesSeance={programmesSeance}
 					UpdateProgSeance={UpdateProgSeance}
+					deleteProgSeance={deleteProgSeance}
 				/>
 			</>
 			)
