@@ -10,8 +10,8 @@ import LieuForm from "./components/lieuForm/LieuForm";
 
 import RegisterPage from "./pages/RegisterCoach/RegisterPage";
 import InvitationPage from "./pages/invitationpage/InvitationPage";
-import InvitationForm from "./components/invitationform/invitationform";
 import PasswordForm from "./components/invitationform/passwordform";
+import CompetencePage from "./pages/competencepage/competencepage";
 function App() {
 	return (
 		<div>
@@ -22,7 +22,9 @@ function App() {
 					<Route exact path="/prog-page">
 						<ProgrammeSeancePage />
 					</Route>
-
+					<Route exact path="/Competence">
+						<CompetencePage />
+					</Route>
 					<Route path="/paiement">
 						<Paiementform />
 					</Route>
