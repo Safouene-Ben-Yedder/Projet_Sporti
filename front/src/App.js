@@ -1,4 +1,13 @@
 import "./App.css";
+import SeancePage from "./pages/seancepage/SeancePage";
+import SeanceForm from "./components/seanceform/SeanceForm";
+
+import DefiPage from "./pages/defipage/DefiPage";
+import DefiForm from "./components/defiform/DefiForm";
+
+import EventPage from "./pages/eventpage/EventPage";
+import EventForm from "./components/eventform/EventForm";
+
 import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -18,10 +27,25 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/add" component={ProgrammeSeanceForm} />
-
 					<Route exact path="/prog-page">
 						<ProgrammeSeancePage />
 					</Route>
+
+					<Route exact path="/add1" component={SeanceForm} />
+					<Route exact path="/seance-page">
+						<SeancePage />
+					</Route>
+
+					<Route exact path="/add2" component={DefiForm} />
+					<Route exact path="/defi-page">
+						<DefiPage />
+					</Route>
+
+					<Route exact path="/add3" component={EventForm} />
+					<Route exact path="/event-page">
+						<EventPage />
+					</Route>
+
 					<Route exact path="/Competence">
 						<CompetencePage />
 					</Route>
