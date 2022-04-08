@@ -12,6 +12,7 @@ export default function SeancePage() {
 			date: "IT",
 			image: "sy",
 			competence: "1",
+			email: "s@gmail.com",
 		},
 		{
 			id: 2,
@@ -20,6 +21,7 @@ export default function SeancePage() {
 			date: "IT",
 			image: "sy",
 			competence: "1",
+			email: "s@gmail.com",
 		},
 		{
 			id: 3,
@@ -28,6 +30,7 @@ export default function SeancePage() {
 			date: "IT",
 			image: "sy",
 			competence: "1",
+			email: "s@gmail.com",
 		},
 	]);
 	function addSeance(titre, description, date, image, competence) {
@@ -40,6 +43,7 @@ export default function SeancePage() {
 				date: date,
 				image: image,
 				competence: competence,
+				email: email,
 			},
 		]);
 	}
@@ -49,11 +53,12 @@ export default function SeancePage() {
 		description,
 		date,
 		image,
-		competence
+		competence,
+		email
 	) {
 		const newSeances = seances.map((Seance) =>
 			seance.id === id
-				? { id, titre, description, date, image, competence }
+				? { id, titre, description, date, image, competence, email }
 				: seance
 		);
 		setSeances(newSeances);
@@ -65,10 +70,10 @@ export default function SeancePage() {
 		<div className="App">
 			<>
 				<Heading />
-				<h2> Ajouter une  séance</h2>
+				<h2> Ajouter une séance</h2>
 				<SeanceForm addSeance={addSeance} />
 				<hr></hr>
-				<h2> Liste des  séances </h2>
+				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
 					UpdateSeance={UpdateSeance}

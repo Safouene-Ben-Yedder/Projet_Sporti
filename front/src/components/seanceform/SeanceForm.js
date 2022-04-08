@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import emailjs from "emailjs-com";
+
 //import { Link } from "react-router-dom";
 import "./seanceform.css";
+
 export default function SeanceForm(props) {
 	const addTask = "Add";
 	const [titre, setTitre] = useState("");
@@ -9,13 +12,36 @@ export default function SeanceForm(props) {
 	const [date, setDate] = useState("");
 	const [image, setImage] = useState("");
 	const [competence, setCompetence] = useState("");
+	const [email, setEmail] = useState("");
+
+	function sendEmail(e) {
+		e.preventDefault();
+
+		emailjs
+			.sendForm(
+				"service_0n1a7hv",
+				"template_x4407bm",
+				e.target,
+				"nvbUGLWsa-Kfo8HT4"
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+		e.target.reset();
+	}
 
 	function handleAddSeance() {
-		props.addSeance(titre, description, date, image, competence);
+		props.addSeance(titre, description, date, image, competence, email);
+		console.log("Added");
 	}
 	return (
 		<>
-			<Form className="ajout">
+			<Form className="ajout" onSubmit={sendEmail}>
 				<FormGroup>
 					<Label> Titre </Label>
 					<Input
@@ -61,7 +87,17 @@ export default function SeanceForm(props) {
 						value={competence}
 						onChange={(e) => setCompetence(e.target.value)}></Input>
 				</FormGroup>
-				<Button color="success" type="button" onClick={handleAddSeance}>
+				<FormGroup>
+					<Label> Email </Label>
+					<Input
+						type="email"
+						name="email"
+						id=""
+						value={email}
+						required="true"
+						onChange={(e) => setEmail(e.target.value)}></Input>
+				</FormGroup>
+				<Button color="success" type="submit" onClick={handleAddSeance}>
 					{addTask}
 				</Button>
 			</Form>

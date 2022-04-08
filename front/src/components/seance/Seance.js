@@ -9,6 +9,7 @@ export default function Seance({
 	image,
 	UpdateSeance,
 	competence,
+	email,
 	id,
 	deleteSeance,
 	props,
@@ -19,7 +20,9 @@ export default function Seance({
 	const [datetoUpdate, setDatetoUpdate] = useState(date);
 	const [imagetoUpdate, setImagetoUpdate] = useState(image);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
+	const [emailtoUpdate, setEmailtoUpdate] = useState(email);
 
+	//nkfnlkznlkfjzlkeflkz,flkez,
 	return (
 		<div className="Seance">
 			{!updateMode ? (
@@ -90,6 +93,17 @@ export default function Seance({
 						/>
 					</Label>
 
+					<Label>
+						{" "}
+						Email
+						<input
+							type="text"
+							name="Seance"
+							value={emailtoUpdate}
+							onChange={(e) => setEmailtoUpdate(e.target.value)}
+						/>
+					</Label>
+
 					<Button
 						color="primary"
 						type="button"
@@ -100,7 +114,8 @@ export default function Seance({
 								descriptiontoUpdate,
 								datetoUpdate,
 								imagetoUpdate,
-								competencetoUpdate
+								competencetoUpdate,
+								emailtoUpdate
 							);
 							setUpdateMode(false);
 						}}>

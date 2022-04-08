@@ -23,6 +23,10 @@ const seanceSchema = new mongoose.Schema(
 			type: Array,
 			required: true,
 		},
+		email: {
+			type: Array,
+			required: true,
+		},
 	},
 
 	{ timestamps: true }
