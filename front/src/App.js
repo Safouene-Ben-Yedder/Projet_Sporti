@@ -21,6 +21,7 @@ import RegisterPage from "./pages/RegisterCoach/RegisterPage";
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
+import StatPage from "./pages/statpage/statpage";
 function App() {
 	return (
 		<div>
@@ -48,6 +49,9 @@ function App() {
 
 					<Route exact path="/Competence">
 						<CompetencePage />
+					</Route>
+					<Route exact path="/Stat">
+						<StatPage />
 					</Route>
 					<Route path="/paiement">
 						<Paiementform />
