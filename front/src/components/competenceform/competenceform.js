@@ -8,9 +8,10 @@ export default function CompetenceForm(props) {
 	const [description, setDescription] = useState("");
 	const [visvible, setVisible] = useState("");
 	const [lienVideo, setLienVideo] = useState("");
+	const [rating, setRating] = useState("");
 
 	function handleAddComp() {
-		props.addComp(nom, description, visvible, lienVideo);
+		props.addComp(nom, description, visvible, lienVideo, rating);
 	}
 	return (
 		<>
@@ -47,6 +48,16 @@ export default function CompetenceForm(props) {
 				</FormGroup>
 				<FormGroup>
 					<Label> Visible </Label>
+					<Input
+						type="checkbox"
+						name="visible"
+						required="true"
+						id=""
+						value={visvible}
+						onChange={(e) => setVisible(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> Rating </Label>
 					<Input
 						type="checkbox"
 						name="visible"
