@@ -11,9 +11,10 @@ export default function CompetencePage() {
 			description: "tennis",
 			lienVideo: "1",
 			visible: true,
+			rating: "5",
 		},
 	]);
-	function addCompetence(nom, description, lienVideo, visible) {
+	function addCompetence(nom, description, lienVideo, visible, rating) {
 		setCompetence([
 			...Competence,
 			{
@@ -22,13 +23,14 @@ export default function CompetencePage() {
 				description: description,
 				lienVideo: lienVideo,
 				visible: visible,
+				rating: rating,
 			},
 		]);
 	}
-	function UpdateCompetence(id, nom, description, lienVideo, visible) {
+	function UpdateCompetence(id, nom, description, lienVideo, visible, rating) {
 		const newCompetence = Competence.map((Competence) =>
 			Competence.id === id
-				? { id, nom, description, lienVideo, visible }
+				? { id, nom, description, lienVideo, visible, rating }
 				: Competence
 		);
 		setCompetence(newCompetence);
