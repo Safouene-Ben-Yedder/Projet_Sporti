@@ -1,8 +1,8 @@
 import { useState } from "react";
+import ReactStars from "react-rating-stars-component";
 import { Button, Label } from "reactstrap";
 
 export default function Competence({
-	key,
 	nom,
 	description,
 	visible,
@@ -10,6 +10,7 @@ export default function Competence({
 	lienVideo,
 	id,
 	deleteCompetence,
+	rating,
 	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
@@ -17,7 +18,7 @@ export default function Competence({
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [visibletoUpdate, setvisvibletoUpdate] = useState(visible);
 	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
-
+	const [ratingtoUpdate, setRatingtoUpdate] = useState(rating);
 	return (
 		<div className="competence">
 			{!updateMode ? (
@@ -26,6 +27,7 @@ export default function Competence({
 					<div className="description">Description : {description} </div>
 					<div className="lienVideo">Lien : {lienVideo}</div>
 					<div className="visible">Visible : {visible}</div>
+					<div className="rating">Rating : {rating}</div>
 
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
@@ -77,6 +79,16 @@ export default function Competence({
 							onChange={(e) => setvisvibletoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
+					<Label>
+						{" "}
+						Rating
+						<ReactStars
+							count={5}
+							name="rating"
+							value={ratingtoUpdate}
+							onChange={(e) => setRatingtoUpdate(e.target.value)}
+						/>{" "}
+					</Label>
 					<Button
 						color="primary"
 						type="button"
@@ -86,7 +98,8 @@ export default function Competence({
 								nomtoUpdate,
 								descriptiontoUpdate,
 								lienVideotoUpdate,
-								visibletoUpdate
+								visibletoUpdate,
+								ratingtoUpdate
 							);
 							setUpdateMode(false);
 						}}>
