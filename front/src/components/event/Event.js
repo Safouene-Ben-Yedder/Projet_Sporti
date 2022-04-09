@@ -26,7 +26,6 @@ export default function Event({
 					<div className="description">{description} mn</div>
 					{publique}
 					{date}
-					{lienVideo}
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier

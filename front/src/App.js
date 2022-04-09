@@ -14,7 +14,7 @@ import RegisterJoueurPage from "./pages/registerJoueur/RegisterJoueurPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
 import { LoginJoueurPage } from "./pages/loginJoueur/LoginJoueurPage";
-import { PaiementForm } from "./components/paiementform/PaiementForm";
+import { PaiementForm } from "./components/paiementform/Paiementform";
 
 import LieuForm from "./components/lieuForm/LieuForm";
 
@@ -24,6 +24,7 @@ import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
 import StatPage from "./pages/statpage/statpage";
 import ModifierJoueurPage from "./pages/modifierjoueurpage/modifierjoueurpage";
+import ModifierSeance from "./components/modifierSeance/ModifierSeance";
 function App() {
 	return (
 		<div>
@@ -66,10 +67,6 @@ function App() {
 					</Route>
 					<Route path="/login">
 						<LoginJoueurPage />
-						<Paiementform />
-					</Route>
-					{/* <Route exact path="/">
-						<Redirect to="/lieu-page" />
 					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
 
@@ -81,6 +78,9 @@ function App() {
 					</Route>
 					<Route path="/invitation">
 						<InvitationPage />
+					</Route>
+					<Route path="/modifier-seance">
+						<ModifierSeance />
 					</Route>
 					<Route path="/addPass" component={PasswordForm} />
 				</Switch>

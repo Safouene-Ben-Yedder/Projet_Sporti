@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./paiement.css";
