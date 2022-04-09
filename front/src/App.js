@@ -26,12 +26,7 @@ function App() {
 					<Route path="/paiement">
 						<Paiementform />
 					</Route>
-					{/* <Route exact path="/">
-						<Redirect to="/lieu-page" />
-					</Route>
-					<Route exact path="/lieu-page">
-						<LieuPage />
-					</Route> */}
+				
 					<Route exact path="/addLieu" component={LieuForm} />
 
 					<Route exact path="/lieu-page">
