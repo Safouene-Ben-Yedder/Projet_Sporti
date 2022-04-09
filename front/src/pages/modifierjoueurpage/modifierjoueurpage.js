@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heading } from "../../components/heading/Heading";
+import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
 import ModifierJoueurList from "../../components/modifierjoueurlist/modifierjoueurlist";
 
 export default function ModifierJoueurPage() {
@@ -48,7 +48,7 @@ export default function ModifierJoueurPage() {
 	return (
 		<div className="App">
 			<>
-				<Heading />
+				<NavbarJoueur />
 				<h2> Liste des Joueurs </h2>
 				<ModifierJoueurList
 					ModifierJoueur={ModifierJoueur}
