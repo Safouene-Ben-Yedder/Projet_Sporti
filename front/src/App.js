@@ -41,7 +41,7 @@ function App() {
 					<Route exact path="/register-page">
 						<RegisterPage />
 					</Route>
-					<Route exact path="/profile">
+					<Route exact path="/profileJoueur">
 						<ProfilJoueurPage />
 					</Route>
 					<Route exact path="/auth-coach">
