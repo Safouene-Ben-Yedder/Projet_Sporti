@@ -2,32 +2,32 @@ import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
 import ProgrammeSeanceForm from "../../components/programmeseanceform/ProgrammeSeanceForm";
 import ProgrammeSeanceList from "../../components/programmeseancelist/ProgrammeSeanceList";
-
+import "./programmepage.css";
 export default function ProgrammeSeancePage() {
 	const [programmesSeance, setProgrammesSeance] = useState([
 		{
 			id: 1,
-			titre: "learn Html",
-			description: 5,
-			technique: "IT",
-			image: "sy",
-			lienVideo: "1",
+			titre: "tennis",
+			description: "pratiquer de la tennis",
+			technique: "un deux",
+			image: "Tennis",
+			lienVideo: "Tennis",
 		},
 		{
 			id: 2,
-			titre: "learn React",
-			description: 5,
-			technique: "IT",
-			image: "sy",
-			lienVideo: "1",
+			titre: "yoga",
+			description: "pratique de la bonne respiration",
+			technique: "sketching",
+			image: "Yoga",
+			lienVideo: "Yoga",
 		},
 		{
 			id: 3,
-			titre: "learn Angular",
-			description: 5,
-			technique: "IT",
-			image: "sy",
-			lienVideo: "1",
+			titre: "musculation",
+			description: "Poids 50 kg",
+			technique: "Jambes",
+			image: "Musculation",
+			lienVideo: "Musculation",
 		},
 	]);
 	function addProgSeance(titre, description, technique, image, lienVideo) {
@@ -65,10 +65,10 @@ export default function ProgrammeSeancePage() {
 		<div className="App">
 			<>
 				<Heading />
-				<h2> Ajouter un programme séance</h2>
+				<h2 className="titre"> Ajouter un programme séance</h2>
 				<ProgrammeSeanceForm addProgSeance={addProgSeance} />
 				<hr></hr>
-				<h2> Liste des programmes séance </h2>
+				<h2 className="titre"> Liste des programmes séance </h2>
 				<ProgrammeSeanceList
 					programmesSeance={programmesSeance}
 					UpdateProgSeance={UpdateProgSeance}
