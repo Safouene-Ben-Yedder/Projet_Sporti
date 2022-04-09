@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StatForm from "../../components/statform/statform";
 import StatList from "../../components/statlist/statlist";
-import { Heading } from "../../components/heading/Heading";
+import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
 
 export default function StatPage() {
 	const [Stat, setStat] = useState([
@@ -51,7 +51,7 @@ export default function StatPage() {
 	return (
 		<div className="App">
 			<>
-				<Heading />
+				<NavbarJoueur />
 				<h2> Ajouter une Stat</h2>
 				<StatForm addStat={addStat} />
 				<hr></hr>

@@ -20,6 +20,7 @@ import LieuForm from "./components/lieuForm/LieuForm";
 
 import RegisterPage from "./pages/RegisterCoach/RegisterPage";
 import LoginPage from "./pages/loginCoach/LoginPage";
+import ProfilJoueurPage from "./pages/profilJoueurPage/ProfilJoueurPage";
 
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
@@ -81,6 +82,9 @@ function App() {
 
 					<Route exact path="/auth-coach">
 						<LoginPage />
+					</Route>
+					<Route exact path="/profileJoueur">
+						<ProfilJoueurPage />
 					</Route>
 					<Route path="/invitation">
 						<InvitationPage />
