@@ -1,10 +1,11 @@
 import "./App.css";
 import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
+import RegisterJoueurPage from "./pages/registerJoueur/RegisterJoueurPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
-
-import { Paiementform } from "./components/paiementform/Paiementform";
+import { LoginJoueurPage } from "./pages/loginJoueur/LoginJoueurPage";
+import { PaiementForm } from "./components/paiementform/PaiementForm";
 
 import LieuForm from "./components/lieuForm/LieuForm";
 
@@ -20,19 +21,18 @@ function App() {
 					</Route>
 
 					<Route path="/paiement">
-						<Paiementform />
-
-					{/* <Route exact path="/">
-						<Redirect to="/lieu-page" />
+						<PaiementForm />
 					</Route>
-					<Route exact path="/lieu-page">
-						<LieuPage />
-					</Route> */}
+					<Route path="/registerjoueur">
+						<RegisterJoueurPage />
+					</Route>
+					<Route path="/loginjoueur">
+						<LoginJoueurPage />
+					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
 
 					<Route exact path="/lieu-page">
 						<LieuPage />
-
 					</Route>
 				</Switch>
 			</Router>

@@ -25,10 +25,10 @@ export default function ProgrammeSeance({
 			{!updateMode ? (
 				<>
 					<div className="titre">{titre}</div>
-					<div className="description">{description} mn</div>
-					{technique}
-					{image}
-					{lienVideo}
+					<div className="description">{description}</div>
+					<div className="technique">{technique}</div>
+					<div className="image">{image}</div>
+					<div className="lienVideo"> {lienVideo}</div>
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
