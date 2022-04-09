@@ -26,7 +26,7 @@ function App() {
 					<Route path="/registerjoueur">
 						<RegisterJoueurPage />
 					</Route>
-					<Route path="/loginjoueur">
+					<Route path="/login">
 						<LoginJoueurPage />
 					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
