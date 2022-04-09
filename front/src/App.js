@@ -19,6 +19,8 @@ import { PaiementForm } from "./components/paiementform/Paiementform";
 import LieuForm from "./components/lieuForm/LieuForm";
 
 import RegisterPage from "./pages/RegisterCoach/RegisterPage";
+import LoginPage from "./pages/loginCoach/LoginPage";
+
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
@@ -75,6 +77,10 @@ function App() {
 					</Route>
 					<Route exact path="/register-page">
 						<RegisterPage />
+					</Route>
+
+					<Route exact path="/auth-coach">
+						<LoginPage />
 					</Route>
 					<Route path="/invitation">
 						<InvitationPage />

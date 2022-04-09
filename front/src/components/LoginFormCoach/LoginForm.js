@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-
-export default function RegistrationForm(props){
-    const initialValues = {
-		nom: "",
-		prenom: "",
-		dateNaissance: "",
+export const LoginForm = () => {
+	const initialValues = {
 		email: "",
 		password: "",
 	};
-    const [formValues, setFormValues] = useState(initialValues);
+	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
 	const [isSubmit, setIsSubmit] = useState(false);
 	const handleChange = (e) => {
@@ -30,9 +26,6 @@ export default function RegistrationForm(props){
 	const validate = (values) => {
 		const errors = {};
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-		if (!values.nom) {
-			errors.nom = "nom is required!";
-		}
 		if (!values.email) {
 			errors.email = "Email is required!";
 		} else if (!regex.test(values.email)) {
@@ -47,44 +40,18 @@ export default function RegistrationForm(props){
 		}
 		return errors;
 	};
-    return(
-        <>
-            {Object.keys(formErrors).length === 0 && isSubmit && (
-				<div className="ui message success">Sign up successfully</div>
+	return (
+		<>
+			{Object.keys(formErrors).length === 0 && isSubmit && (
+				<div className="ui message success">Sign in successfully</div>
 			)}
 			<Form className="form" onSubmit={handleSubmit}>
 				<FormGroup>
-					<p>{formErrors.nom}</p>
-
-					<Label> Nom </Label>
-					<Input
-						type="text"
-						name="nom"
-						value={formValues.nom}
-						onChange={handleChange}></Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> Prénom </Label>
-					<Input
-						type="text"
-						name="prenom"
-						value={formValues.prenom}
-						onChange={handleChange}></Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> Date De Naissance </Label>
-					<Input
-						type="Date"
-						name="dateNaissance"
-						value={formValues.dateNaissance}
-						onChange={handleChange}></Input>
-				</FormGroup>
-				<FormGroup>
-					<p>{formErrors.email}</p>
+					<p></p>
 
 					<Label> Email </Label>
 					<Input
-						type="email"
+						type="text"
 						name="email"
 						value={formValues.email}
 						onChange={handleChange}></Input>
@@ -92,16 +59,15 @@ export default function RegistrationForm(props){
 				<FormGroup>
 					<p>{formErrors.password}</p>
 
-					<Label> Password </Label>
+					<Label> password </Label>
 					<Input
 						type="password"
 						name="password"
 						value={formValues.password}
 						onChange={handleChange}></Input>
 				</FormGroup>
-
-				<Button type="submit">S'inscrire</Button>
+				<Button type="submit">Login</Button>
 			</Form>
-        </>
-    );
-}
+		</>
+	);
+};
