@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./seance.css";
-export default function Seance({
+export default function Seancetoday({
 	titre,
 	joueur,
 	horaire,
@@ -40,20 +40,7 @@ export default function Seance({
 					<div> {objectif} </div>
 					<div> {statistique}</div>
 					<div>{progseance}</div>
-
-					<div className="actions">
-						<Button color="primary" onClick={() => setUpdateMode(true)}>
-							Modifier
-						</Button>
-						<Button
-							color="danger"
-							onClick={() => {
-								deleteSeance(id);
-								supp();
-							}}>
-							Annuler
-						</Button>
-					</div>
+					<div className="actions"></div>
 				</>
 			) : (
 				<div>
@@ -136,7 +123,6 @@ export default function Seance({
 							<option value="100 mètres">100 mètres</option>
 						</select>
 					</Label>
-
 					<Label>
 						{" "}
 						Programme Seance
@@ -147,26 +133,6 @@ export default function Seance({
 							<option value="Programme 3">Programme 3</option>
 						</select>
 					</Label>
-					<Button
-						color="primary"
-						type="button"
-						onClick={() => {
-							UpdateSeance(
-								Number(id),
-								TitletoUpdate,
-								joueurtoUpdate,
-								horairetoUpdate,
-								datetoUpdate,
-								lieutoUpdate,
-								competencetoUpdate,
-								objectiftoUpdate,
-								progseanceToUpdate,
-								statistiqueToUpdate
-							);
-							setUpdateMode(false);
-						}}>
-						Update
-					</Button>
 				</div>
 			)}
 		</div>

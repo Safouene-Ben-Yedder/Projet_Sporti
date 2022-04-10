@@ -2,6 +2,9 @@ import "./App.css";
 import SeancePage from "./pages/seancepage/SeancePage";
 import SeanceForm from "./components/seanceform/SeanceForm";
 
+import SeancetodayPage from "./pages/seancepage/SeancetodayPage";
+import SeancefilterPage from "./pages/seancepage/SeancefilterPage";
+
 import DefiPage from "./pages/defipage/DefiPage";
 import DefiForm from "./components/defiform/DefiForm";
 
@@ -40,6 +43,14 @@ function App() {
 					<Route exact path="/add1" component={SeanceForm} />
 					<Route exact path="/seance-page">
 						<SeancePage />
+					</Route>
+
+					<Route exact path="/seancetoday-page">
+						<SeancetodayPage />
+					</Route>
+
+					<Route exact path="/seancefilter-page">
+						<SeancefilterPage />
 					</Route>
 
 					<Route exact path="/add2" component={DefiForm} />
