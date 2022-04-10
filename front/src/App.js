@@ -26,7 +26,6 @@ import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
 import StatPage from "./pages/statpage/statpage";
 import ModifierJoueurPage from "./pages/modifierjoueurpage/modifierjoueurpage";
-import ModifierSeance from "./components/modifierSeance/ModifierSeance";
 function App() {
 	return (
 		<div>
@@ -84,9 +83,6 @@ function App() {
 					</Route>
 					<Route path="/invitation">
 						<InvitationPage />
-					</Route>
-					<Route path="/modifier-seance">
-						<ModifierSeance />
 					</Route>
 					<Route path="/addPass" component={PasswordForm} />
 				</Switch>

@@ -62,12 +62,13 @@ export default function ModifierSeance({
 				<Label>
 					{" "}
 					competence
-					<input
-						type="text"
-						name="Seance"
-						value={competencetoUpdate}
-						onChange={(e) => setCompetencetoUpdate(e.target.value)}
-					/>
+					<select
+						value={CompetencetoUpdate}
+						onChange={(e) => setCompetencetoUpdate(e.target.value)}>
+						<option value="Competence1">Competence 1</option>
+						<option value="Competence2">Competence 2</option>
+						<option value="Competence2">Competence 2</option>
+					</select>
 				</Label>
 
 				<Button
