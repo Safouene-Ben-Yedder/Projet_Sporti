@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-
+import emailjs from "emailjs-com";
 //import { Link } from "react-router-dom";
 import "./seanceform.css";
 export default function SeanceForm(props) {
@@ -13,6 +13,28 @@ export default function SeanceForm(props) {
 	const [competence, setCompetence] = useState("");
 	const [objectif, setObjectif] = useState("");
 	const [statistique, setStatistique] = useState("");
+	const [email, setEmail] = useState("");
+
+	function sendEmail(e) {
+		e.preventDefault();
+
+		emailjs
+			.sendForm(
+				"service_0n1a7hv",
+				"template_x4407bm",
+				e.target,
+				"nvbUGLWsa-Kfo8HT4"
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+		e.target.reset();
+	}
 
 	function handleAddSeance() {
 		props.addSeance(
@@ -28,7 +50,7 @@ export default function SeanceForm(props) {
 	}
 	return (
 		<>
-			<Form className="ajout">
+			<Form className="ajout" onSubmit={sendEmail}>
 				<FormGroup>
 					<Label> Titre </Label>
 					<Input
@@ -50,7 +72,7 @@ export default function SeanceForm(props) {
 				<FormGroup>
 					<Label> horaire </Label>
 					<Input
-						type="text"
+						type="time"
 						name="horaire"
 						id=""
 						value={horaire}
@@ -59,7 +81,7 @@ export default function SeanceForm(props) {
 				<FormGroup>
 					<Label> date </Label>
 					<Input
-						type="text"
+						type="date"
 						name="date"
 						id=""
 						value={date}
@@ -101,7 +123,17 @@ export default function SeanceForm(props) {
 						value={statistique}
 						onChange={(e) => setStatistique(e.target.value)}></Input>
 				</FormGroup>
-				<Button color="success" type="button" onClick={handleAddSeance}>
+				<FormGroup>
+					<Label> Email </Label>
+					<Input
+						type="email"
+						name="email"
+						id=""
+						value={email}
+						required="true"
+						onChange={(e) => setEmail(e.target.value)}></Input>
+				</FormGroup>
+				<Button color="success" type="submit" onClick={handleAddSeance}>
 					{addTask}
 				</Button>
 			</Form>
