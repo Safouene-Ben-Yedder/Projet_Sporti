@@ -11,7 +11,7 @@ export default function SeancePage() {
 			titre: "Séance YOGA",
 			joueur: "Ali",
 			horaire: 17,
-			date: "16/09/2021",
+			date: "2022-04-10",
 			lieu: "Vicking bardo",
 			competence: "30 secondes",
 			objectif: "Améliorer les performances",
@@ -22,7 +22,7 @@ export default function SeancePage() {
 			titre: "Séance foot",
 			joueur: "Sonia",
 			horaire: 8,
-			date: "02/07/2022",
+			date: "2022-04-06",
 			lieu: "Menzah",
 			competence: "40 secondes",
 			objectif: "Améliorer les performances",
@@ -33,7 +33,7 @@ export default function SeancePage() {
 			titre: "Midi foot",
 			joueur: "Ahmed",
 			horaire: 12,
-			date: "05/09/2022",
+			date: "2022-04-06",
 			lieu: "Ennahli",
 			competence: "60 secondes",
 			objectif: "Améliorer les performances",
@@ -91,7 +91,7 @@ export default function SeancePage() {
 						competence,
 						objectif,
 						statistique,
- }
+				  }
 				: seance
 		);
 		setSeances(newSeances);
