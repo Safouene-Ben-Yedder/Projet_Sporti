@@ -1,8 +1,8 @@
-.seance {
+.Seance {
     border: 1px solid gray;
-    padding-left: 10px;
+    padding: 20px;
     margin: 10px;
-    width: 1200px;
+    width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;

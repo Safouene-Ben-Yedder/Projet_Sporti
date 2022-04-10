@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Label } from "reactstrap";
+import { Label, Button } from "reactstrap";
 import "./defi.css";
 export default function Defi({
 	key,
@@ -10,6 +10,9 @@ export default function Defi({
 	lienVideo,
 	id,
 	deleteDefi,
+	assigner,
+	periode,
+	joueurs,
 	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
@@ -17,13 +20,14 @@ export default function Defi({
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
 	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
-
+	
 	return (
 		<div className="defi">
 			{!updateMode ? (
-				<>
+				<div>
+				
 					<div className="nom">{nom}</div>
-					<div className="description">{description} mn</div>
+					<div className="description">{description}</div>
 					{objectif}
 					{lienVideo}
 					<div className="actions">
@@ -33,8 +37,12 @@ export default function Defi({
 						<Button color="danger" onClick={() => deleteDefi(id)}>
 							Supprimer
 						</Button>
+						<Button color="success" onClick={() =>assigner()}>
+							Assigner défi
+						</Button>
 					</div>
-				</>
+				</div>
+				
 			) : (
 				<div>
 					<Label>
@@ -96,5 +104,6 @@ export default function Defi({
 				</div>
 			)}
 		</div>
+		
 	);
 }

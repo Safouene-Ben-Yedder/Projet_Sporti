@@ -7,46 +7,71 @@ export default function SeancePage() {
 	const [seances, setSeances] = useState([
 		{
 			id: 1,
-			titre: "learn Html",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "16/09/2021",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			statistique: "respiration",
 		},
 		{
 			id: 2,
-			titre: "learn React",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Séance foot",
+			joueur: "Sonia",
+			horaire: 8,
+			date: "02/07/2022",
+			lieu: "Menzah",
+			competence: "40 secondes",
+			statistique: "200 mètres",
 		},
 		{
 			id: 3,
-			titre: "learn Angular",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Midi foot",
+			joueur: "Ahmed",
+			horaire: 12,
+			date: "05/09/2022",
+			lieu: "Ennahli",
+			competence: "60 secondes",
+			statistique: "100 mètres",
 		},
 	]);
-	function addSeance(titre, description, date, image, competence) {
+	function addSeance(
+		titre,
+		joueur,
+		horaire,
+		date,
+		lieu,
+		competence,
+		statistique
+	) {
 		setSeances([
 			...seances,
 			{
 				id: seances.length + 1,
 				titre: titre,
-				description: description,
+				joueur: joueur,
+				horaire: horaire,
 				date: date,
-				image: image,
+				lieu: lieu,
 				competence: competence,
+				statistique: statistique,
 			},
 		]);
 	}
-	function UpdateSeance(id, titre, description, date, image, competence) {
+	function UpdateSeance(
+		id,
+		titre,
+		joueur,
+		horaire,
+		date,
+		lieu,
+		competence,
+		statistique
+	) {
 		const newSeances = seances.map((seance) =>
 			seance.id === id
-				? { id, titre, description, date, image, competence }
+				? { id, titre, joueur, horaire, date, lieu, competence, statistique }
 				: seance
 		);
 		setSeances(newSeances);
