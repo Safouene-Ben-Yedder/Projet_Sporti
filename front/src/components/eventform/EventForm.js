@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Checkbox } from "reactstrap";
 //import { Link } from "react-router-dom";
 import "./eventform.css";
 export default function EventForm(props) {
@@ -16,7 +16,7 @@ export default function EventForm(props) {
 		<>
 			<Form className="ajout">
 				<FormGroup>
-					<Label> nom </Label>
+					<Label> Nom </Label>
 					<Input
 						type="text"
 						name="programme"
@@ -25,7 +25,7 @@ export default function EventForm(props) {
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> description </Label>
+					<Label> Description </Label>
 					<Input
 						type="text"
 						name="description"
@@ -34,24 +34,26 @@ export default function EventForm(props) {
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> date </Label>
+					<Label> Date </Label>
 					<Input
-						type="text"
+						type="date"
 						name="date"
 						id=""
 						value={date}
 						onChange={(e) => setDate(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> publique </Label>
+					<Label> Publique </Label>
+					<br></br>
+
 					<Input
-						type="text"
+						type="checkbox"
 						name="publique"
 						id=""
 						value={publique}
 						onChange={(e) => setPublique(e.target.value)}></Input>
 				</FormGroup>
-			
+
 				<Button color="success" type="button" onClick={handleAddEvent}>
 					{addTask}
 				</Button>

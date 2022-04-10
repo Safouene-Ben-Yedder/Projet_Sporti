@@ -37,7 +37,7 @@ export default function SeanceForm(props) {
 				<FormGroup>
 					<Label> date </Label>
 					<Input
-						type="text"
+						type="date"
 						name="date"
 						id=""
 						value={date}
@@ -46,7 +46,7 @@ export default function SeanceForm(props) {
 				<FormGroup>
 					<Label> Image </Label>
 					<Input
-						type="text"
+						type="file"
 						name="image"
 						id=""
 						value={image}

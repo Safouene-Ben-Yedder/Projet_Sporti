@@ -1,5 +1,4 @@
 import Event from "../event/Event";
-
 function EventList(props) {
 	return (
 		<div>
@@ -11,7 +10,7 @@ function EventList(props) {
 						nom={x.nom}
 						description={x.description}
 						date={x.date}
-						publique={x.publique}
+						publique={x.publique.toString()}
 						UpdateEvent={props.UpdateEvent}
 						deleteEvent={props.deleteEvent}
 					/>

@@ -23,10 +23,10 @@ export default function Event({
 			{!updateMode ? (
 				<>
 					<div className="nom">{nom}</div>
-					<div className="description">{description} mn</div>
-					{publique}
-					{date}
-					{lienVideo}
+					<div className="description">{description} </div>
+					<div className="publique">{publique}</div>
+					<div className="date">{datetoUpdate}</div>
+
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
@@ -39,7 +39,7 @@ export default function Event({
 			) : (
 				<div>
 					<Label>
-						nom
+						Nom
 						<input
 							type="text"
 							name="event"
@@ -49,7 +49,7 @@ export default function Event({
 					</Label>
 					<Label>
 						{" "}
-						description
+						Description
 						<input
 							type="text"
 							name="event"
@@ -59,7 +59,7 @@ export default function Event({
 					</Label>
 					<Label>
 						{" "}
-						publique
+						Publique
 						<input
 							type="text"
 							name="event"
@@ -69,7 +69,7 @@ export default function Event({
 					</Label>
 					<Label>
 						{" "}
-						date
+						Date
 						<input
 							type="text"
 							name="event"

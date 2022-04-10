@@ -11,7 +11,7 @@ function DefiList(props) {
 						nom={x.nom}
 						description={x.description}
 						objectif={x.objectif}
-						lienVideo={x.lienVideo}
+						publique={x.lienVideo}
 						UpdateDefi={props.UpdateDefi}
 						deleteDefi={props.deleteDefi}
 					/>
