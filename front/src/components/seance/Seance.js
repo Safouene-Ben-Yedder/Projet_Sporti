@@ -12,6 +12,7 @@ export default function Seance({
 	statistique,
 	id,
 	deleteSeance,
+	supp,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
@@ -37,8 +38,8 @@ export default function Seance({
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
 						</Button>
-						<Button color="danger" onClick={() => deleteSeance(id)}>
-							Supprimer
+						<Button color="danger" onClick={() => {deleteSeance(id);supp();}}>
+							Annuler 
 						</Button>
 					</div>
 				</>

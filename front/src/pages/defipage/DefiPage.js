@@ -30,7 +30,7 @@ export default function DefiPage() {
         },
       ];
       const assigner=()=>{
-        	setIsVisible(!isVisible)
+         setIsVisible(!isVisible)
         }
 
 	function addDefi(nom, description, objectif, lienVideo) {
@@ -103,8 +103,8 @@ export default function DefiPage() {
 										Assigner
 								</Button>
 							</FormGroup>
-   						</Form>
-						   </>
+						</Form>
+						</>
 						):(
 							<>
 							<h5>Ce défi est assigné!</h5>

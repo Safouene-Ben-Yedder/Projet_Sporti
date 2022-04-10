@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
+import { Form, FormGroup, Label, Button } from "reactstrap";
+
 
 export default function SeancePage() {
 	const [seances, setSeances] = useState([
@@ -36,6 +38,9 @@ export default function SeancePage() {
 			statistique: "100 mètres",
 		},
 	]);
+	const [isVisible, setIsVisible]= useState(false);
+	const [updateMode, setUpdateMode] = useState(false);
+	const [raison, setRaison] = useState("");
 	function addSeance(
 		titre,
 		joueur,
@@ -76,6 +81,9 @@ export default function SeancePage() {
 		);
 		setSeances(newSeances);
 	}
+	const supp=()=>{
+		setIsVisible(!isVisible)
+	}
 	function deleteSeance(id) {
 		setSeances(seances.filter((index) => index.id !== id));
 	}
@@ -89,11 +97,40 @@ export default function SeancePage() {
 				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
-					UpdateSeance={UpdateSeance}
 					deleteSeance={deleteSeance}
+					UpdateSeance={UpdateSeance}
+					supp={supp}
 				/>
-			</>
-			)
+				{isVisible &&
+						<>
+						{!updateMode ? (
+							<>
+							<Form >
+							<FormGroup>
+								<h3><Label> Raison pour annulation </Label></h3>
+								<select value={raison} onChange={(e) => setRaison(e.target.value)}>
+									<option value="r1">absence du joueur</option>
+									<option value="r2">imptempérie</option>
+								</select>
+								<Button color="success" type="button" onClick={() => setUpdateMode(true)}>
+											Envoyer
+									</Button>
+							</FormGroup>
+							</Form>
+							</>
+						):(
+							<>
+							<h5>Réponse envoyée!</h5>
+							
+							</>
+						)
+						}
+							
+
+					</>
+					}
+					</>
+			
 		</div>
 	);
 }

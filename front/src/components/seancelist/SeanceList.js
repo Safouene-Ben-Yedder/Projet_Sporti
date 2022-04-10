@@ -17,6 +17,7 @@ function SeanceList(props) {
 						statistique={x.statistique}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
+						supp={props.supp}
 					/>
 				);
 			})}
