@@ -11,6 +11,11 @@ export default function Event({
 	id,
 	deleteEvent,
 	props,
+
+	participer,
+	interesse,
+	pasparticiper,
+	joueurs,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [NomtoUpdate, setNomtoUpdate] = useState(nom);
@@ -27,11 +32,16 @@ export default function Event({
 					<div>{publique}</div>
 					<div>{date}</div>
 					<div className="actions">
-						<Button color="primary" onClick={() => setUpdateMode(true)}>
-							Modifier
+						<Button color="success" onClick={() => participer()}>
+							Participer
 						</Button>
-						<Button color="danger" onClick={() => deleteEvent(id)}>
-							Supprimer
+
+						<Button color="success" onClick={() => interesse()}>
+							Interessé
+						</Button>
+
+						<Button color="success" onClick={() => pasparticiper()}>
+							Ne pas participer
 						</Button>
 					</div>
 				</>
@@ -76,22 +86,6 @@ export default function Event({
 							onChange={(e) => setDatetoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
-
-					<Button
-						color="primary"
-						type="button"
-						onClick={() => {
-							UpdateEvent(
-								Number(id),
-								NomtoUpdate,
-								descriptiontoUpdate,
-								publiquetoUpdate,
-								datetoUpdate
-							);
-							setUpdateMode(false);
-						}}>
-						Update
-					</Button>
 				</div>
 			)}
 		</div>
