@@ -20,6 +20,7 @@ function SeanceList(props) {
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
 						supp={props.supp}
+						avis={props.avis}
 					/>
 				);
 			})}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
-import { Form, FormGroup, Label, Button } from "reactstrap";
+import { Form, FormGroup, Label,Input, Button } from "reactstrap";
 
 export default function SeancePage() {
 	const [seances, setSeances] = useState([
@@ -18,34 +18,38 @@ export default function SeancePage() {
 			statistique: "respiration",
 			progseance: "Programme 1",
 		},
-		{
-			id: 2,
-			titre: "Séance foot",
-			joueur: "Sonia",
-			horaire: 8,
-			date: "2022-04-06",
-			lieu: "Menzah",
-			competence: "40 secondes",
-			objectif: "Améliorer les performances",
-			statistique: "200 mètres",
-			progseance: "Programme 1",
-		},
-		{
-			id: 3,
-			titre: "Midi foot",
-			joueur: "Ahmed",
-			horaire: 12,
-			date: "2022-04-06",
-			lieu: "Ennahli",
-			competence: "60 secondes",
-			objectif: "Améliorer les performances",
-			statistique: "100 mètres",
-			progseance: "Programme 1",
-		},
+		// {
+		// 	id: 2,
+		// 	titre: "Séance foot",
+		// 	joueur: "Sonia",
+		// 	horaire: 8,
+		// 	date: "2022-04-06",
+		// 	lieu: "Menzah",
+		// 	competence: "40 secondes",
+		// 	objectif: "Améliorer les performances",
+		// 	statistique: "200 mètres",
+		// 	progseance: "Programme 1",
+		// },
+		// {
+		// 	id: 3,
+		// 	titre: "Midi foot",
+		// 	joueur: "Ahmed",
+		// 	horaire: 12,
+		// 	date: "2022-04-06",
+		// 	lieu: "Ennahli",
+		// 	competence: "60 secondes",
+		// 	objectif: "Améliorer les performances",
+		// 	statistique: "100 mètres",
+		// 	progseance: "Programme 1",
+		// },
 	]);
 	const [isVisible, setIsVisible] = useState(false);
+	const [Visible, setVisible] = useState(false);
 	const [updateMode, setUpdateMode] = useState(false);
+	const [FeedBack, setFeedBack] = useState(false);
 	const [raison, setRaison] = useState("");
+	const [feed, setFeed] = useState("");
+	const [obj, setObj] = useState("");
 	function addSeance(
 		titre,
 		joueur,
@@ -94,13 +98,16 @@ export default function SeancePage() {
 						competence,
 						objectif,
 						statistique,
-				  }
+				}
 				: seance
 		);
 		setSeances(newSeances);
 	}
 	const supp = () => {
 		setIsVisible(!isVisible);
+	};
+	const avis = () => {
+		setVisible(!isVisible);
 	};
 	function deleteSeance(id) {
 		setSeances(seances.filter((index) => index.id !== id));
@@ -118,6 +125,7 @@ export default function SeancePage() {
 					deleteSeance={deleteSeance}
 					UpdateSeance={UpdateSeance}
 					supp={supp}
+					avis={avis}
 				/>
 				{isVisible && (
 					<>
@@ -150,6 +158,47 @@ export default function SeancePage() {
 						)}
 					</>
 				)}
+					{Visible && (
+						<>
+						{!FeedBack ? (
+							<>
+								<Form>
+									<FormGroup>
+										<h3>
+											<Label> Donner FeedBack </Label>
+										</h3>
+										<Input
+											name="avis"
+											value={feed}
+											type="textarea"
+											onChange={(e) => setFeed(e.target.value)}
+										/>
+										<h3>
+											<Label> Dire si objectif est atteint </Label>
+										</h3>
+										<select
+											value={obj}
+											onChange={(e) => setObj(e.target.value)}>
+											<option value="r1">OUI</option>
+											<option value="r2">NON</option>
+										</select>
+										<Button
+											color="success"
+											type="button"
+											onClick={() => setFeedBack(true)}>
+											Envoyer
+										</Button>
+									</FormGroup>
+								</Form>
+								
+							</>
+							) : (
+							<>
+								<h5>Réponse envoyée!</h5>
+							</>
+							)}
+					</>
+					)}
 			</>
 		</div>
 	);

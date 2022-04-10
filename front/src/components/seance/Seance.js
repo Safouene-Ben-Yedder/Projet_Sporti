@@ -15,6 +15,7 @@ export default function Seance({
 	id,
 	deleteSeance,
 	supp,
+	avis,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
@@ -52,6 +53,13 @@ export default function Seance({
 								supp();
 							}}>
 							Annuler
+						</Button>
+						<Button
+							color="success"
+							onClick={() => 
+								avis()
+							}>
+							Donner FeedBack
 						</Button>
 					</div>
 				</>
