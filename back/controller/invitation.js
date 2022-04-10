@@ -3,10 +3,10 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
-	service: "outlook",
+	service: "gmail",
 	auth: {
-		user: "projet.sporti@outlook.fr",
-		pass: "ProjetSporti",
+		user: "projet.sporti9@gmail.com",
+		pass: "ProjetSporti9-",
 	},
 });
 exports.inviterJoueur = async (req, res) => {
@@ -54,8 +54,9 @@ exports.inviterJoueur = async (req, res) => {
 				from: "Sporti",
 				to: invitation.email,
 				subject: "Invitation to Sporti",
-				text: ` Welcome ${invitation.nom} ${invitation.prenom} tel = ${invitation.telephone}
-					click here to subscribe http://localhost:3000/inviter/joueur/${invitation.token}`,
+				text: ` Welcome ${invitation.nom} ${invitation.prenom} ,
+You are invited to Sporti
+click here to subscribe : http://localhost:3000/inviter/joueur/${invitation.token}`,
 			};
 			transporter.sendMail(mailOptions, function (error, info) {
 				if (error) {

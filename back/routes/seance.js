@@ -5,10 +5,10 @@ const User = require("../models/User");
 const cron = require("node-cron");
 
 var transporter = nodemailer.createTransport({
-	service: "outlook",
+	service: "gmail",
 	auth: {
-		user: "projet.sporti@outlook.fr",
-		pass: "ProjetSporti",
+		user: "projet.sporti9@gmail.com",
+		pass: "ProjetSporti9-",
 	},
 });
 //CREATE  séance
