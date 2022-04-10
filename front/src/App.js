@@ -11,6 +11,7 @@ import DefiForm from "./components/defiform/DefiForm";
 import EventPage from "./pages/eventpage/EventPage";
 import EventForm from "./components/eventform/EventForm";
 import EventdetailsPage from "./pages/eventpage/EventdetailsPage";
+import EventListePage from "./pages/eventpage/EventListePage";
 
 import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
@@ -66,6 +67,10 @@ function App() {
 
 					<Route exact path="/eventdetails">
 						<EventdetailsPage />
+					</Route>
+
+					<Route exact path="/eventliste-page">
+						<EventListePage />
 					</Route>
 
 					<Route exact path="/Competence">
