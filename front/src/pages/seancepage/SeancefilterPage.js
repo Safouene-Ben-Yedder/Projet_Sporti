@@ -27,6 +27,7 @@ export default function SeancefilterPage() {
 			competence: "30 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "respiration",
+			progseance: "Programme 1",
 		},
 		{
 			id: 2,
@@ -38,6 +39,7 @@ export default function SeancefilterPage() {
 			competence: "40 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "200 mètres",
+			progseance: "Programme 1",
 		},
 		{
 			id: 3,
@@ -49,6 +51,7 @@ export default function SeancefilterPage() {
 			competence: "60 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "100 mètres",
+			progseance: "Programme 1",
 		},
 	]);
 

@@ -24,6 +24,7 @@ function SeancetodayList(props) {
 							lieu={x.lieu}
 							competence={x.competence}
 							objectif={x.objectif}
+							progseance={x.progseance}
 							statistique={x.statistique}
 						/>
 					);

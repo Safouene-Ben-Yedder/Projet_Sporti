@@ -16,6 +16,7 @@ export default function SeancePage() {
 			competence: "30 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "respiration",
+			progseance: "Programme 1",
 		},
 		{
 			id: 2,
@@ -27,6 +28,7 @@ export default function SeancePage() {
 			competence: "40 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "200 mètres",
+			progseance: "Programme 1",
 		},
 		{
 			id: 3,
@@ -38,6 +40,7 @@ export default function SeancePage() {
 			competence: "60 secondes",
 			objectif: "Améliorer les performances",
 			statistique: "100 mètres",
+			progseance: "Programme 1",
 		},
 	]);
 	const [isVisible, setIsVisible] = useState(false);

@@ -16,6 +16,7 @@ function SeanceList(props) {
 						competence={x.competence}
 						objectif={x.objectif}
 						statistique={x.statistique}
+						progseance={x.progseance}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
 						supp={props.supp}

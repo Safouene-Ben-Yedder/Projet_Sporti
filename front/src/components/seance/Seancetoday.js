@@ -11,6 +11,7 @@ export default function Seancetoday({
 	competence,
 	statistique,
 	objectif,
+	progseance,
 	id,
 	deleteSeance,
 	supp,
@@ -23,6 +24,7 @@ export default function Seancetoday({
 	const [lieutoUpdate, setLieutoUpdate] = useState(lieu);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
 	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
+	const [progseanceToUpdate, setProgseancetoUpdate] = useState(progseance);
 	const [statistiqueToUpdate, setStatistiqueToUpdate] = useState(statistique);
 
 	return (
@@ -37,6 +39,7 @@ export default function Seancetoday({
 					<div> {competence} </div>
 					<div> {objectif} </div>
 					<div> {statistique}</div>
+					<div>{progseance}</div>
 					<div className="actions"></div>
 				</>
 			) : (
@@ -118,6 +121,16 @@ export default function Seancetoday({
 							<option value="respiration">respiration </option>
 							<option value="200 mètres">200 mètres</option>
 							<option value="100 mètres">100 mètres</option>
+						</select>
+					</Label>
+					<Label>
+						{" "}
+						Programme Seance
+						<select onChange={(e) => setProgseancetoUpdate(e.target.value)}>
+							<option>{progseanceToUpdate} </option>
+							<option value="Programme 1">Programme 1 </option>
+							<option value="Programme 2">Programme 2</option>
+							<option value="Programme 3">Programme 3</option>
 						</select>
 					</Label>
 				</div>

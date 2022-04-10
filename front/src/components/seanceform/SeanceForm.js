@@ -13,6 +13,8 @@ export default function SeanceForm(props) {
 	const [competence, setCompetence] = useState("");
 	const [objectif, setObjectif] = useState("");
 	const [statistique, setStatistique] = useState("");
+	const [progseance, setProgseance] = useState("");
+
 	const [email, setEmail] = useState("");
 
 	function sendEmail(e) {
@@ -45,7 +47,8 @@ export default function SeanceForm(props) {
 			lieu,
 			competence,
 			objectif,
-			statistique
+			statistique,
+			progseance
 		);
 	}
 	return (
@@ -107,21 +110,33 @@ export default function SeanceForm(props) {
 				</FormGroup>
 				<FormGroup>
 					<Label> competence </Label>
-					<Input
-						type="text"
-						name="competence"
-						id=""
-						value={competence}
-						onChange={(e) => setCompetence(e.target.value)}></Input>
+
+					<select onChange={(e) => setCompetence(e.target.value)}>
+						<option>{competence} </option>
+						<option value="30 secondes">30 secondes </option>
+						<option value="40 secondes">40 secondes </option>
+						<option value="60 secondes">60 secondes </option>
+					</select>
 				</FormGroup>
 				<FormGroup>
 					<Label> statistique </Label>
-					<Input
-						type="text"
-						name="statisqtique"
-						id=""
-						value={statistique}
-						onChange={(e) => setStatistique(e.target.value)}></Input>
+
+					<select onChange={(e) => setStatistique(e.target.value)}>
+						<option>{statistique} </option>
+						<option value="respiration">respiration </option>
+						<option value="200 mètres">200 mètres</option>
+						<option value="100 mètres">100 mètres</option>
+					</select>
+				</FormGroup>
+				<FormGroup>
+					<Label> Programme Seance </Label>
+
+					<select onChange={(e) => setProgseance(e.target.value)}>
+						<option>{progseance} </option>
+						<option value="Programme 1">Programme 1 </option>
+						<option value="Programme 2">Programme 2</option>
+						<option value="Programme 3">Programme 3</option>
+					</select>
 				</FormGroup>
 				<FormGroup>
 					<Label> Email </Label>

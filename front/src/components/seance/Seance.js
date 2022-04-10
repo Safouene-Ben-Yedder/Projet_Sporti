@@ -11,6 +11,7 @@ export default function Seance({
 	competence,
 	statistique,
 	objectif,
+	progseance,
 	id,
 	deleteSeance,
 	supp,
@@ -23,6 +24,7 @@ export default function Seance({
 	const [lieutoUpdate, setLieutoUpdate] = useState(lieu);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
 	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
+	const [progseanceToUpdate, setProgseancetoUpdate] = useState(progseance);
 	const [statistiqueToUpdate, setStatistiqueToUpdate] = useState(statistique);
 
 	return (
@@ -37,6 +39,8 @@ export default function Seance({
 					<div> {competence} </div>
 					<div> {objectif} </div>
 					<div> {statistique}</div>
+					<div>{progseance}</div>
+
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
@@ -132,6 +136,17 @@ export default function Seance({
 							<option value="100 mètres">100 mètres</option>
 						</select>
 					</Label>
+
+					<Label>
+						{" "}
+						Programme Seance
+						<select onChange={(e) => setProgseancetoUpdate(e.target.value)}>
+							<option>{progseanceToUpdate} </option>
+							<option value="Programme 1">Programme 1 </option>
+							<option value="Programme 2">Programme 2</option>
+							<option value="Programme 3">Programme 3</option>
+						</select>
+					</Label>
 					<Button
 						color="primary"
 						type="button"
@@ -145,6 +160,7 @@ export default function Seance({
 								lieutoUpdate,
 								competencetoUpdate,
 								objectiftoUpdate,
+								progseanceToUpdate,
 								statistiqueToUpdate
 							);
 							setUpdateMode(false);
