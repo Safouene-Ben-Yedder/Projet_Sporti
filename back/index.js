@@ -16,6 +16,7 @@ const seanceRoute = require("./routes/seance");
 const defiRoute = require("./routes/defi");
 const eventRoute = require("./routes/event");
 
+const InvitationRoute = require("./routes/invitation");
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -40,6 +41,7 @@ app.use("/api/seance", seanceRoute);
 app.use("/api/defi", defiRoute);
 app.use("/api/event", eventRoute);
 
+app.use("/api/invitation", InvitationRoute);
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });

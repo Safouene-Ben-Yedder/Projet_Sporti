@@ -7,6 +7,7 @@ export default function InvitationForm(props) {
 	const [nom, setNom] = useState("");
 	const [prenom, setPrenom] = useState("");
 	const [email, setEmail] = useState("");
+	const [tel, setTel] = useState("");
 
 	function sendEmail(e) {
 		e.preventDefault();
@@ -62,6 +63,15 @@ export default function InvitationForm(props) {
 						value={email}
 						required="true"
 						onChange={(e) => setEmail(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> Téléphone </Label>
+					<Input
+						type="tel"
+						name="tel"
+						value={tel}
+						required="true"
+						onChange={(e) => setTel(e.target.value)}></Input>
 				</FormGroup>
 				<Button color="success" type="submit" onClick={handleInvitation}>
 					{Inviter}
