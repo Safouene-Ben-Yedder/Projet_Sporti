@@ -3,8 +3,8 @@
             "browser": true,
             "es2021": true,
             "commonjs":true,
-            "node":true,
-            "react":true
+            "node":true
+            //"react":true
          
         },
          "extends": ["eslint:recommended","plugin:jest/recommended"],
@@ -32,14 +32,14 @@
                 "windows"
             ],
             
-            "quotes": [
-                "error",
-                "single"
-            ],
-            "semi": [
-                "error",
-                "never"
-            ], 
+            // "quotes": [
+            //     "error",
+            //     "single"
+            // ],
+            // "semi": [
+            //     "error",
+            //     "never"
+            // ], 
             "react/jsx-uses-react": "error",   
             "react/jsx-uses-vars": "error" 
         }

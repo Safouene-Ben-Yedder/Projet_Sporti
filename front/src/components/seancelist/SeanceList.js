@@ -9,10 +9,12 @@ function SeanceList(props) {
 						key={x.id}
 						id={x.id}
 						titre={x.titre}
-						description={x.description}
+						joueur={x.joueur}
+						horaire={x.horaire}
 						date={x.date}
-						image={x.image}
+						lieu={x.lieu}
 						competence={x.competence}
+						statistique={x.statistique}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
 					/>

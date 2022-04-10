@@ -5,13 +5,23 @@ import "./seanceform.css";
 export default function SeanceForm(props) {
 	const addTask = "Add";
 	const [titre, setTitre] = useState("");
-	const [description, setDescription] = useState("");
+	const [joueur, setJoueur] = useState("");
+	const [horaire, setHoraire] = useState("");
 	const [date, setDate] = useState("");
-	const [image, setImage] = useState("");
+	const [lieu, setLieu] = useState("");
 	const [competence, setCompetence] = useState("");
+	const [statistique, setStatistique] = useState("");
 
 	function handleAddSeance() {
-		props.addSeance(titre, description, date, image, competence);
+		props.addSeance(
+			titre,
+			joueur,
+			horaire,
+			date,
+			lieu,
+			competence,
+			statistique
+		);
 	}
 	return (
 		<>
@@ -26,13 +36,22 @@ export default function SeanceForm(props) {
 						onChange={(e) => setTitre(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> description </Label>
+					<Label> Joueur </Label>
 					<Input
 						type="text"
-						name="description"
+						name="programme"
 						id=""
-						value={description}
-						onChange={(e) => setDescription(e.target.value)}></Input>
+						value={joueur}
+						onChange={(e) => setJoueur(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> horaire </Label>
+					<Input
+						type="text"
+						name="horaire"
+						id=""
+						value={horaire}
+						onChange={(e) => setHoraire(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> date </Label>
@@ -44,13 +63,13 @@ export default function SeanceForm(props) {
 						onChange={(e) => setDate(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> Image </Label>
+					<Label> lieu </Label>
 					<Input
 						type="text"
-						name="image"
+						name="lieu"
 						id=""
-						value={image}
-						onChange={(e) => setImage(e.target.value)}></Input>
+						value={lieu}
+						onChange={(e) => setLieu(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> competence </Label>
@@ -60,6 +79,15 @@ export default function SeanceForm(props) {
 						id=""
 						value={competence}
 						onChange={(e) => setCompetence(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> statistique </Label>
+					<Input
+						type="text"
+						name="statisqtique"
+						id=""
+						value={statistique}
+						onChange={(e) => setStatistique(e.target.value)}></Input>
 				</FormGroup>
 				<Button color="success" type="button" onClick={handleAddSeance}>
 					{addTask}

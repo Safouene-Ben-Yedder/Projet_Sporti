@@ -20,7 +20,7 @@ export const PaiementForm = () => {
 
 	return (
 		<>
-			<h2 className="titre"> Choisir votre abonnement</h2>
+			<h2 className="titreAbonnement"> Choisir votre abonnement</h2>
 
 			{isSubmit && (
 				<div className="ui message success">Sign up successfully</div>
