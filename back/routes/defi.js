@@ -2,7 +2,7 @@ const router = require("express").Router();
 const defi = require("../models/defi");
 
 //CREATE  Defi
-router.post("/defi", async (req, res) => {
+router.post("/", async (req, res) => {
 	const newDefi = new defi(req.body);
 	try {
 		const savedDefi = await newDefi.save();
@@ -12,7 +12,7 @@ router.post("/defi", async (req, res) => {
 	}
 });
 //UPDATE  Defi
-router.put("/defi/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
 	try {
 		const updatedDefi = await defi.findByIdAndUpdate(
 			req.params.id,
@@ -27,7 +27,7 @@ router.put("/defi/:id", async (req, res) => {
 	}
 });
 //DELETE  Defi
-router.delete("/defi/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
 	try {
 		await defi.findByIdAndDelete(req.params.id);
 		res.status(200).json("Defi has been deleted...");
@@ -36,7 +36,7 @@ router.delete("/defi/:id", async (req, res) => {
 	}
 });
 //GET  Defi
-router.get("/defi/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 	try {
 		const MyDefi = await defi.find(req.params.id);
 		res.status(200).json(MyDefi);

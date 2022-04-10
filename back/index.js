@@ -10,6 +10,11 @@ const programmeSeanceRoute = require("./routes/programmeSeance");
 const competenceRoute = require("./routes/competence");
 const authRoute = require("./routes/auth");
 const lieuEntrainementRoute = require("./routes/lieuEntrainement");
+
+const seanceRoute = require("./routes/seance");
+const defiRoute = require("./routes/defi");
+const eventRoute = require("./routes/event");
+
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -28,6 +33,10 @@ app.use("/api/programme", programmeSeanceRoute);
 app.use("/api/competence", competenceRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/lieu", lieuEntrainementRoute);
+
+app.use("/api/seance", seanceRoute);
+app.use("/api/defi", defiRoute);
+app.use("/api/event", eventRoute);
 
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
