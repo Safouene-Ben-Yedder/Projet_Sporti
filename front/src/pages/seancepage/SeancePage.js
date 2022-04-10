@@ -7,30 +7,56 @@ export default function SeancePage() {
 	const [seances, setSeances] = useState([
 		{
 			id: 1,
-			titre: "learn Html",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Foot",
+			description: "Faire du football",
+			date: "2022-04-06",
+			competence: "Football",
+			objectif: "améliorer les performances",
+			aatteindre: "minimum 7 matches",
+			horraire: "20:20",
+			lieu: "Tunis",
+			reccurente: true,
+			periode: 25,
 		},
 		{
 			id: 2,
-			titre: "learn React",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Basketball",
+			description: "Faire de basketball",
+			date: "2022-04-06",
+			competence: "Basketball",
+			objectif: "améliorer les performances",
+			aatteindre: "minimum 7 matches",
+			horraire: "20:20",
+			lieu: "Tunis",
+			reccurente: true,
+			periode: 25,
 		},
 		{
 			id: 3,
-			titre: "learn Angular",
-			description: 5,
-			date: "IT",
-			image: "sy",
-			competence: "1",
+			titre: "Musculation",
+			description: "Faire de musculation",
+			date: "2022-04-06",
+			competence: "Musculation",
+			objectif: "améliorer les performances",
+			aatteindre: "minimum 7 matches",
+			horraire: "20:20",
+			lieu: "Tunis",
+			reccurente: true,
+			periode: 25,
 		},
 	]);
-	function addSeance(titre, description, date, image, competence) {
+	function addSeance(
+		titre,
+		description,
+		date,
+		competence,
+		objectif,
+		aatteindre,
+		horraire,
+		lieu,
+		reccurente,
+		periode
+	) {
 		setSeances([
 			...seances,
 			{
@@ -38,8 +64,13 @@ export default function SeancePage() {
 				titre: titre,
 				description: description,
 				date: date,
-				image: image,
 				competence: competence,
+				objectif: objectif,
+				aatteindre: aatteindre,
+				horraire: horraire,
+				lieu: lieu,
+				reccurente: reccurente,
+				periode: periode,
 			},
 		]);
 	}
@@ -48,12 +79,29 @@ export default function SeancePage() {
 		titre,
 		description,
 		date,
-		image,
-		competence
+		competence,
+		objectif,
+		aatteindre,
+		horraire,
+		lieu,
+		reccurente,
+		periode
 	) {
 		const newSeances = seances.map((Seance) =>
 			seance.id === id
-				? { id, titre, description, date, image, competence }
+				? {
+						id,
+						titre,
+						description,
+						date,
+						competence,
+						objectif,
+						aatteindre,
+						horraire,
+						lieu,
+						reccurente,
+						periode,
+				  }
 				: seance
 		);
 		setSeances(newSeances);
@@ -65,10 +113,10 @@ export default function SeancePage() {
 		<div className="App">
 			<>
 				<Heading />
-				<h2> Ajouter une  séance</h2>
+				<h2> Ajouter une séance</h2>
 				<SeanceForm addSeance={addSeance} />
 				<hr></hr>
-				<h2> Liste des  séances </h2>
+				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
 					UpdateSeance={UpdateSeance}

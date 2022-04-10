@@ -23,10 +23,10 @@ export default function Event({
 			{!updateMode ? (
 				<>
 					<div className="nom">{nom}</div>
-					<div className="description">{description} mn</div>
-					{publique}
-					{date}
-					{lienVideo}
+					<div className="description">{description} </div>
+					<div className="publique">{publique}</div>
+					<div className="date">{date}</div>
+
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
@@ -61,7 +61,7 @@ export default function Event({
 						{" "}
 						publique
 						<input
-							type="text"
+							type="checkbox"
 							name="event"
 							value={publiquetoUpdate}
 							onChange={(e) => setPubliquetoUpdate(e.target.value)}

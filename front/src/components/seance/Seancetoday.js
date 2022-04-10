@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./seance.css";
-export default function Seance({
+export default function Seancetoday({
 	key,
 	titre,
 	description,
@@ -46,15 +46,6 @@ export default function Seance({
 					<div className="lieu">{lieu}</div>
 					<div className="reccurente">{reccurente}</div>
 					<div className="periode">{periode}</div>
-
-					<div className="actions">
-						<Button color="primary" onClick={() => setUpdateMode(true)}>
-							Modifier
-						</Button>
-						<Button color="danger" onClick={() => deleteSeance(id)}>
-							Supprimer
-						</Button>
-					</div>
 				</>
 			) : (
 				<div>
@@ -81,13 +72,12 @@ export default function Seance({
 						{" "}
 						date
 						<input
-							type="date"
+							type="text"
 							name="Seance"
 							value={datetoUpdate}
 							onChange={(e) => setDatetoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
-
 					<Label>
 						{" "}
 						competence
@@ -98,7 +88,6 @@ export default function Seance({
 							onChange={(e) => setCompetencetoUpdate(e.target.value)}
 						/>
 					</Label>
-
 					<Label>
 						{" "}
 						Objectif
@@ -162,33 +151,10 @@ export default function Seance({
 							name="Seance"
 							min="0"
 							max="12"
-							value={periodetoUpdate}
+							value={periodetetoUpdate}
 							onChange={(e) => setPeriodetoUpdate(e.target.value)}
 						/>
 					</Label>
-
-					<Button
-						color="primary"
-						type="button"
-						onClick={() => {
-							UpdateSeance(
-								Number(id),
-								TitletoUpdate,
-								descriptiontoUpdate,
-								datetoUpdate,
-								competencetoUpdate,
-
-								objectiftoUpdate,
-								aatteindretoUpdate,
-								horrairetoUpdate,
-								lieutoUpdate,
-								reccurentetoUpdate,
-								periodetoUpdate
-							);
-							setUpdateMode(false);
-						}}>
-						Update
-					</Button>
 				</div>
 			)}
 		</div>

@@ -15,12 +15,37 @@ const seanceSchema = new mongoose.Schema(
 			type: Date,
 			required: true,
 		},
-		image: {
+		competence: {
+			type: Array,
+			required: true,
+		},
+
+		objectif: {
 			type: String,
 			required: true,
 		},
-		competence: {
-			type: Array,
+
+		aatteindre: {
+			type: String,
+			required: true,
+		},
+
+		horraire: {
+			type: String,
+			required: true,
+		},
+
+		lieu: {
+			type: String,
+			required: true,
+		},
+
+		reccurente: {
+			type: Boolean,
+			required: true,
+		},
+		periode: {
+			type: Number,
 			required: true,
 		},
 	},

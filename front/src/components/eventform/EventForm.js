@@ -16,7 +16,7 @@ export default function EventForm(props) {
 		<>
 			<Form className="ajout">
 				<FormGroup>
-					<Label> nom </Label>
+					<Label> Nom </Label>
 					<Input
 						type="text"
 						name="programme"
@@ -25,7 +25,7 @@ export default function EventForm(props) {
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> description </Label>
+					<Label> Description </Label>
 					<Input
 						type="text"
 						name="description"
@@ -34,7 +34,7 @@ export default function EventForm(props) {
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> date </Label>
+					<Label> Date </Label>
 					<Input
 						type="text"
 						name="date"
@@ -43,15 +43,15 @@ export default function EventForm(props) {
 						onChange={(e) => setDate(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> publique </Label>
+					<Label> Publique </Label>
 					<Input
-						type="text"
+						type="checkbox"
 						name="publique"
 						id=""
 						value={publique}
 						onChange={(e) => setPublique(e.target.value)}></Input>
 				</FormGroup>
-			
+
 				<Button color="success" type="button" onClick={handleAddEvent}>
 					{addTask}
 				</Button>

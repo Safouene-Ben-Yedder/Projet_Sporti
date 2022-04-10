@@ -11,8 +11,13 @@ function SeanceList(props) {
 						titre={x.titre}
 						description={x.description}
 						date={x.date}
-						image={x.image}
 						competence={x.competence}
+						objectif={x.objectif}
+						reccurente={x.reccurente}
+						lieu={x.lieu}
+						aatteindre={x.aatteindre}
+						periode={x.periode}
+						horraire={x.horraire}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
 					/>
