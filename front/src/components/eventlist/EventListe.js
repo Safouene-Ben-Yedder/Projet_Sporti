@@ -1,19 +1,20 @@
-import Event from "../event/Event";
+import Evente from "../event/Evente";
 
-function EventList(props) {
+function EventListe(props) {
 	return (
 		<div>
 			{props.events.map(function (x) {
 				return (
-					<Event
+					<Evente
 						key={x.id}
 						id={x.id}
 						nom={x.nom}
 						description={x.description}
 						date={x.date}
 						publique={x.publique.toString()}
-						UpdateEvent={props.UpdateEvent}
-						deleteEvent={props.deleteEvent}
+						participer={props.participer}
+						interesse={props.interesse}
+						pasparticiper={props.pasparticiper}
 					/>
 				);
 			})}
@@ -21,4 +22,4 @@ function EventList(props) {
 	);
 }
 
-export default EventList;
+export default EventListe;
