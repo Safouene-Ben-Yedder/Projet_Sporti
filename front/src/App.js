@@ -85,6 +85,7 @@ function App() {
 					<Route exact path="/profileJoueur">
 						<ProfilJoueurPage />
 					</Route>
+
 					<Route path="/invitation">
 						<InvitationPage />
 					</Route>
