@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactStars from "react-rating-stars-component";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 //import { Link } from "react-router-dom";
 
@@ -8,9 +9,10 @@ export default function CompetenceForm(props) {
 	const [description, setDescription] = useState("");
 	const [visvible, setVisible] = useState("");
 	const [lienVideo, setLienVideo] = useState("");
+	const [rating, setRating] = useState("");
 
 	function handleAddComp() {
-		props.addComp(nom, description, visvible, lienVideo);
+		props.addComp(nom, description, visvible, lienVideo, rating);
 	}
 	return (
 		<>
@@ -21,7 +23,7 @@ export default function CompetenceForm(props) {
 						type="text"
 						name="nom"
 						id=""
-						required="true"
+						required
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
@@ -30,7 +32,7 @@ export default function CompetenceForm(props) {
 					<Input
 						type="textarea"
 						name="description"
-						required="true"
+						required
 						id=""
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
@@ -40,7 +42,7 @@ export default function CompetenceForm(props) {
 					<Input
 						type="text"
 						name="lienVideo"
-						required="true"
+						required
 						id=""
 						value={lienVideo}
 						onChange={(e) => setLienVideo(e.target.value)}></Input>
@@ -50,10 +52,19 @@ export default function CompetenceForm(props) {
 					<Input
 						type="checkbox"
 						name="visible"
-						required="true"
+						required
 						id=""
 						value={visvible}
 						onChange={(e) => setVisible(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> Rating </Label>
+					<ReactStars
+						count={5}
+						name="rating"
+						required
+						rating={rating}
+						onChange={(e) => setRating(e.rating)}></ReactStars>
 				</FormGroup>
 				<Button color="success" type="button" onClick={handleAddComp}>
 					{addComp}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./seance.css";
+import { Link } from "react-router-dom";
+
 export default function Seance({
 	key,
 	titre,
@@ -33,6 +35,9 @@ export default function Seance({
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
 						</Button>
+						<Link className="link" to="/modifier-seance">
+							suivante
+						</Link>
 						<Button color="danger" onClick={() => deleteSeance(id)}>
 							Supprimer
 						</Button>

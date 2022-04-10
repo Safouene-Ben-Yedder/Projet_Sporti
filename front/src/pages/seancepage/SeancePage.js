@@ -43,15 +43,8 @@ export default function SeancePage() {
 			},
 		]);
 	}
-	function UpdateSeance(
-		id,
-		titre,
-		description,
-		date,
-		image,
-		competence
-	) {
-		const newSeances = seances.map((Seance) =>
+	function UpdateSeance(id, titre, description, date, image, competence) {
+		const newSeances = seances.map((seance) =>
 			seance.id === id
 				? { id, titre, description, date, image, competence }
 				: seance
@@ -65,10 +58,10 @@ export default function SeancePage() {
 		<div className="App">
 			<>
 				<Heading />
-				<h2> Ajouter une  séance</h2>
+				<h2> Ajouter une séance</h2>
 				<SeanceForm addSeance={addSeance} />
 				<hr></hr>
-				<h2> Liste des  séances </h2>
+				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
 					UpdateSeance={UpdateSeance}

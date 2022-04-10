@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+//import Example from "./Example";
+
 //import { Link } from "react-router-dom";
 import "./programmeseanceform.css";
 export default function ProgrammeSeanceForm(props) {
@@ -13,6 +15,13 @@ export default function ProgrammeSeanceForm(props) {
 	function handleAddProgSeance() {
 		props.addProgSeance(titre, description, technique, image, lienVideo);
 	}
+	// const nomFile = (e) => {
+	// 	console.log("upload:", e);
+	// 	if (Array.isArray(e)) {
+	// 		return e;
+	// 	}
+	// 	return e && e.fileList;
+	// };
 	return (
 		<>
 			<Form className="ajout">
@@ -44,14 +53,15 @@ export default function ProgrammeSeanceForm(props) {
 						onChange={(e) => setTechnique(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> Image </Label>
+					<Label for="nomFile">File</Label>
 					<Input
-						type="text"
-						name="image"
-						id=""
-						value={image}
-						onChange={(e) => setImage(e.target.value)}></Input>
+						id="nomFile"
+						name="nomFile"
+						type="file"
+						onChange={(e) => setImage(e.target.value)}
+					/>
 				</FormGroup>
+
 				<FormGroup>
 					<Label> lien vidéo </Label>
 					<Input

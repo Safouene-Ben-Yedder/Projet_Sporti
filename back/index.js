@@ -8,6 +8,7 @@ app.use(express.json());
 dotenv.config();
 const programmeSeanceRoute = require("./routes/programmeSeance");
 const competenceRoute = require("./routes/competence");
+const statRoute = require("./routes/stat");
 const authRoute = require("./routes/auth");
 const lieuEntrainementRoute = require("./routes/lieuEntrainement");
 
@@ -33,6 +34,7 @@ app.use("/api/programme", programmeSeanceRoute);
 app.use("/api/competence", competenceRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/lieu", lieuEntrainementRoute);
+app.use("/api/stat", statRoute);
 
 app.use("/api/seance", seanceRoute);
 app.use("/api/defi", defiRoute);

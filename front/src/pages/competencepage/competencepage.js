@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CompetenceForm from "../../components/competenceform/competenceform";
 import CompetenceList from "../../components/competencelist/competencelist";
-import { Heading } from "../../components/heading/Heading";
+import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
 
 export default function CompetencePage() {
 	const [Competence, setCompetence] = useState([
@@ -11,9 +11,10 @@ export default function CompetencePage() {
 			description: "tennis",
 			lienVideo: "1",
 			visible: true,
+			rating: "5",
 		},
 	]);
-	function addCompetence(nom, description, lienVideo, visible) {
+	function addCompetence(nom, description, lienVideo, visible, rating) {
 		setCompetence([
 			...Competence,
 			{
@@ -22,13 +23,14 @@ export default function CompetencePage() {
 				description: description,
 				lienVideo: lienVideo,
 				visible: visible,
+				rating: rating,
 			},
 		]);
 	}
-	function UpdateCompetence(id, nom, description, lienVideo, visible) {
+	function UpdateCompetence(id, nom, description, lienVideo, visible, rating) {
 		const newCompetence = Competence.map((Competence) =>
 			Competence.id === id
-				? { id, nom, description, lienVideo, visible }
+				? { id, nom, description, lienVideo, visible, rating }
 				: Competence
 		);
 		setCompetence(newCompetence);
@@ -39,7 +41,7 @@ export default function CompetencePage() {
 	return (
 		<div className="App">
 			<>
-				<Heading />
+				<NavbarJoueur />
 				<h2> Ajouter une Competence</h2>
 				<CompetenceForm addComp={addCompetence} />
 				<hr></hr>

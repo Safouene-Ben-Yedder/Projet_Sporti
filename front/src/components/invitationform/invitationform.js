@@ -6,12 +6,7 @@ export default function InvitationForm(props) {
 	const Inviter = "Send Invitation";
 	const [nom, setNom] = useState("");
 	const [prenom, setPrenom] = useState("");
-	const [dateNaissance, setdateNaissance] = useState("");
 	const [email, setEmail] = useState("");
-	const [poids, setPoids] = useState("");
-	const [taille, setTaille] = useState("");
-	const [IMC, setIMC] = useState("");
-	const [droit, setDroit] = useState("");
 
 	function sendEmail(e) {
 		e.preventDefault();
@@ -35,7 +30,7 @@ export default function InvitationForm(props) {
 	}
 
 	function handleInvitation() {
-		props.Inviter(nom, prenom, dateNaissance, email, poids, taille, IMC, droit);
+		props.Inviter(nom, prenom, email);
 		console.log("Invited");
 	}
 	return (
@@ -60,15 +55,6 @@ export default function InvitationForm(props) {
 						onChange={(e) => setPrenom(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> Date De Naissance </Label>
-					<Input
-						type="Date"
-						name="dateNaissance"
-						required="true"
-						value={dateNaissance}
-						onChange={(e) => setdateNaissance(e.target.value)}></Input>
-				</FormGroup>
-				<FormGroup>
 					<Label> Email </Label>
 					<Input
 						type="email"
@@ -76,41 +62,6 @@ export default function InvitationForm(props) {
 						value={email}
 						required="true"
 						onChange={(e) => setEmail(e.target.value)}></Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> Poids </Label>
-					<Input
-						type="number"
-						name="poids"
-						value={poids}
-						onChange={(e) => setPoids(e.target.value)}>
-						Kg
-					</Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> Taille </Label>
-					<Input
-						type="number"
-						name="Taille"
-						value={taille}
-						onChange={(e) => setTaille(e.target.value)}>
-						Cm
-					</Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> IMC </Label>
-					<Input
-						type="number"
-						name="IMC"
-						value={IMC}
-						onChange={(e) => setIMC(e.target.value)}></Input>
-				</FormGroup>
-				<FormGroup>
-					<Label> Droitier/Gaucher </Label>
-					<select onChange={(e) => setDroit(e.target.value)}>
-						<option value="Droitier">Droitier</option>
-						<option value="Gaucher">Gaucher</option>
-					</select>
 				</FormGroup>
 				<Button color="success" type="submit" onClick={handleInvitation}>
 					{Inviter}

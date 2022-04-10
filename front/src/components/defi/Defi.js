@@ -9,7 +9,7 @@ export default function Defi({
 	UpdateDefi,
 	lienVideo,
 	id,
-	deleteDefiSeance,
+	deleteDefi,
 	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
@@ -66,7 +66,7 @@ export default function Defi({
 							onChange={(e) => setObjectiftoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
-					
+
 					<Label>
 						{" "}
 						lien vidéo

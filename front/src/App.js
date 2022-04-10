@@ -10,17 +10,24 @@ import EventForm from "./components/eventform/EventForm";
 
 import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
+import RegisterJoueurPage from "./pages/registerJoueur/RegisterJoueurPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
-
-import { Paiementform } from "./components/paiementform/Paiementform";
+import { LoginJoueurPage } from "./pages/loginJoueur/LoginJoueurPage";
+import { PaiementForm } from "./components/paiementform/Paiementform";
 
 import LieuForm from "./components/lieuForm/LieuForm";
 
 import RegisterPage from "./pages/RegisterCoach/RegisterPage";
+import LoginPage from "./pages/loginCoach/LoginPage";
+import ProfilJoueurPage from "./pages/profilJoueurPage/ProfilJoueurPage";
+
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
+import StatPage from "./pages/statpage/statpage";
+import ModifierJoueurPage from "./pages/modifierjoueurpage/modifierjoueurpage";
+import ModifierSeance from "./components/modifierSeance/ModifierSeance";
 function App() {
 	return (
 		<div>
@@ -49,15 +56,21 @@ function App() {
 					<Route exact path="/Competence">
 						<CompetencePage />
 					</Route>
+					<Route exact path="/Stat">
+						<StatPage />
+					</Route>
+					<Route exact path="/Modifier">
+						<ModifierJoueurPage />
+					</Route>
 					<Route path="/paiement">
-						<Paiementform />
+						<PaiementForm />
 					</Route>
-					{/* <Route exact path="/">
-						<Redirect to="/lieu-page" />
+					<Route path="/registerjoueur">
+						<RegisterJoueurPage />
 					</Route>
-					<Route exact path="/lieu-page">
-						<LieuPage />
-					</Route> */}
+					<Route path="/login">
+						<LoginJoueurPage />
+					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
 
 					<Route exact path="/lieu-page">
@@ -66,8 +79,18 @@ function App() {
 					<Route exact path="/register-page">
 						<RegisterPage />
 					</Route>
+
+					<Route exact path="/auth-coach">
+						<LoginPage />
+					</Route>
+					<Route exact path="/profileJoueur">
+						<ProfilJoueurPage />
+					</Route>
 					<Route path="/invitation">
 						<InvitationPage />
+					</Route>
+					<Route path="/modifier-seance">
+						<ModifierSeance />
 					</Route>
 					<Route path="/addPass" component={PasswordForm} />
 				</Switch>

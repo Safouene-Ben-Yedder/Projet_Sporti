@@ -1,18 +1,37 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Input, Button } from "reactstrap";
-export const Paiementform = () => {
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Link } from "react-router-dom";
+import "./paiement.css";
+export const PaiementForm = () => {
 	const [abonnement, setAbonnement] = useState();
+	const [isSubmit, setIsSubmit] = useState(false);
+
+	const handleCheckbox = (e) => {
+		const target = e.target;
+		const name = target.name;
+		const value = target.value;
+		setAbonnement(value);
+		console.log(name, value);
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setIsSubmit(true);
+	};
 
 	return (
 		<>
-			<h2> Choisir votre abonnement</h2>
-			<Form className="ajout">
+			<h2 className="titre"> Choisir votre abonnement</h2>
+
+			{isSubmit && (
+				<div className="ui message success">Sign up successfully</div>
+			)}
+			<Form className="ajout" onSubmit={handleSubmit}>
 				<FormGroup>
 					<Input
 						type="radio"
 						name="abonnement"
 						value="free"
-						onChange={(e) => setAbonnement(e.target.value)}></Input>{" "}
+						onChange={handleCheckbox}></Input>
 					Free
 				</FormGroup>
 				<FormGroup>
@@ -20,22 +39,26 @@ export const Paiementform = () => {
 						type="radio"
 						name="abonnement"
 						value="premium"
-						onChange={(e) => setAbonnement(e.target.value)}></Input>{" "}
+						onChange={handleCheckbox}></Input>
 					Premium
 				</FormGroup>
 				<FormGroup>
 					<Input
 						type="radio"
 						name="abonnement"
-						value="other"
-						onChange={(e) => setAbonnement(e.target.value)}></Input>{" "}
-					Other
+						value="basic"
+						onChange={handleCheckbox}></Input>
+					Basic
 				</FormGroup>
 
 				<h4> Vous avez choisi {abonnement} Passer à l'étape suivante </h4>
-				<Button color="success" type="button">
-					Passer
-				</Button>
+
+				<Button type="submit">Passer</Button>
+				<div div>
+					<Link className="link" to="/registerjoueur">
+						suivante
+					</Link>
+				</div>
 			</Form>
 		</>
 	);
