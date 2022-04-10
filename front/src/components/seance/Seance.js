@@ -10,6 +10,7 @@ export default function Seance({
 	UpdateSeance,
 	competence,
 	statistique,
+	objectif,
 	id,
 	deleteSeance,
 	supp,
@@ -21,6 +22,7 @@ export default function Seance({
 	const [datetoUpdate, setDatetoUpdate] = useState(date);
 	const [lieutoUpdate, setLieutoUpdate] = useState(lieu);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
+	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
 	const [statistiqueToUpdate, setStatistiqueToUpdate] = useState(statistique);
 
 	return (
@@ -33,13 +35,19 @@ export default function Seance({
 					<div>{date} </div>
 					<div> {lieu} </div>
 					<div> {competence} </div>
+					<div> {objectif} </div>
 					<div> {statistique}</div>
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
 						</Button>
-						<Button color="danger" onClick={() => {deleteSeance(id);supp();}}>
-							Annuler 
+						<Button
+							color="danger"
+							onClick={() => {
+								deleteSeance(id);
+								supp();
+							}}>
+							Annuler
 						</Button>
 					</div>
 				</>
@@ -68,7 +76,7 @@ export default function Seance({
 						{" "}
 						horaire
 						<input
-							type="text"
+							type="time"
 							name="Seance"
 							value={horairetoUpdate}
 							onChange={(e) => setHorairetoUpdate(e.target.value)}
@@ -78,10 +86,20 @@ export default function Seance({
 						{" "}
 						date
 						<input
-							type="text"
+							type="Date"
 							name="Seance"
 							value={datetoUpdate}
 							onChange={(e) => setDatetoUpdate(e.target.value)}
+						/>{" "}
+					</Label>
+					<Label>
+						{" "}
+						Objectif
+						<input
+							type="text"
+							name="objectif"
+							value={objectiftoUpdate}
+							onChange={(e) => setObjectiftoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
 					<Label>
@@ -126,6 +144,7 @@ export default function Seance({
 								datetoUpdate,
 								lieutoUpdate,
 								competencetoUpdate,
+								objectiftoUpdate,
 								statistiqueToUpdate
 							);
 							setUpdateMode(false);

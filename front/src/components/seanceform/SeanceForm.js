@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+
 //import { Link } from "react-router-dom";
 import "./seanceform.css";
 export default function SeanceForm(props) {
@@ -10,6 +11,7 @@ export default function SeanceForm(props) {
 	const [date, setDate] = useState("");
 	const [lieu, setLieu] = useState("");
 	const [competence, setCompetence] = useState("");
+	const [objectif, setObjectif] = useState("");
 	const [statistique, setStatistique] = useState("");
 
 	function handleAddSeance() {
@@ -20,6 +22,7 @@ export default function SeanceForm(props) {
 			date,
 			lieu,
 			competence,
+			objectif,
 			statistique
 		);
 	}
@@ -61,6 +64,15 @@ export default function SeanceForm(props) {
 						id=""
 						value={date}
 						onChange={(e) => setDate(e.target.value)}></Input>
+				</FormGroup>
+				<FormGroup>
+					<Label> Objectif </Label>
+					<Input
+						type="text"
+						name="objectif"
+						id=""
+						value={objectif}
+						onChange={(e) => setObjectif(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> lieu </Label>

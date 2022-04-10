@@ -7,20 +7,32 @@ const seanceSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
-		description: {
-			type: String,
+		joueur: {
+			type: Array,
 			required: true,
 		},
 		date: {
 			type: Date,
 			required: true,
 		},
-		image: {
+		horaire: {
 			type: String,
 			required: true,
 		},
 		competence: {
-			type: Array,
+			type: String,
+			required: true,
+		},
+		objectif: {
+			type: String,
+			required: true,
+		},
+		lieu: {
+			type: String,
+			required: true,
+		},
+		statistique: {
+			type: String,
 			required: true,
 		},
 	},
