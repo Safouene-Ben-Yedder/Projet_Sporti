@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Checkbox } from "reactstrap";
 //import { Link } from "react-router-dom";
 import "./eventform.css";
 export default function EventForm(props) {
@@ -36,7 +36,7 @@ export default function EventForm(props) {
 				<FormGroup>
 					<Label> date </Label>
 					<Input
-						type="text"
+						type="date"
 						name="date"
 						id=""
 						value={date}
@@ -45,13 +45,13 @@ export default function EventForm(props) {
 				<FormGroup>
 					<Label> publique </Label>
 					<Input
-						type="text"
+						type="checkbox"
 						name="publique"
 						id=""
 						value={publique}
 						onChange={(e) => setPublique(e.target.value)}></Input>
 				</FormGroup>
-			
+
 				<Button color="success" type="button" onClick={handleAddEvent}>
 					{addTask}
 				</Button>
