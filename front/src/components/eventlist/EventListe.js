@@ -12,6 +12,9 @@ function EventListe(props) {
 						description={x.description}
 						date={x.date}
 						publique={x.publique.toString()}
+						participer={props.participer}
+						interesse={props.interesse}
+						pasparticiper={props.pasparticiper}
 					/>
 				);
 			})}
