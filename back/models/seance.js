@@ -48,3 +48,4 @@ const seanceSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 module.exports = mongoose.model("seance", seanceSchema);
+

@@ -2,11 +2,16 @@ import "./App.css";
 import SeancePage from "./pages/seancepage/SeancePage";
 import SeanceForm from "./components/seanceform/SeanceForm";
 
+import SeancetodayPage from "./pages/seancepage/SeancetodayPage";
+import SeancefilterPage from "./pages/seancepage/SeancefilterPage";
+
 import DefiPage from "./pages/defipage/DefiPage";
 import DefiForm from "./components/defiform/DefiForm";
 
 import EventPage from "./pages/eventpage/EventPage";
 import EventForm from "./components/eventform/EventForm";
+import EventdetailsPage from "./pages/eventpage/EventdetailsPage";
+import EventListePage from "./pages/eventpage/EventListePage";
 
 import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
@@ -42,6 +47,14 @@ function App() {
 						<SeancePage />
 					</Route>
 
+					<Route exact path="/seancetoday-page">
+						<SeancetodayPage />
+					</Route>
+
+					<Route exact path="/seancefilter-page">
+						<SeancefilterPage />
+					</Route>
+
 					<Route exact path="/add2" component={DefiForm} />
 					<Route exact path="/defi-page">
 						<DefiPage />
@@ -50,6 +63,14 @@ function App() {
 					<Route exact path="/add3" component={EventForm} />
 					<Route exact path="/event-page">
 						<EventPage />
+					</Route>
+
+					<Route exact path="/eventdetails">
+						<EventdetailsPage />
+					</Route>
+
+					<Route exact path="/eventliste-page">
+						<EventListePage />
 					</Route>
 
 					<Route exact path="/Competence">
@@ -85,6 +106,7 @@ function App() {
 					<Route exact path="/profileJoueur">
 						<ProfilJoueurPage />
 					</Route>
+
 					<Route path="/invitation">
 						<InvitationPage />
 					</Route>

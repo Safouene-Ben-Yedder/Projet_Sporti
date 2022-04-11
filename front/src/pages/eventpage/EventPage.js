@@ -7,24 +7,24 @@ export default function EventPage() {
 	const [events, setEvents] = useState([
 		{
 			id: 1,
-			nom: "learn Html",
-			description: 5,
-			date: "IT",
-			publique: "sy",
+			nom: "Sport Day",
+			description: "Gym Up",
+			date: "2022-04-10",
+			publique: true,
 		},
 		{
 			id: 2,
-			nom: "learn React",
-			description: 5,
-			date: "IT",
-			publique: "sy",
+			nom: "Sporti",
+			description: "Gym Up",
+			date: "2022-04-10",
+			publique: true,
 		},
 		{
 			id: 3,
-			nom: "learn Angular",
-			description: 5,
-			date: "IT",
-			publique: "sy",
+			nom: "Gym Up",
+			description: "Gym Up",
+			date: "2022-04-10",
+			publique: false,
 		},
 	]);
 	function addEvent(nom, description, date, publique) {

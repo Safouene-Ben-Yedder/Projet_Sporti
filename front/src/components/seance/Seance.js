@@ -10,8 +10,12 @@ export default function Seance({
 	UpdateSeance,
 	competence,
 	statistique,
+	objectif,
+	progseance,
 	id,
 	deleteSeance,
+	supp,
+	avis,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
@@ -20,6 +24,8 @@ export default function Seance({
 	const [datetoUpdate, setDatetoUpdate] = useState(date);
 	const [lieutoUpdate, setLieutoUpdate] = useState(lieu);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
+	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
+	const [progseanceToUpdate, setProgseancetoUpdate] = useState(progseance);
 	const [statistiqueToUpdate, setStatistiqueToUpdate] = useState(statistique);
 
 	return (
@@ -32,13 +38,28 @@ export default function Seance({
 					<div>{date} </div>
 					<div> {lieu} </div>
 					<div> {competence} </div>
+					<div> {objectif} </div>
 					<div> {statistique}</div>
+					<div>{progseance}</div>
+
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
 						</Button>
-						<Button color="danger" onClick={() => deleteSeance(id)}>
-							Supprimer
+						<Button
+							color="danger"
+							onClick={() => {
+								deleteSeance(id);
+								supp();
+							}}>
+							Annuler
+						</Button>
+						<Button
+							color="success"
+							onClick={() => 
+								avis()
+							}>
+							Donner FeedBack
 						</Button>
 					</div>
 				</>
@@ -67,7 +88,7 @@ export default function Seance({
 						{" "}
 						horaire
 						<input
-							type="text"
+							type="time"
 							name="Seance"
 							value={horairetoUpdate}
 							onChange={(e) => setHorairetoUpdate(e.target.value)}
@@ -77,10 +98,20 @@ export default function Seance({
 						{" "}
 						date
 						<input
-							type="text"
+							type="Date"
 							name="Seance"
 							value={datetoUpdate}
 							onChange={(e) => setDatetoUpdate(e.target.value)}
+						/>{" "}
+					</Label>
+					<Label>
+						{" "}
+						Objectif
+						<input
+							type="text"
+							name="objectif"
+							value={objectiftoUpdate}
+							onChange={(e) => setObjectiftoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
 					<Label>
@@ -113,6 +144,17 @@ export default function Seance({
 							<option value="100 mètres">100 mètres</option>
 						</select>
 					</Label>
+
+					<Label>
+						{" "}
+						Programme Seance
+						<select onChange={(e) => setProgseancetoUpdate(e.target.value)}>
+							<option>{progseanceToUpdate} </option>
+							<option value="Programme 1">Programme 1 </option>
+							<option value="Programme 2">Programme 2</option>
+							<option value="Programme 3">Programme 3</option>
+						</select>
+					</Label>
 					<Button
 						color="primary"
 						type="button"
@@ -125,6 +167,8 @@ export default function Seance({
 								datetoUpdate,
 								lieutoUpdate,
 								competencetoUpdate,
+								objectiftoUpdate,
+								progseanceToUpdate,
 								statistiqueToUpdate
 							);
 							setUpdateMode(false);

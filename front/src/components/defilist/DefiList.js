@@ -12,8 +12,11 @@ function DefiList(props) {
 						description={x.description}
 						objectif={x.objectif}
 						lienVideo={x.lienVideo}
+						periode={x.periode}
+						joueurs={x.joueurs}
 						UpdateDefi={props.UpdateDefi}
 						deleteDefi={props.deleteDefi}
+						assigner={props.assigner}
 					/>
 				);
 			})}
