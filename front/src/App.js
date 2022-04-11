@@ -25,7 +25,10 @@ import LieuForm from "./components/lieuForm/LieuForm";
 
 import RegisterPage from "./pages/RegisterCoach/RegisterPage";
 import LoginPage from "./pages/loginCoach/LoginPage";
+
+import LoginDCoach from "./components/LoginFormCoach/LoginDCoach";
 import ProfilJoueurPage from "./pages/profilJoueurPage/ProfilJoueurPage";
+
 
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
@@ -94,6 +97,7 @@ function App() {
 						<LoginJoueurPage />
 					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
+					<Route exact path="/loginD" component={LoginDCoach} />
 
 					<Route exact path="/lieu-page">
 						<LieuPage />

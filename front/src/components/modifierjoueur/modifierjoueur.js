@@ -10,7 +10,7 @@ export default function ModifierJoueur({
 	id,
 	Stat,
 	deleteJoueur,
-	props,
+
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [NomtoUpdate, setNomtoUpdate] = useState(Nom);

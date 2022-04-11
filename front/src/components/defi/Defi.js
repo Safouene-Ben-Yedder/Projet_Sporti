@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Label, Button, Input } from "reactstrap";
 import "./defi.css";
 export default function Defi({
-	key,
+
 	nom,
 	description,
 	objectif,
@@ -11,9 +11,6 @@ export default function Defi({
 	id,
 	deleteDefi,
 	assigner,
-	periode,
-	joueurs,
-	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [doneMode, setDoneMode] = useState(false);

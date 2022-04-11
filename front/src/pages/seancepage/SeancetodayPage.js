@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
-import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeancetodayList from "../../components/seancelist/SeancetodayList";
 
 export default function SeancetodayPage() {
-	const [seances, setSeances] = useState([
+	const [seances] = useState([
 		{
 			id: 1,
 			titre: "Séance YOGA",

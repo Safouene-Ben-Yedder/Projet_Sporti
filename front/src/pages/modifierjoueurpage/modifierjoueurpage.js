@@ -21,19 +21,19 @@ export default function ModifierJoueurPage() {
 			Stat: "Stat2",
 		},
 	]);
-	function addModifierJoueur(Nom, Prenom, Actif, Competence, Stat) {
-		setModifierJoueur([
-			...ModifierJoueur,
-			{
-				id: Stat.length + 1,
-				Nom: Nom,
-				Prenom: Prenom,
-				Actif: Actif,
-				Competence: Competence,
-				Stat: Stat,
-			},
-		]);
-	}
+	// function addModifierJoueur(Nom, Prenom, Actif, Competence, Stat) {
+	// 	setModifierJoueur([
+	// 		...ModifierJoueur,
+	// 		{
+	// 			id: Stat.length + 1,
+	// 			Nom: Nom,
+	// 			Prenom: Prenom,
+	// 			Actif: Actif,
+	// 			Competence: Competence,
+	// 			Stat: Stat,
+	// 		},
+	// 	]);
+	// }
 	function UpdateJoueur(id, Nom, Prenom, Actif, Competence, Stat) {
 		const newModifierJoueur = ModifierJoueur.map((ModifierJoueur) =>
 			ModifierJoueur.id === id
