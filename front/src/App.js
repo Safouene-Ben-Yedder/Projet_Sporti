@@ -32,6 +32,8 @@ import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";
 import StatPage from "./pages/statpage/statpage";
 import ModifierJoueurPage from "./pages/modifierjoueurpage/modifierjoueurpage";
+import { EspaceSeancePage } from "./pages/espaceSeancePage/EspaceSeancePage";
+
 function App() {
 	return (
 		<div>
@@ -85,10 +87,10 @@ function App() {
 					<Route path="/paiement">
 						<PaiementForm />
 					</Route>
-					<Route path="/registerjoueur">
+					<Route path="/register-joueur">
 						<RegisterJoueurPage />
 					</Route>
-					<Route path="/login">
+					<Route path="/login-joueur">
 						<LoginJoueurPage />
 					</Route>
 					<Route exact path="/addLieu" component={LieuForm} />
@@ -109,6 +111,9 @@ function App() {
 
 					<Route path="/invitation">
 						<InvitationPage />
+					</Route>
+					<Route path="/espace-seance-joueur">
+						<EspaceSeancePage />
 					</Route>
 					<Route path="/addPass" component={PasswordForm} />
 				</Switch>
