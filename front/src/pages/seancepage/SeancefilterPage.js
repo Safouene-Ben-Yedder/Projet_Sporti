@@ -1,20 +1,20 @@
-import { useState } from "react";
+import Pagination from "./Pagination";
+import { Heading } from "../../components/heading/Heading";
+import SeanceForm from "../../components/seanceform/SeanceForm";
 import Datatable from "../../components/seancedatatable/Datatable";
+import React, { useState, useMemo } from "react";
+import "./style.scss";
+let PageSize = 10;
 
 export default function SeancefilterPage() {
 	const [q, setQ] = useState("");
 	const [searchColumns, setSearchColumns] = useState([
-		"titre",
 		"joueur",
 		"date",
-		"competence",
-		"objectif",
-		"statiqtique",
-		"horaire",
 		"lieu",
 	]);
 
-	const seances= [
+	const [seances, setSeances] = useState([
 		{
 			id: 1,
 			titre: "Séance YOGA",
@@ -51,7 +51,111 @@ export default function SeancefilterPage() {
 			statistique: "100 mètres",
 			progseance: "Programme 1",
 		},
-	];
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+		{
+			id: 1,
+			titre: "Séance YOGA",
+			joueur: "Ali",
+			horaire: 17,
+			date: "2022-04-10",
+			lieu: "Vicking bardo",
+			competence: "30 secondes",
+			objectif: "Améliorer les performances",
+			statistique: "respiration",
+			progseance: "Programme 1",
+		},
+	]);
+
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const currentTableData = useMemo(() => {
+		const firstPageIndex = (currentPage - 1) * PageSize;
+		const lastPageIndex = firstPageIndex + PageSize;
+		return seances.slice(firstPageIndex, lastPageIndex);
+	}, [currentPage]);
 
 	function search(rows) {
 		return rows.filter((row) =>
@@ -73,8 +177,8 @@ export default function SeancefilterPage() {
 						<label>
 							<input
 								type="checkbox"
-								//	checked={searchColumns.includes(column)}
-								onChange={() => {
+								checked={searchColumns.includes(column)}
+								onChange={(e) => {
 									const checked = searchColumns.includes(column);
 									setSearchColumns((prev) =>
 										checked
@@ -88,7 +192,33 @@ export default function SeancefilterPage() {
 					))}
 			</div>
 			<div>
-				<Datatable seances={search(seances)} />
+				{search(currentTableData).map((item) => {
+					// return <Datatable seances={search(seances)} />;
+					return (
+						// <Datatable seances={search(seances)} />
+
+						<tr>
+							<td>{item.id}</td>
+							<td>{item.titre}</td>
+							<td>{item.joueur}</td>
+							<td>{item.horaire}</td>
+							<td>{item.date}</td>
+							<td>{item.lieu}</td>
+							<td>{item.competence}</td>
+							<td>{item.object}</td>
+							<td>{item.statistique}</td>
+							<td>{item.progseance}</td>
+						</tr>
+					);
+				})}
+
+				<Pagination
+					className="pagination-bar"
+					currentPage={currentPage}
+					totalCount={seances.length}
+					pageSize={PageSize}
+					onPageChange={(page) => setCurrentPage(page)}
+				/>
 			</div>
 		</div>
 	);
