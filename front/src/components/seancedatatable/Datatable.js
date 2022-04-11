@@ -16,6 +16,6 @@ export default function Datatable({ seances }) {
 					</tr>
 				))}
 			</tbody>
-		</table>
+		</table> 
 	);
 }
