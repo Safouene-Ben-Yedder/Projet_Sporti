@@ -17,6 +17,9 @@ const eventRoute = require("./routes/event");
 const disciplineRoute = require("./routes/discipline");
 const alerteRoute = require("./routes/alerte");
 const InvitationRoute = require("./routes/invitation");
+const RegisterJoueurRoute = require("./routes/joueur");
+const LoginJoueurRoute = require("./routes/joueur");
+
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -42,6 +45,9 @@ app.use("/api/event", eventRoute);
 app.use("/api/discipline", disciplineRoute);
 app.use("/api/alerte", alerteRoute);
 app.use("/api/invitation", InvitationRoute);
+app.use("/api/register", RegisterJoueurRoute);
+app.use("/api/login", LoginJoueurRoute);
+
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });
