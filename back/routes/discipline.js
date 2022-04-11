@@ -37,7 +37,7 @@ router.delete("/:id", async (req, res) => {
 //GET  Disc
 router.get("/:id", async (req, res) => {
 	try {
-		const MyDiscipline = await discipline.find(req.params.id);
+		const MyDiscipline = await discipline.findById(req.params.id);
 		res.status(200).json(MyDiscipline);
 	} catch (err) {
 		res.status(500).json(err);

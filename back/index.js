@@ -19,7 +19,13 @@ const alerteRoute = require("./routes/alerte");
 const InvitationRoute = require("./routes/invitation");
 const RegisterJoueurRoute = require("./routes/joueur");
 const LoginJoueurRoute = require("./routes/joueur");
-
+const RegisterCoachRoute = require("./routes/coach");
+const LoginCoachRoute = require("./routes/coach");
+const showProfileCoachRoute = require("./routes/coach");
+const abonnementRoute = require("./routes/coach");
+const profileJoueurRoute = require("./routes/joueur");
+const editprofileJoueurRoute = require("./routes/joueur");
+const editprofileCoachRoute = require("./routes/joueur");
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -47,6 +53,13 @@ app.use("/api/alerte", alerteRoute);
 app.use("/api/invitation", InvitationRoute);
 app.use("/api/register", RegisterJoueurRoute);
 app.use("/api/login", LoginJoueurRoute);
+app.use("/api/register", RegisterCoachRoute);
+app.use("/api/login", LoginCoachRoute);
+app.use("/api/login", showProfileCoachRoute);
+app.use("/api/abonnement", abonnementRoute);
+app.use("/api/profile", profileJoueurRoute);
+app.use("/api/profile", editprofileJoueurRoute);
+app.use("/api/profile", editprofileCoachRoute);
 
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
