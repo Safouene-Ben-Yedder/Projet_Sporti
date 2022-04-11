@@ -1,7 +1,4 @@
 import Pagination from "./Pagination";
-import { Heading } from "../../components/heading/Heading";
-import SeanceForm from "../../components/seanceform/SeanceForm";
-import Datatable from "../../components/seancedatatable/Datatable";
 import React, { useState, useMemo } from "react";
 import "./style.scss";
 let PageSize = 10;
@@ -13,8 +10,9 @@ export default function SeancefilterPage() {
 		"date",
 		"lieu",
 	]);
+	      
 
-	const [seances, setSeances] = useState([
+	const [seances] = useState([
 		{
 			id: 1,
 			titre: "Séance YOGA",
