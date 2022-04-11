@@ -19,6 +19,15 @@ const defiSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		date: {
+			type: Date,
+		},
+		joueurs: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "User",
+			},
+		],
 	},
 
 	{ timestamps: true }

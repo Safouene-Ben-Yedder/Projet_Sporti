@@ -11,11 +11,11 @@ const competenceRoute = require("./routes/competence");
 const statRoute = require("./routes/stat");
 const authRoute = require("./routes/auth");
 const lieuEntrainementRoute = require("./routes/lieuEntrainement");
-
 const seanceRoute = require("./routes/seance");
 const defiRoute = require("./routes/defi");
 const eventRoute = require("./routes/event");
-
+const disciplineRoute = require("./routes/discipline");
+const alerteRoute = require("./routes/alerte");
 const InvitationRoute = require("./routes/invitation");
 mongoose
 	.connect(process.env.MONGO_URL, {
@@ -36,11 +36,11 @@ app.use("/api/competence", competenceRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/lieu", lieuEntrainementRoute);
 app.use("/api/stat", statRoute);
-
 app.use("/api/seance", seanceRoute);
 app.use("/api/defi", defiRoute);
 app.use("/api/event", eventRoute);
-
+app.use("/api/discipline", disciplineRoute);
+app.use("/api/alerte", alerteRoute);
 app.use("/api/invitation", InvitationRoute);
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);

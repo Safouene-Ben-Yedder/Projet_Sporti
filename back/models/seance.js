@@ -7,40 +7,45 @@ const seanceSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
-		joueur: {
-			type: Array,
+		description: {
+			type: String,
 			required: true,
 		},
 		date: {
 			type: Date,
 			required: true,
 		},
-		horaire: {
+		image: {
 			type: String,
 			required: true,
 		},
-		competence: {
-			type: String,
-			required: true,
+		competences: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "competence",
+			},
+		],
+		stats: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "stat",
+			},
+		],
+		lieuentrainements: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "lieuEntrainement",
 		},
-		objectif: {
-			type: String,
-			required: true,
+		programmeSeances: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "programmeSeance",
 		},
-		lieu: {
-			type: String,
-			required: true,
-		},
-		statistique: {
-			type: String,
-			required: true,
-		},
-		progseance: {
-			type: String,
-			required: true,
+		joueur: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
 		},
 	},
 
 	{ timestamps: true }
 );
 module.exports = mongoose.model("seance", seanceSchema);
+
