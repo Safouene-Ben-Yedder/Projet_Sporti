@@ -55,7 +55,7 @@ export const PaiementForm = () => {
 
 				<Button type="submit">Passer</Button>
 				<div div>
-					<Link className="link" to="/registerjoueur">
+					<Link className="link" to="/register-joueur">
 						suivante
 					</Link>
 				</div>
