@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Heading } from "../../components/heading/Heading";
-import SeanceForm from "../../components/seanceform/SeanceForm";
 import Datatable from "../../components/seancedatatable/Datatable";
 
 export default function SeancefilterPage() {
@@ -16,7 +14,7 @@ export default function SeancefilterPage() {
 		"lieu",
 	]);
 
-	const [seances, setSeances] = useState([
+	const seances= [
 		{
 			id: 1,
 			titre: "Séance YOGA",
@@ -53,7 +51,7 @@ export default function SeancefilterPage() {
 			statistique: "100 mètres",
 			progseance: "Programme 1",
 		},
-	]);
+	];
 
 	function search(rows) {
 		return rows.filter((row) =>
@@ -76,7 +74,7 @@ export default function SeancefilterPage() {
 							<input
 								type="checkbox"
 								//	checked={searchColumns.includes(column)}
-								onChange={(e) => {
+								onChange={() => {
 									const checked = searchColumns.includes(column);
 									setSearchColumns((prev) =>
 										checked
