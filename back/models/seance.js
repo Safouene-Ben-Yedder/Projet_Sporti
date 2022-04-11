@@ -19,12 +19,33 @@ const seanceSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		competence: {
-			type: Array,
-			required: true,
+		competences: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "competence",
+			},
+		],
+		stats: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "stat",
+			},
+		],
+		lieuentrainements: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "lieuEntrainement",
+		},
+		programmeSeances: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "programmeSeance",
+		},
+		joueur: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
 		},
 	},
 
 	{ timestamps: true }
 );
 module.exports = mongoose.model("seance", seanceSchema);
+

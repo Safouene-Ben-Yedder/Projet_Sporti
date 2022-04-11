@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { Heading } from "../../components/heading/Heading";
 import DefiForm from "../../components/defiform/DefiForm";
 import DefiList from "../../components/defilist/DefiList";
@@ -11,22 +12,28 @@ export default function DefiPage() {
 			description: 5,
 			objectif: "IT",
 			lienVideo: "1",
+			periode:"",
+			joueurs:[],
 		},
-		{
-			id: 2,
-			nom: "learn React",
-			description: 5,
-			objectif: "IT",
-			lienVideo: "1",
-		},
-		{
-			id: 3,
-			nom: "learn Angular",
-			description: 5,
-			objectif: "IT",
-			lienVideo: "1",
-		},
+		
 	]);
+	const [updateMode, setUpdateMode] = useState(false);
+	const [periode, setPeriode] = useState("");
+	const [isVisible, setIsVisible]= useState(false);
+    const joueurs = [
+        {
+          nom: "lazzem",
+          prenom: "aya",
+        },
+        {
+            nom: "jendoubi",
+            prenom: "syrine",
+        },
+      ];
+      const assigner=()=>{
+         setIsVisible(!isVisible)
+        }
+
 	function addDefi(nom, description, objectif, lienVideo) {
 		setDefis([
 			...defis,
@@ -66,11 +73,51 @@ export default function DefiPage() {
 				<h2> Liste des defis </h2>
 				<DefiList
 					defis={defis}
+					assigner={assigner}
 					UpdateDefi={UpdateDefi}
-					deleteDefi={deleteDefi}
+					deleteDefi={deleteDefi}	
 				/>
+				{isVisible &&
+						<>
+						{!updateMode ? (
+							<>
+						<Form >
+							<FormGroup>
+								<Label>
+								Période
+								<input
+									type="date"
+									name="periode"
+									value={periode}
+                                    onChange={(e) => setPeriode(e.target.value)}
+								/>
+								</Label>
+								{joueurs.map((joueur) => (
+							
+									<Label check>
+									{joueur.nom} 
+									
+									<Input type="checkbox" value={joueur.nom}  />
+                                    </Label>
+								))}
+								<Button color="success" type="button" onClick={() => setUpdateMode(true)}>
+										Assigner
+								</Button>
+							</FormGroup>
+						</Form>
+						</>
+						):(
+							<>
+							<h5>Ce défi est assigné!</h5>
+							</>
+							
+						)
+					}
+						</>
+			} 
+
 			</>
-			)
+			
 		</div>
 	);
 }

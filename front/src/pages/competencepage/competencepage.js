@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CompetenceForm from "../../components/competenceform/competenceform";
 import CompetenceList from "../../components/competencelist/competencelist";
-import { Heading } from "../../components/heading/Heading";
+import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
 
 export default function CompetencePage() {
 	const [Competence, setCompetence] = useState([
@@ -41,7 +41,7 @@ export default function CompetencePage() {
 	return (
 		<div className="App">
 			<>
-				<Heading />
+				<NavbarJoueur />
 				<h2> Ajouter une Competence</h2>
 				<CompetenceForm addComp={addCompetence} />
 				<hr></hr>

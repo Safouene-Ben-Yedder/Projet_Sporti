@@ -23,9 +23,9 @@ export default function Event({
 			{!updateMode ? (
 				<>
 					<div className="nom">{nom}</div>
-					<div className="description">{description} mn</div>
-					{publique}
-					{date}
+					<div className="description">{description} </div>
+					<div>{publique}</div>
+					<div>{date}</div>
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
@@ -60,7 +60,7 @@ export default function Event({
 						{" "}
 						publique
 						<input
-							type="text"
+							type="checkbox"
 							name="event"
 							value={publiquetoUpdate}
 							onChange={(e) => setPubliquetoUpdate(e.target.value)}
@@ -70,7 +70,7 @@ export default function Event({
 						{" "}
 						date
 						<input
-							type="text"
+							type="date"
 							name="event"
 							value={datetoUpdate}
 							onChange={(e) => setDatetoUpdate(e.target.value)}

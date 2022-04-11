@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 
 export default function ModifierSeance({
-	key,
 	titre,
 	description,
 	date,
@@ -62,12 +61,13 @@ export default function ModifierSeance({
 				<Label>
 					{" "}
 					competence
-					<input
-						type="text"
-						name="Seance"
+					<select
 						value={competencetoUpdate}
-						onChange={(e) => setCompetencetoUpdate(e.target.value)}
-					/>
+						onChange={(e) => setCompetencetoUpdate(e.target.value)}>
+						<option value="Competence1">Competence 1</option>
+						<option value="Competence2">Competence 2</option>
+						<option value="Competence2">Competence 2</option>
+					</select>
 				</Label>
 
 				<Button

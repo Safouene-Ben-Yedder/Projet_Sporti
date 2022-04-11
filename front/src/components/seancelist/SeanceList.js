@@ -9,12 +9,18 @@ function SeanceList(props) {
 						key={x.id}
 						id={x.id}
 						titre={x.titre}
-						description={x.description}
+						joueur={x.joueur}
+						horaire={x.horaire}
 						date={x.date}
-						image={x.image}
+						lieu={x.lieu}
 						competence={x.competence}
+						objectif={x.objectif}
+						statistique={x.statistique}
+						progseance={x.progseance}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
+						supp={props.supp}
+						avis={props.avis}
 					/>
 				);
 			})}

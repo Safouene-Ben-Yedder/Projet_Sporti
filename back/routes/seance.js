@@ -1,6 +1,16 @@
 const router = require("express").Router();
 const seance = require("../models/seance");
+var nodemailer = require("nodemailer");
+const User = require("../models/User");
+const cron = require("node-cron");
 
+var transporter = nodemailer.createTransport({
+	service: "gmail",
+	auth: {
+		user: "projet.sporti9@gmail.com",
+		pass: "ProjetSporti9-",
+	},
+});
 //CREATE  séance
 router.post("/", async (req, res) => {
 	const newSeance = new seance(req.body);
@@ -10,6 +20,26 @@ router.post("/", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
+
+	const joueur = await User.findById(req.body.prenom);
+	var mailOptions = {
+		from: "Sporti",
+		to: joueur.email,
+		subject: "Sport",
+		text: ` vous avez une séance de sport demain  à  ${req.body.horaire} `,
+	};
+	var date = new Date(req.body.jour);
+	const dateD = date.getDate() - 1;
+	const dateM = date.getMonth();
+	cron.schedule(`0 0 8 ${dateD} ${dateM}  *`, () => {
+		transporter.sendMail(mailOptions, function (error, info) {
+			if (error) {
+				console.log(error);
+			} else {
+				console.log("Email sent: " + info.response);
+			}
+		});
+	});
 });
 //UPDATE  séance
 router.put("/:id", async (req, res) => {
