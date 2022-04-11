@@ -142,7 +142,7 @@ export default function RegisterJoueur(props) {
 					<Label> Objectif sportif </Label>
 					<Input
 						type="text"
-						name="taille"
+						name="objectifSportif"
 						value={formValues.objectifSportif}
 						onChange={handleChange}></Input>
 				</FormGroup>
