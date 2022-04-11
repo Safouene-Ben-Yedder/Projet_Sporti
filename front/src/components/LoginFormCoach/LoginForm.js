@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 export const LoginForm = () => {
 	const initialValues = {
 		email: "",
@@ -43,7 +44,14 @@ export const LoginForm = () => {
 	return (
 		<>
 			{Object.keys(formErrors).length === 0 && isSubmit && (
+				<>
 				<div className="ui message success">Sign in successfully</div>
+				<div>
+					<Link className="link" to="/loginD">
+						Continuer
+					</Link>
+				</div>
+				</>
 			)}
 			<Form className="form" onSubmit={handleSubmit}>
 				<FormGroup>

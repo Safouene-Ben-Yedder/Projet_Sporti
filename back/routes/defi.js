@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
 //GET  Defi
 router.get("/:id", async (req, res) => {
 	try {
-		const MyDefi = await defi.find(req.params.id);
+		const MyDefi = await defi.findById(req.params.id);
 		res.status(200).json(MyDefi);
 	} catch (err) {
 		res.status(500).json(err);

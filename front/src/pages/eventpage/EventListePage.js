@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import EventForm from "../../components/eventform/EventForm";
 import EventListe from "../../components/eventlist/EventListe";
 
 export default function EventListePage() {
@@ -26,7 +25,7 @@ export default function EventListePage() {
 	const pasparticiper = () => {
 		setIsVisible(!isVisible);
 	};
-	const [events, setEvents] = useState([
+	const events =[
 		{
 			id: 1,
 			nom: "Sport Day",
@@ -51,7 +50,7 @@ export default function EventListePage() {
 			publique: false,
 			joueurs: [],
 		},
-	]);
+	];
 
 	return (
 		<div className="App">
@@ -75,7 +74,7 @@ export default function EventListePage() {
 											<Label check>
 												{joueur.nom}
 
-												<Input type="checkbox" value={joueur.nom} />
+												<Input type="checkbox" value={joueur.nom}  />
 											</Label>
 										))}
 										<Button

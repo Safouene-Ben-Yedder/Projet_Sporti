@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
 //GET  Event
 router.get("/:id", async (req, res) => {
 	try {
-		const MyEvent = await event.find(req.params.id);
+		const MyEvent = await event.findById(req.params.id);
 		res.status(200).json(MyEvent);
 	} catch (err) {
 		res.status(500).json(err);

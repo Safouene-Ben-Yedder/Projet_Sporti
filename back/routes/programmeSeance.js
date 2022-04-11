@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
 //GET programme séance
 router.get("/:id", async (req, res) => {
 	try {
-		const MyProgrammeSeance = await programmeSeance.find(req.params.id);
+		const MyProgrammeSeance = await programmeSeance.findById(req.params.id);
 		res.status(200).json(MyProgrammeSeance);
 	} catch (err) {
 		res.status(500).json(err);

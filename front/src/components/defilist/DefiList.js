@@ -6,14 +6,11 @@ function DefiList(props) {
 			{props.defis.map(function (x) {
 				return (
 					<Defi
-						key={x.id}
 						id={x.id}
 						nom={x.nom}
 						description={x.description}
 						objectif={x.objectif}
 						lienVideo={x.lienVideo}
-						periode={x.periode}
-						joueurs={x.joueurs}
 						UpdateDefi={props.UpdateDefi}
 						deleteDefi={props.deleteDefi}
 						assigner={props.assigner}
