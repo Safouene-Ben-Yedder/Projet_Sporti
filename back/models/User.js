@@ -20,9 +20,9 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		tel: {
+		telephone: {
 			type: Number,
-			required: true,
+			required: false,
 		},
 		password: {
 			type: String,
@@ -37,6 +37,34 @@ const userSchema = new Schema(
 		droit: {
 			type: String,
 		},
+		role: {
+			type: String,
+			enum: ["Coach", "Joueur"],
+			default: "Coach",
+		},
+		IMC: {
+			type: Number,
+		},
+		discipline: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "discipline",
+		},
+		event: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "event",
+		},
+		alerte: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "alerte",
+			},
+		],
+		competences: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "competence",
+			},
+		],
 	},
 	{ timestamps: true }
 );
