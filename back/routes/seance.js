@@ -68,7 +68,7 @@ router.delete("/:id", async (req, res) => {
 //GET  séance
 router.get("/:id", async (req, res) => {
 	try {
-		const MySeance = await seance.find(req.params.id);
+		const MySeance = await seance.findById(req.params.id);
 		res.status(200).json(MySeance);
 	} catch (err) {
 		res.status(500).json(err);

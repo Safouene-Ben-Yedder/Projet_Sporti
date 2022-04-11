@@ -2,7 +2,6 @@ import {useState} from "react";
 import { Heading } from "../../components/heading/Heading";
 import LieuForm from "../../components/lieuForm/LieuForm"
 import LieuList from "../../components/lieuList/LieuList"
-import Lieu from "../../components/lieu/Lieu";
 
 export default function LieuPage(){
 	const [Lieu, setLieu] = useState([
@@ -47,8 +46,8 @@ export default function LieuPage(){
 	}
 	const deleteLieu = (id) => {
 		const newLieu = Lieu.filter(Lieu=>Lieu.id!==id)
-		setLieu(newLieu)
-	  }
+		setLieu(newLieu) }
+		
 	return(
 		<div className="App">
 			<>

@@ -65,6 +65,14 @@ const userSchema = new Schema(
 				ref: "competence",
 			},
 		],
+		abonnement: {
+			type: String,
+			enum: ["Free", "Basic", "Premium"],
+			default: "Free",
+		},
+		inviteNumber: {
+			type: Number,
+		},
 	},
 	{ timestamps: true }
 );

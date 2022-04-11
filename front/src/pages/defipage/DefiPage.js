@@ -15,6 +15,7 @@ export default function DefiPage() {
 			periode:"",
 			joueurs:[],
 		},
+		
 	]);
 	const [updateMode, setUpdateMode] = useState(false);
 	const [periode, setPeriode] = useState("");
