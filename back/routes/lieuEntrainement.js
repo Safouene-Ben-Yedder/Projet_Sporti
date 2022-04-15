@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
 //GET lieu Entrainement
 router.get("/:id", async (req, res) => {
 	try {
-		const MyLieuEntrainement = await lieuEntrainement.find(req.params.id);
+		const MyLieuEntrainement = await lieuEntrainement.findById(req.params.id);
 		res.status(200).json(MyLieuEntrainement);
 	} catch (err) {
 		res.status(500).json(err);

@@ -37,7 +37,7 @@ router.delete("/:id", async (req, res) => {
 //GET  alerte
 router.get("/:id", async (req, res) => {
 	try {
-		const MyAlerte = await alerte.find(req.params.id);
+		const MyAlerte = await alerte.findById(req.params.id);
 		res.status(200).json(MyAlerte);
 	} catch (err) {
 		res.status(500).json(err);
