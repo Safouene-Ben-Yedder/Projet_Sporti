@@ -202,53 +202,7 @@ exports.updateAbonnement = async (req, res, next) => {
 	// eslint-disable-next-line no-undef
 	return next(new newErrorResponse("update failed", 500));
 };
-// parametrage du compte joueur
-exports.editProfile = (req, res) => {
-	if (!req.body) {
-		return res.status(400).send({
-			message: "Data to update cannot be empty!",
-		});
-	}
 
-	const token = req.params.token;
-	var decoded = jwt_decode(token);
-
-	if (decoded.role === "Joueur") {
-		User.findOneAndUpdate(
-			{ _id: decoded.user_id },
-			{
-				email: decoded.email,
-				password: req.body.password,
-				nom: req.body.nom,
-				prenom: req.body.prenom,
-				dateDeNaissance: req.body.dateDeNaissance,
-				lieuDeNaissance: req.body.lieuDeNaissance,
-				telephone: req.body.telephone,
-				poids: req.body.poids,
-				taille: req.body.taille,
-				IMC: req.body.IMC,
-				droit: req.body.droit,
-			},
-			{ useFindAndModify: false }
-		)
-			.then((data) => {
-				if (!data) {
-					res.status(404).send({
-						message: `Cannot update this profile `,
-					});
-				} else res.send({ message: "Profile updated" });
-			})
-			.catch(() => {
-				res.status(500).send({
-					message: "Error updating profile",
-				});
-			});
-	} else {
-		res.status(401).send({
-			message: "Unauthorized",
-		});
-	}
-};
 // parametrage du compte coach
 exports.editProfile = (req, res) => {
 	if (!req.body) {
@@ -260,7 +214,7 @@ exports.editProfile = (req, res) => {
 	const token = req.params.token;
 	var decoded = jwt_decode(token);
 
-	if (decoded.role === "Joueur") {
+	if (decoded.role === "Coach") {
 		User.findOneAndUpdate(
 			{ _id: decoded.user_id },
 			{

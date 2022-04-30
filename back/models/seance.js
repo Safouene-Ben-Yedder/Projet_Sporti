@@ -15,7 +15,7 @@ const seanceSchema = new mongoose.Schema(
 			type: Date,
 			required: true,
 		},
-		image: {
+		objectif: {
 			type: String,
 			required: true,
 		},
@@ -48,4 +48,3 @@ const seanceSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 module.exports = mongoose.model("seance", seanceSchema);
-

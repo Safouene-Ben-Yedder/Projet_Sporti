@@ -22,10 +22,14 @@ const LoginJoueurRoute = require("./routes/joueur");
 const RegisterCoachRoute = require("./routes/coach");
 const LoginCoachRoute = require("./routes/coach");
 const showProfileCoachRoute = require("./routes/coach");
+const showProfileJoueurRoute = require("./routes/joueur");
 const abonnementRoute = require("./routes/coach");
-const profileJoueurRoute = require("./routes/joueur");
 const editprofileJoueurRoute = require("./routes/joueur");
-const editprofileCoachRoute = require("./routes/joueur");
+const editprofileCoachRoute = require("./routes/coach");
+const SeancePlayerNow = require("./routes/seance");
+const SeancePlayerAll = require("./routes/seance");
+const FindSeancePlayer = require("./routes/seance");
+const updateSeance = require("./routes/seance");
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -55,12 +59,15 @@ app.use("/api/register", RegisterJoueurRoute);
 app.use("/api/login", LoginJoueurRoute);
 app.use("/api/register", RegisterCoachRoute);
 app.use("/api/login", LoginCoachRoute);
-app.use("/api/login", showProfileCoachRoute);
+app.use("/api/profile", showProfileCoachRoute);
+app.use("/api/profile", showProfileJoueurRoute);
 app.use("/api/abonnement", abonnementRoute);
-app.use("/api/profile", profileJoueurRoute);
-app.use("/api/profile", editprofileJoueurRoute);
-app.use("/api/profile", editprofileCoachRoute);
-
+app.use("/api/edit/profile", editprofileJoueurRoute);
+app.use("/api/edit/profile", editprofileCoachRoute);
+app.use("/api/seance/joueur", SeancePlayerNow);
+app.use("/api/seance/joueur", SeancePlayerAll);
+app.use("/api/seance/joueur", FindSeancePlayer);
+app.use("/api/seance/coach", updateSeance);
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });

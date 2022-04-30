@@ -1,8 +1,13 @@
 const router = require("express").Router();
+const Seance = require("../controller/seance");
 const seance = require("../models/seance");
 var nodemailer = require("nodemailer");
 const User = require("../models/User");
 const cron = require("node-cron");
+router.put("/update/:token/:id", Seance.update);
+router.get("/today/:token", Seance.findSeanceNowPlayer);
+router.get("/all/:token", Seance.findAllSeancePlayer);
+router.get("/detail/:token/:id", Seance.findSeancePlayer);
 
 var transporter = nodemailer.createTransport({
 	service: "gmail",
