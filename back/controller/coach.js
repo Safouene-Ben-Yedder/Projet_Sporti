@@ -174,34 +174,34 @@ exports.abonnement = (req, res) => {
 		});
 	}
 };
-exports.updateAbonnement = async (req, res, next) => {
-	const { abonnement } = req.body;
-	if (!abonnement) {
-		// eslint-disable-next-line no-undef
-		return next(newErrorResponse("all input are required", 400));
-	}
-	let FieldToUpdate = {};
-	if (abonnement === "Free")
-		FieldToUpdate = { abonnement: "Free", inviteNumber: 3 };
-	else if (abonnement === "Basic")
-		FieldToUpdate = { abonnement: "Basic", inviteNumber: 10 };
-	else if (abonnement === "Premium")
-		FieldToUpdate = { abonnement: "Premium", inviteNumber: 1000 };
-	const updatedAbonnement = await User.findByIdAndUpdate(
-		req.params.userId,
-		FieldToUpdate,
-		{ new: true, runValidators: true }
-	);
-	if (updatedAbonnement) {
-		return res.status(200).json({
-			data: updatedAbonnement,
-			type: "success",
-			message: " update abonnement success",
-		});
-	}
-	// eslint-disable-next-line no-undef
-	return next(new newErrorResponse("update failed", 500));
-};
+// exports.updateAbonnement = async (req, res, next) => {
+// 	const { abonnement } = req.body;
+// 	if (!abonnement) {
+// 		// eslint-disable-next-line no-undef
+// 		return next(newErrorResponse("all input are required", 400));
+// 	}
+// 	let FieldToUpdate = {};
+// 	if (abonnement === "Free")
+// 		FieldToUpdate = { abonnement: "Free", inviteNumber: 3 };
+// 	else if (abonnement === "Basic")
+// 		FieldToUpdate = { abonnement: "Basic", inviteNumber: 10 };
+// 	else if (abonnement === "Premium")
+// 		FieldToUpdate = { abonnement: "Premium", inviteNumber: 1000 };
+// 	const updatedAbonnement = await User.findByIdAndUpdate(
+// 		req.params.userId,
+// 		FieldToUpdate,
+// 		{ new: true, runValidators: true }
+// 	);
+// 	if (updatedAbonnement) {
+// 		return res.status(200).json({
+// 			data: updatedAbonnement,
+// 			type: "success",
+// 			message: " update abonnement success",
+// 		});
+// 	}
+// 	// eslint-disable-next-line no-undef
+// 	return next(new newErrorResponse("update failed", 500));
+// };
 
 // parametrage du compte coach
 exports.editProfile = (req, res) => {

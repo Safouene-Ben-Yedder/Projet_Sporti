@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 dotenv.config();
-const programmeSeanceRoute = require("./routes/programmeSeance");
 const competenceRoute = require("./routes/competence");
 const statRoute = require("./routes/stat");
 const authRoute = require("./routes/auth");
@@ -30,6 +29,12 @@ const SeancePlayerNow = require("./routes/seance");
 const SeancePlayerAll = require("./routes/seance");
 const FindSeancePlayer = require("./routes/seance");
 const updateSeance = require("./routes/seance");
+const createProgrammeSeance = require("./routes/programme");
+const findProgrammeSeance = require("./routes/programme");
+const findAllProgrammeSeance = require("./routes/programme");
+const updateProgrammeSeance = require("./routes/programme");
+const deleteProgrammeSeance = require("./routes/programme");
+
 mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
@@ -44,7 +49,6 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use("/api/programme", programmeSeanceRoute);
 app.use("/api/competence", competenceRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/lieu", lieuEntrainementRoute);
@@ -68,6 +72,12 @@ app.use("/api/seance/joueur", SeancePlayerNow);
 app.use("/api/seance/joueur", SeancePlayerAll);
 app.use("/api/seance/joueur", FindSeancePlayer);
 app.use("/api/seance/coach", updateSeance);
+app.use("/api/programmeseance/coach", createProgrammeSeance);
+app.use("/api/programmeseance/coach", findProgrammeSeance);
+app.use("/api/programmeseance/coach", findAllProgrammeSeance);
+app.use("/api/programmeseance/coach", updateProgrammeSeance);
+app.use("/api/programmeseance/coach", deleteProgrammeSeance);
+
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });
