@@ -1,35 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { Heading } from "../../components/heading/Heading";
 import ProgrammeSeanceForm from "../../components/programmeseanceform/ProgrammeSeanceForm";
 import ProgrammeSeanceList from "../../components/programmeseancelist/ProgrammeSeanceList";
 import "./programmepage.css";
 export default function ProgrammeSeancePage() {
-	const [programmesSeance, setProgrammesSeance] = useState([
-		{
-			id: 1,
-			titre: "tennis",
-			description: "pratiquer de la tennis",
-			technique: "un deux",
-			image: "Tennis",
-			lienVideo: "Tennis",
-		},
-		{
-			id: 2,
-			titre: "yoga",
-			description: "pratique de la bonne respiration",
-			technique: "sketching",
-			image: "Yoga",
-			lienVideo: "Yoga",
-		},
-		{
-			id: 3,
-			titre: "musculation",
-			description: "Poids 50 kg",
-			technique: "Jambes",
-			image: "Musculation",
-			lienVideo: "Musculation",
-		},
-	]);
+	const [programmesSeance, setProgrammesSeance] = useState([]);
+	const [loading, setLoading] = useState(false);
+	console.log(loading);
+
+	useEffect(() => {
+		const fetchProgrammes = async () => {
+			setLoading(true);
+			try {
+				const res = await axios.get(
+					"http://localhost:5000/api/programmeseance/coach/findAll/:token"
+				);
+				setProgrammesSeance(res.data);
+				setLoading(false);
+				console.log(res);
+			} catch (e) {
+				setLoading(false);
+			}
+		};
+		fetchProgrammes();
+	}, []);
+
 	function addProgSeance(titre, description, technique, image, lienVideo) {
 		setProgrammesSeance([
 			...programmesSeance,

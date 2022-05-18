@@ -1,19 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CompetenceForm from "../../components/competenceform/competenceform";
 import CompetenceList from "../../components/competencelist/competencelist";
-import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
+import { NavbarJoueur } from "../../components/Navbar/NavbarJoueur";
+import { fetchCompetence } from "../../services/competence.service";
 
 export default function CompetencePage() {
-	const [Competence, setCompetence] = useState([
-		{
-			id: 1,
-			nom: "tennis",
-			description: "tennis",
-			lienVideo: "1",
-			visible: true,
-			rating: "5",
-		},
-	]);
+	const [Competence, setCompetence] = useState([]);
+	const [error, setError] = useState();
+	console.log(error);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await fetchCompetence();
+				setCompetence(result);
+			} catch (e) {
+				setError("An error occurred when we tried to fetch tasks");
+			}
+		};
+		console.log("useEffect");
+
+		fetchData();
+	}, []);
 	function addCompetence(nom, description, lienVideo, visible, rating) {
 		setCompetence([
 			...Competence,
