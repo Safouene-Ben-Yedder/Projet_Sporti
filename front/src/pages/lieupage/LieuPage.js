@@ -1,9 +1,9 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
-import LieuForm from "../../components/lieuForm/LieuForm"
-import LieuList from "../../components/lieuList/LieuList"
+import LieuForm from "../../components/lieuForm/LieuForm";
+import LieuList from "../../components/lieuList/LieuList";
 
-export default function LieuPage(){
+export default function LieuPage() {
 	const [Lieu, setLieu] = useState([
 		{
 			id: 1,
@@ -28,7 +28,10 @@ export default function LieuPage(){
 		},
 	]);
 	function addLieu(nom, ville, pays, adresse) {
-		setLieu([...Lieu,{id: Lieu.length + 1,
+		setLieu([
+			...Lieu,
+			{
+				id: Lieu.length + 1,
 				nom: nom,
 				ville: ville,
 				pays: pays,
@@ -36,30 +39,25 @@ export default function LieuPage(){
 			},
 		]);
 	}
-	function UpdateLieu(id, nom, ville,	pays, adresse) {
-		const newLieu= Lieu.map((Lieu) =>
-                Lieu.id === id
-				? { id, nom, ville, pays, adresse }
-				: Lieu
+	function UpdateLieu(id, nom, ville, pays, adresse) {
+		const newLieu = Lieu.map((Lieu) =>
+			Lieu.id === id ? { id, nom, ville, pays, adresse } : Lieu
 		);
 		setLieu(newLieu);
 	}
 	const deleteLieu = (id) => {
-		const newLieu = Lieu.filter(Lieu=>Lieu.id!==id)
-		setLieu(newLieu) }
-		
-	return(
+		const newLieu = Lieu.filter((Lieu) => Lieu.id !== id);
+		setLieu(newLieu);
+	};
+
+	return (
 		<div className="App">
 			<>
-				<Heading/>
+				<Heading />
 				<h2>Ajouter un lieu d'entrainement</h2>
-				<LieuForm addLieu={addLieu}/>
+				<LieuForm addLieu={addLieu} />
 				<h2>Liste des lieux d'entrainement</h2>
-				<LieuList
-					Lieu={Lieu}
-					UpdateLieu={UpdateLieu}
-					deleteLieu={deleteLieu}
-				/>
+				<LieuList Lieu={Lieu} UpdateLieu={UpdateLieu} deleteLieu={deleteLieu} />
 			</>
 		</div>
 	);

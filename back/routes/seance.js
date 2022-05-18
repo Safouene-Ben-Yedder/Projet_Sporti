@@ -47,20 +47,20 @@ router.post("/", async (req, res) => {
 	});
 });
 //UPDATE  séance
-router.put("/:id", async (req, res) => {
-	try {
-		const updatedSeance = await seance.findByIdAndUpdate(
-			req.params.id,
-			{
-				$set: req.body,
-			},
-			{ new: true }
-		);
-		res.status(200).json(updatedSeance);
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
+// router.put("/:id", async (req, res) => {
+// 	try {
+// 		const updatedSeance = await seance.findByIdAndUpdate(
+// 			req.params.id,
+// 			{
+// 				$set: req.body,
+// 			},
+// 			{ new: true }
+// 		);
+// 		res.status(200).json(updatedSeance);
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
 //DELETE  séance
 router.delete("/:id", async (req, res) => {
 	try {

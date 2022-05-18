@@ -44,6 +44,8 @@ mongoose
 	.catch((err) => console.log(err));
 var corsOptions = {
 	origin: "http://localhost:3000",
+	originn:
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css",
 	optionsSuccessStatus: 200,
 };
 
@@ -61,9 +63,9 @@ app.use("/api/alerte", alerteRoute);
 app.use("/api/invitation", InvitationRoute);
 app.use("/api/register", RegisterJoueurRoute);
 app.use("/api/login", LoginJoueurRoute);
-app.use("/api/register", RegisterCoachRoute);
-app.use("/api/login", LoginCoachRoute);
-app.use("/api/profile", showProfileCoachRoute);
+app.use("/api/coach", RegisterCoachRoute);
+app.use("/api/coach", LoginCoachRoute);
+app.use("/api/coach", showProfileCoachRoute);
 app.use("/api/profile", showProfileJoueurRoute);
 app.use("/api/abonnement", abonnementRoute);
 app.use("/api/edit/profile", editprofileJoueurRoute);
@@ -71,12 +73,12 @@ app.use("/api/edit/profile", editprofileCoachRoute);
 app.use("/api/seance/joueur", SeancePlayerNow);
 app.use("/api/seance/joueur", SeancePlayerAll);
 app.use("/api/seance/joueur", FindSeancePlayer);
-app.use("/api/seance/coach", updateSeance);
-app.use("/api/programmeseance/coach", createProgrammeSeance);
-app.use("/api/programmeseance/coach", findProgrammeSeance);
-app.use("/api/programmeseance/coach", findAllProgrammeSeance);
-app.use("/api/programmeseance/coach", updateProgrammeSeance);
-app.use("/api/programmeseance/coach", deleteProgrammeSeance);
+app.use("/api/seance/coach/update", updateSeance);
+app.use("/api/coach/programme", createProgrammeSeance);
+app.use("/api/coach/programme", findProgrammeSeance);
+app.use("/api/coach/programme", findAllProgrammeSeance);
+app.use("/api/coach/programme", updateProgrammeSeance);
+app.use("/api/coach/programme", deleteProgrammeSeance);
 
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
