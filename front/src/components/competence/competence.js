@@ -1,23 +1,23 @@
 import { useState } from "react";
-import ReactStars from "react-rating-stars-component";
 import { Button, Label } from "reactstrap";
+import { FaStar } from "react-icons/fa";
+import "./comp.css";
 
 export default function Competence({
+	id,
 	nom,
 	description,
+	lien,
 	visible,
-	UpdateCompetence,
-	lienVideo,
-	id,
-	deleteCompetence,
 	rating,
-	props,
+	UpdateCompetence,
+	deleteCompetence,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [nomtoUpdate, setnomtoUpdate] = useState(nom);
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [visibletoUpdate, setvisvibletoUpdate] = useState(visible);
-	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
+	const [lientoUpdate, setlientoUpdate] = useState(lien);
 	const [ratingtoUpdate, setRatingtoUpdate] = useState(rating);
 	return (
 		<div className="competence">
@@ -25,7 +25,7 @@ export default function Competence({
 				<>
 					<div className="nom">Nom : {nom}</div>
 					<div className="description">Description : {description} </div>
-					<div className="lienVideo">Lien : {lienVideo}</div>
+					<div className="lien">Lien : {lien}</div>
 					<div className="visible">Visible : {visible}</div>
 					<div className="rating">Rating : {rating}</div>
 
@@ -64,40 +64,52 @@ export default function Competence({
 						lien vidéo
 						<input
 							type="text"
-							name="lienvideo"
-							value={lienVideotoUpdate}
-							onChange={(e) => setLienVideotoUpdate(e.target.value)}
+							name="lien"
+							value={lientoUpdate}
+							onChange={(e) => setlientoUpdate(e.target.value)}
 						/>
 					</Label>
 					<Label>
 						{" "}
 						Visible
-						<input
-							type="checkbox"
-							name="Visible"
+						<select
 							value={visibletoUpdate}
-							onChange={(e) => setvisvibletoUpdate(e.target.value)}
-						/>{" "}
+							onChange={(e) => setvisvibletoUpdate(e.target.value)}>
+							<option value="oui">Oui</option>
+							<option value="non">Non</option>
+						</select>{" "}
 					</Label>
-					<Label>
-						{" "}
+					<div>
 						Rating
-						<ReactStars
-							count={5}
-							name="rating"
-							value={ratingtoUpdate}
-							onChange={(e) => setRatingtoUpdate(e.target.value)}
-						/>{" "}
-					</Label>
+						{[...Array(5)].map((star, i) => {
+							const ratingValue = i + 1;
+							return (
+								<label>
+									<input
+										type="radio"
+										name="radio"
+										class="radio"
+										value={ratingValue}
+										onClick={() => setRatingtoUpdate(ratingValue)}
+									/>
+									<FaStar
+										className="star"
+										color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+										size={20}
+									/>
+								</label>
+							);
+						})}
+					</div>
 					<Button
 						color="primary"
 						type="button"
 						onClick={() => {
 							UpdateCompetence(
-								Number(id),
+								id,
 								nomtoUpdate,
 								descriptiontoUpdate,
-								lienVideotoUpdate,
+								lientoUpdate,
 								visibletoUpdate,
 								ratingtoUpdate
 							);

@@ -9,11 +9,12 @@ module.exports.readstat = (req, res) => {
 
 module.exports.createstat = async (req, res) => {
 	const newstat = new statModel({
-		titre: req.body.titre,
+		Titre: req.body.Titre,
 		description: req.body.description,
-		lien: req.body.lien,
-		visible: req.body.visible,
 		timer: req.body.timer,
+		lien: req.body.lien,
+		Visible: req.body.Visible,
+		maxmin: req.body.maxmin,
 	});
 	try {
 		const savedstat = await newstat.save();

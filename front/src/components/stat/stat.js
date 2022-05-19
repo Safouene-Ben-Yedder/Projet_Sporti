@@ -2,24 +2,22 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 
 export default function Stat({
-	key,
+	id,
 	Titre,
 	description,
-	Visible,
-	UpdateStat,
-	lienVideo,
-	id,
 	timer,
-	deleteStat,
+	lien,
+	Visible,
 	maxmin,
-	props,
+	UpdateStat,
+	deleteStat,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitretoUpdate, setTitretoUpdate] = useState(Titre);
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
-	const [VisibletoUpdate, setVisvibletoUpdate] = useState(Visible);
-	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
 	const [timertoUpdate, setTimertoUpdate] = useState(timer);
+	const [lientoUpdate, setlientoUpdate] = useState(lien);
+	const [VisibletoUpdate, setVisvibletoUpdate] = useState(Visible);
 	const [maxmintoUpdate, setmaxmintoUpdate] = useState(maxmin);
 
 	return (
@@ -28,9 +26,9 @@ export default function Stat({
 				<>
 					<div className="Titre">Titre : {Titre}</div>
 					<div className="description">Description : {description} </div>
-					<div className="lienVideo">Lien : {lienVideo}</div>
-					<div className="Visible">Visible : {Visible}</div>
 					<div className="timer">Timer: {timer}</div>
+					<div className="lien">Lien : {lien}</div>
+					<div className="Visible">Visible : {Visible}</div>
 					<div className="maxmin">Maximiser/Minimiser: {maxmin}</div>
 
 					<div className="actions">
@@ -65,16 +63,6 @@ export default function Stat({
 					</Label>
 					<Label>
 						{" "}
-						lien vidéo
-						<input
-							type="text"
-							name="lienvideo"
-							value={lienVideotoUpdate}
-							onChange={(e) => setLienVideotoUpdate(e.target.value)}
-						/>
-					</Label>
-					<Label>
-						{" "}
 						timer
 						<input
 							type="number"
@@ -85,13 +73,24 @@ export default function Stat({
 					</Label>
 					<Label>
 						{" "}
-						Visible
+						lien vidéo
 						<input
-							type="checkbox"
-							name="Visible"
+							type="text"
+							name="lien"
+							value={lientoUpdate}
+							onChange={(e) => setlientoUpdate(e.target.value)}
+						/>
+					</Label>
+
+					<Label>
+						{" "}
+						Visible
+						<select
 							value={VisibletoUpdate}
-							onChange={(e) => setVisvibletoUpdate(e.target.value)}
-						/>{" "}
+							onChange={(e) => setVisvibletoUpdate(e.target.value)}>
+							<option value="Oui">Oui</option>
+							<option value="Non">Non</option>
+						</select>
 					</Label>
 					<Label>
 						{" "}
@@ -108,12 +107,12 @@ export default function Stat({
 						type="button"
 						onClick={() => {
 							UpdateStat(
-								Number(id),
+								id,
 								TitretoUpdate,
 								descriptiontoUpdate,
-								lienVideotoUpdate,
-								VisibletoUpdate,
 								timertoUpdate,
+								lientoUpdate,
+								VisibletoUpdate,
 								maxmintoUpdate
 							);
 							setUpdateMode(false);
