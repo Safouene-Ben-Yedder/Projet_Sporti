@@ -6,7 +6,7 @@ function LieuList(props) {
 			{props.Lieu.map(function (x) {
 				return (
 					<Lieu
-						id={x.id}
+						id={x._id}
 						nom={x.nom}
 						ville={x.ville}
 						pays={x.pays}

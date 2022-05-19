@@ -6,8 +6,7 @@ function ProgrammeSeanceList(props) {
 			{props.programmesSeance.map(function (x) {
 				return (
 					<ProgrammeSeance
-						key={x.id}
-						id={x.id}
+						id={x._id}
 						titre={x.titre}
 						description={x.description}
 						technique={x.technique}
