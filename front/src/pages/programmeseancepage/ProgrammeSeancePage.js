@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
+import {fetchProg, postProg, updateProg,deleteProg} from "../../services/progSeance.service"
 import { Heading } from "../../components/heading/Heading";
 import ProgrammeSeanceForm from "../../components/programmeseanceform/ProgrammeSeanceForm";
 import ProgrammeSeanceList from "../../components/programmeseancelist/ProgrammeSeanceList";
@@ -14,10 +13,8 @@ export default function ProgrammeSeancePage() {
 		const fetchProgrammes = async () => {
 			setLoading(true);
 			try {
-				const res = await axios.get(
-					"http://localhost:5000/api/programmeseance/coach/findAll/:token"
-				);
-				setProgrammesSeance(res.data);
+				const res = await fetchProg();
+				setProgrammesSeance(res);
 				setLoading(false);
 				console.log(res);
 			} catch (e) {
@@ -27,35 +24,23 @@ export default function ProgrammeSeancePage() {
 		fetchProgrammes();
 	}, []);
 
-	function addProgSeance(titre, description, technique, image, lienVideo) {
-		setProgrammesSeance([
-			...programmesSeance,
-			{
-				id: programmesSeance.length + 1,
-				titre: titre,
-				description: description,
-				technique: technique,
-				image: image,
-				lienVideo: lienVideo,
-			},
-		]);
+	
+	const addProgSeance = async (titre, description, technique, image, lienVideo) => {
+		const newProg = await postProg({titre, description, image, lienVideo,technique}) ;
+		setProgrammesSeance((Prog) => [
+			...Prog,{ ...newProg }]);
 	}
-	function UpdateProgSeance(
-		id,
-		titre,
-		description,
-		technique,
-		image,
-		lienVideo
-	) {
-		const newProgrammesSeance = programmesSeance.map((programmeSeance) =>
-			programmeSeance.id === id
-				? { id, titre, description, technique, image, lienVideo }
-				: programmeSeance
-		);
-		setProgrammesSeance(newProgrammesSeance);
+
+	const UpdateProgSeance = async (id,titre, description, technique, image, lienVideo) => {
+		await updateProg(id,titre, description, image, lienVideo, technique);
+		const newProg = programmesSeance.map((programmesSeance) =>
+			programmesSeance.id === id ? { id,titre, description, image, lienVideo, technique } : programmesSeance
+		)
+		setProgrammesSeance(newProg)
 	}
-	function deleteProgSeance(id) {
+
+	const deleteProgSeance = async(id) => {
+		await deleteProg(id)
 		setProgrammesSeance(programmesSeance.filter((index) => index.id !== id));
 	}
 	return (
@@ -72,7 +57,7 @@ export default function ProgrammeSeancePage() {
 					deleteProgSeance={deleteProgSeance}
 				/>
 			</>
-			)
+			
 		</div>
 	);
 }

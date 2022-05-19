@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./programmeseance.css";
 export default function ProgrammeSeance({
-	key,
 	titre,
 	description,
 	technique,
@@ -11,7 +10,6 @@ export default function ProgrammeSeance({
 	lienVideo,
 	id,
 	deleteProgSeance,
-	props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
@@ -26,9 +24,9 @@ export default function ProgrammeSeance({
 				<>
 					<div className="titre">{titre}</div>
 					<div className="description">{description}</div>
-					<div className="technique">{technique}</div>
 					<div className="image">{image}</div>
 					<div className="lienVideo"> {lienVideo}</div>
+					<div className="technique">{technique}</div>
 					<div className="actions">
 						<Button color="primary" onClick={() => setUpdateMode(true)}>
 							Modifier
@@ -61,16 +59,6 @@ export default function ProgrammeSeance({
 					</Label>
 					<Label>
 						{" "}
-						Technique
-						<input
-							type="text"
-							name="programmeSeance"
-							value={techniquetoUpdate}
-							onChange={(e) => setTechniquetoUpdate(e.target.value)}
-						/>{" "}
-					</Label>
-					<Label>
-						{" "}
 						Image
 						<input
 							type="text"
@@ -89,13 +77,23 @@ export default function ProgrammeSeance({
 							onChange={(e) => setLienVideotoUpdate(e.target.value)}
 						/>
 					</Label>
+					<Label>
+						{" "}
+						Technique
+						<input
+							type="text"
+							name="programmeSeance"
+							value={techniquetoUpdate}
+							onChange={(e) => setTechniquetoUpdate(e.target.value)}
+						/>{" "}
+					</Label>
 
 					<Button
 						color="primary"
 						type="button"
 						onClick={() => {
 							UpdateProgSeance(
-								Number(id),
+								id,
 								TitletoUpdate,
 								descriptiontoUpdate,
 								techniquetoUpdate,

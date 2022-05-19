@@ -78,7 +78,7 @@ export default function Lieu({
 						type="button"
 						onClick={() => {
 							UpdateLieu(
-								Number(id),
+								id,
 								nomtoUpdate,
 								villetoUpdate,
 								paystoUpdate,

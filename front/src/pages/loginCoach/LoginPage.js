@@ -22,8 +22,9 @@ const LoginPage = () => {
 
       try {
          const res = await login(email, password);
+         console.log("hh",res);
          console.log('Log In successfully');
-         localStorage.setItem('token', res.token);
+         localStorage.setItem('token', res.data.token);
          setValues({
             email: '',
             password: '',
