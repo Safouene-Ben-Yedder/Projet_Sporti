@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const StatSchema = new mongoose.Schema(
 	{
-		titre: {
+		Titre: {
 			type: String,
 			required: true,
 			unique: true,
@@ -11,16 +11,21 @@ const StatSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		timer: {
+			type: Number,
+			required: true,
+		},
 		lien: {
 			type: String,
 			required: true,
 		},
-		visible: {
-			type: Boolean,
+		Visible: {
+			type: String,
 			required: true,
 		},
-		timer: {
-			type: Number,
+
+		maxmin: {
+			type: String,
 			required: true,
 		},
 	},

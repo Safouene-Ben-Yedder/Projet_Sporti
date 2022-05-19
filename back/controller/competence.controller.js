@@ -13,6 +13,7 @@ module.exports.createcompetence = async (req, res) => {
 		description: req.body.description,
 		lien: req.body.lien,
 		visible: req.body.visible,
+		rating: req.body.rating,
 	});
 	try {
 		const savedcompetence = await newcompetence.save();

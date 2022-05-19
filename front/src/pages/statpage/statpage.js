@@ -1,53 +1,68 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StatForm from "../../components/statform/statform";
 import StatList from "../../components/statlist/statlist";
-import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
-
+import { NavbarJoueur } from "../../components/Navbar/NavbarJoueur";
+import { Delstat, fetchStat, UpStat } from "../../services/stat.service";
+import { addStat as newStat } from "../../services/stat.service";
 export default function StatPage() {
-	const [Stat, setStat] = useState([
-		{
-			id: 1,
-			Titre: "tennis",
-			description: "tennis",
-			lienVideo: "1",
-			Visible: "true",
-			timer: 5,
-			maxmin: "Maximiser",
-		},
-	]);
-	function addStat(Titre, description, lienVideo, Visible, timer, maxmin) {
-		setStat([
-			...Stat,
-			{
-				id: Stat.length + 1,
-				Titre: Titre,
-				description: description,
-				lienVideo: lienVideo,
-				Visible: Visible,
-				timer: timer,
-				maxmin: maxmin,
-			},
-		]);
-	}
-	function UpdateStat(
+	const [Stat, setStat] = useState([]);
+	const [error, setError] = useState();
+	console.log(error);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await fetchStat();
+				setStat(result);
+			} catch (e) {
+				setError("An error occurred when we tried to fetch tasks");
+			}
+		};
+		console.log("useEffect");
+
+		fetchData();
+	}, []);
+	const addStat = async (Titre, description, timer, lien, Visible, maxmin) => {
+		try {
+			const result = await newStat({
+				Titre,
+				description,
+				timer,
+				lien,
+				Visible,
+				maxmin,
+			});
+
+			setStat([
+				...Stat,
+				{
+					...result,
+				},
+			]);
+		} catch (e) {
+			setError("An error occurred when we tried to fetch stats");
+		}
+	};
+	const UpdateStat = async (
 		id,
 		Titre,
 		description,
-		lienVideo,
-		Visible,
 		timer,
+		lien,
+		Visible,
 		maxmin
-	) {
+	) => {
+		await UpStat(id, { Titre, description, timer, lien, Visible, maxmin });
 		const newStat = Stat.map((Stat) =>
 			Stat.id === id
-				? { id, Titre, description, lienVideo, Visible, timer, maxmin }
+				? { Titre, description, timer, lien, Visible, maxmin }
 				: Stat
 		);
 		setStat(newStat);
-	}
-	function deleteStat(id) {
+	};
+	const deleteStat = async (id) => {
+		await Delstat(id);
 		setStat(Stat.filter((index) => index.id !== id));
-	}
+	};
 	return (
 		<div className="App">
 			<>

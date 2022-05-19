@@ -5,11 +5,11 @@ function CompetenceList(props) {
 			{props.Competence.map(function (x) {
 				return (
 					<Competence
-						id={x.id}
+						id={x._id}
 						nom={x.nom}
 						description={x.description}
-						visvible={x.visvible}
-						lienVideo={x.lienVideo}
+						visible={x.visible}
+						lien={x.lien}
 						rating={x.rating}
 						UpdateCompetence={props.UpdateCompetence}
 						deleteCompetence={props.deleteCompetence}

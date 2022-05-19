@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { useForm } from "react-hook-form";
-import emailjs from "emailjs-com";
+import { invite } from "../../services/invitation.service";
 export default function InvitationForm(props) {
 	const Inviter = "Send Invitation";
 	const [nom, setNom] = useState("");
@@ -9,34 +8,34 @@ export default function InvitationForm(props) {
 	const [email, setEmail] = useState("");
 	const [tel, setTel] = useState("");
 
-	function sendEmail(e) {
-		e.preventDefault();
+	// function sendEmail(e) {
+	// 	e.preventDefault();
 
-		emailjs
-			.sendForm(
-				"service_0n1a7hv",
-				"template_x4407bm",
-				e.target,
-				"nvbUGLWsa-Kfo8HT4"
-			)
-			.then(
-				(result) => {
-					console.log(result.text);
-				},
-				(error) => {
-					console.log(error.text);
-				}
-			);
-		e.target.reset();
-	}
+	// 	emailjs
+	// 		.sendForm(
+	// 			"service_0n1a7hv",
+	// 			"template_x4407bm",
+	// 			e.target,
+	// 			"nvbUGLWsa-Kfo8HT4"
+	// 		)
+	// 		.then(
+	// 			(result) => {
+	// 				console.log(result.text);
+	// 			},
+	// 			(error) => {
+	// 				console.log(error.text);
+	// 			}
+	// 		);
+	// 	e.target.reset();
+	// }
 
 	function handleInvitation() {
-		props.Inviter(nom, prenom, email);
+		props.Inviter(nom, prenom, email, tel);
 		console.log("Invited");
 	}
 	return (
 		<>
-			<Form onSubmit={sendEmail}>
+			<Form onSubmit={invite}>
 				<FormGroup>
 					<Label> Nom </Label>
 					<Input

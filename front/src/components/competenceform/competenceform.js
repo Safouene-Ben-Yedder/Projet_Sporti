@@ -1,18 +1,20 @@
 import { useState } from "react";
-import ReactStars from "react-rating-stars-component";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+// import insertCss from "insert-css";
 //import { Link } from "react-router-dom";
-
+// import { StarRatingInput, css } from "react-star-rating-input";
+import { FaStar } from "react-icons/fa";
+import "./form.css";
 export default function CompetenceForm(props) {
+	// insertCss(css);
 	const addComp = "Add";
 	const [nom, setNom] = useState("");
 	const [description, setDescription] = useState("");
-	const [visvible, setVisible] = useState("");
-	const [lienVideo, setLienVideo] = useState("");
-	const [rating, setRating] = useState("");
-
+	const [visible, setVisible] = useState("");
+	const [lien, setlien] = useState("");
+	const [rating, setRating] = useState(null);
 	function handleAddComp() {
-		props.addComp(nom, description, visvible, lienVideo, rating);
+		props.addComp(nom, description, lien, visible, rating);
 	}
 	return (
 		<>
@@ -22,7 +24,6 @@ export default function CompetenceForm(props) {
 					<Input
 						type="text"
 						name="nom"
-						id=""
 						required
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
@@ -33,7 +34,6 @@ export default function CompetenceForm(props) {
 						type="textarea"
 						name="description"
 						required
-						id=""
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
@@ -41,30 +41,51 @@ export default function CompetenceForm(props) {
 					<Label> Lien vidéo </Label>
 					<Input
 						type="text"
-						name="lienVideo"
+						name="lien"
 						required
-						id=""
-						value={lienVideo}
-						onChange={(e) => setLienVideo(e.target.value)}></Input>
+						value={lien}
+						onChange={(e) => setlien(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> Visible </Label>
-					<Input
-						type="checkbox"
-						name="visible"
+					<select
 						required
-						id=""
-						value={visvible}
-						onChange={(e) => setVisible(e.target.value)}></Input>
+						value={visible}
+						onChange={(e) => setVisible(e.target.value)}>
+						<option value="oui">Oui</option>
+						<option value="non">Non</option>
+					</select>
 				</FormGroup>
 				<FormGroup>
-					<Label> Rating </Label>
-					<ReactStars
-						count={5}
+					<div>
+						{[...Array(5)].map((star, i) => {
+							const ratingValue = i + 1;
+							return (
+								<label>
+									<input
+										type="radio"
+										name="radio"
+										class="radio"
+										value={ratingValue}
+										onClick={() => setRating(ratingValue)}
+									/>
+									<FaStar
+										className="star"
+										color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+										size={20}
+									/>
+								</label>
+							);
+						})}
+					</div>
+
+					{/* <Label> Rating </Label>
+					<StarRatingInput
+						size={5}
 						name="rating"
 						required
-						rating={rating}
-						onChange={(e) => setRating(e.rating)}></ReactStars>
+						value={rating}
+						onChange={(e) => setRating(e.rating)}></StarRatingInput> */}
 				</FormGroup>
 				<Button color="success" type="button" onClick={handleAddComp}>
 					{addComp}

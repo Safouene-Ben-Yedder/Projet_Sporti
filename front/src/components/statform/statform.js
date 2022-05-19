@@ -6,12 +6,12 @@ export default function StatForm(props) {
 	const addStat = "Add";
 	const [Titre, setTitre] = useState("");
 	const [description, setDescription] = useState("");
-	const [Visvible, setVisible] = useState("");
-	const [lienVideo, setLienVideo] = useState("");
 	const [timer, setTimer] = useState("");
+	const [lien, setlien] = useState("");
+	const [Visible, setVisible] = useState("");
 	const [maxmin, setMaxMin] = useState("");
 	function handleAddStat() {
-		props.addStat(Titre, description, Visvible, lienVideo, timer, maxmin);
+		props.addStat(Titre, description, timer, lien, Visible, maxmin);
 	}
 	return (
 		<>
@@ -37,7 +37,7 @@ export default function StatForm(props) {
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label> Timer </Label>
+					<Label> Timer (mn) </Label>
 					<Input
 						type="number"
 						name="timer"
@@ -50,21 +50,18 @@ export default function StatForm(props) {
 					<Label> Lien vidéo </Label>
 					<Input
 						type="text"
-						name="lienVideo"
+						name="lien"
 						required
 						id=""
-						value={lienVideo}
-						onChange={(e) => setLienVideo(e.target.value)}></Input>
+						value={lien}
+						onChange={(e) => setlien(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> Visible </Label>
-					<Input
-						type="checkbox"
-						name="Visible"
-						required
-						id=""
-						value={Visvible}
-						onChange={(e) => setVisible(e.target.value)}></Input>
+					<select value={Visible} onChange={(e) => setVisible(e.target.value)}>
+						<option value="Oui">Oui</option>
+						<option value="Non">Non</option>
+					</select>
 				</FormGroup>
 
 				<FormGroup>

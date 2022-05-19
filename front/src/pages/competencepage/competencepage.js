@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import CompetenceForm from "../../components/competenceform/competenceform";
 import CompetenceList from "../../components/competencelist/competencelist";
 import { NavbarJoueur } from "../../components/Navbar/NavbarJoueur";
-import { fetchCompetence } from "../../services/competence.service";
-
+import {
+	DelCompetence,
+	fetchCompetence,
+	UpCompetence,
+} from "../../services/competence.service";
+import { addCompetence as newCompetence } from "../../services/competence.service";
 export default function CompetencePage() {
 	const [Competence, setCompetence] = useState([]);
 	const [error, setError] = useState();
@@ -22,30 +26,48 @@ export default function CompetencePage() {
 
 		fetchData();
 	}, []);
-	function addCompetence(nom, description, lienVideo, visible, rating) {
-		setCompetence([
-			...Competence,
-			{
-				id: Competence.length + 1,
-				nom: nom,
-				description: description,
-				lienVideo: lienVideo,
-				visible: visible,
-				rating: rating,
-			},
-		]);
-	}
-	function UpdateCompetence(id, nom, description, lienVideo, visible, rating) {
-		const newCompetence = Competence.map((Competence) =>
+	const addCompetence = async (nom, description, lien, visible, rating) => {
+		try {
+			const result = await newCompetence({
+				nom,
+				description,
+				lien,
+				visible,
+				rating,
+			});
+			console.log(result);
+			setCompetence([
+				...Competence,
+				{
+					...result,
+				},
+			]);
+		} catch (e) {
+			setError("An error occurred when we tried to fetch tasks");
+		}
+	};
+	const UpdateCompetence = async (
+		id,
+		nom,
+		description,
+		lien,
+		visible,
+		rating
+	) => {
+		await UpCompetence(id, { nom, description, lien, visible, rating });
+		const UpdatedCompetence = Competence.map((Competence) =>
 			Competence.id === id
-				? { id, nom, description, lienVideo, visible, rating }
+				? { nom, description, lien, visible, rating }
 				: Competence
 		);
-		setCompetence(newCompetence);
-	}
-	function deleteCompetence(id) {
+		setCompetence(UpdatedCompetence);
+		console.log(id);
+	};
+
+	const deleteCompetence = async (id) => {
+		await DelCompetence(id);
 		setCompetence(Competence.filter((index) => index.id !== id));
-	}
+	};
 	return (
 		<div className="App">
 			<>
