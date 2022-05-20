@@ -124,6 +124,7 @@ exports.showProfile = (req, res) => {
 					createdAt: data.createdAt,
 					updatedAt: data.updatedAt,
 					telephone: data.telephone,
+					abonnement: data.abonnement,
 				})
 			)
 			.catch((err) => {
