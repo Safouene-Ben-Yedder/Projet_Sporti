@@ -1,4 +1,4 @@
 const router = require("express").Router();
 const Invitation = require("../controller/invitation");
-router.post("/", Invitation.inviterJoueur);
+router.post("/:token", Invitation.inviterJoueur);
 module.exports = router;

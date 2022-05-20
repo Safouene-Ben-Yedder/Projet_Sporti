@@ -16,7 +16,7 @@ const InvitationSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		telephone: {
+		tel: {
 			type: Number,
 			required: true,
 		},

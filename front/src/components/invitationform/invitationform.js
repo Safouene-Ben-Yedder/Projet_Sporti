@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { invite } from "../../services/invitation.service";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function InvitationForm(props) {
 	const Inviter = "Send Invitation";
 	const [nom, setNom] = useState("");
@@ -31,17 +32,17 @@ export default function InvitationForm(props) {
 
 	function handleInvitation() {
 		props.Inviter(nom, prenom, email, tel);
-		console.log("Invited");
+		toast.success("Player Invited");
 	}
 	return (
 		<>
-			<Form onSubmit={invite}>
+			<Form>
 				<FormGroup>
 					<Label> Nom </Label>
 					<Input
 						type="text"
 						name="nom"
-						required="true"
+						required
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
@@ -50,7 +51,7 @@ export default function InvitationForm(props) {
 					<Input
 						type="text"
 						name="prenom"
-						required="true"
+						required
 						value={prenom}
 						onChange={(e) => setPrenom(e.target.value)}></Input>
 				</FormGroup>
@@ -60,7 +61,7 @@ export default function InvitationForm(props) {
 						type="email"
 						name="email"
 						value={email}
-						required="true"
+						required
 						onChange={(e) => setEmail(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
@@ -72,9 +73,10 @@ export default function InvitationForm(props) {
 						required="true"
 						onChange={(e) => setTel(e.target.value)}></Input>
 				</FormGroup>
-				<Button color="success" type="submit" onClick={handleInvitation}>
+				<Button color="success" type="button" onClick={handleInvitation}>
 					{Inviter}
 				</Button>
+				<ToastContainer />
 			</Form>
 		</>
 	);

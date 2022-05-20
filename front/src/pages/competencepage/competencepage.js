@@ -19,7 +19,7 @@ export default function CompetencePage() {
 				const result = await fetchCompetence();
 				setCompetence(result);
 			} catch (e) {
-				setError("An error occurred when we tried to fetch tasks");
+				setError("An error occurred when we tried to fetch data");
 			}
 		};
 		console.log("useEffect");
@@ -43,7 +43,7 @@ export default function CompetencePage() {
 				},
 			]);
 		} catch (e) {
-			setError("An error occurred when we tried to fetch tasks");
+			setError("An error occurred when we tried to post");
 		}
 	};
 	const UpdateCompetence = async (
