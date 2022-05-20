@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./paiement.css";
+import { updateAbonnement } from "../../services/login.service";
 export const PaiementForm = () => {
 	const [abonnement, setAbonnement] = useState();
 	const [isSubmit, setIsSubmit] = useState(false);
 
 	const handleCheckbox = (e) => {
 		const target = e.target;
-		const name = target.name;
 		const value = target.value;
 		setAbonnement(value);
-		console.log(name, value);
 	};
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsSubmit(true);
+		try {
+			const res = await updateAbonnement(abonnement);
+			setAbonnement({ abonnement: "" });
+			console.log(res);
+			setIsSubmit(true);
+		} catch (err) {
+			console.error(err.message);
+			console.log("login failed!");
+		}
 	};
 
 	return (

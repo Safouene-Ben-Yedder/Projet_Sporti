@@ -17,12 +17,19 @@ export const postProg = async (Prog) => {
 	return result.data;
 };
 
-export const updateProg = async (id, title, description, src, video,technique) => {
+export const updateProg = async (
+	id,
+	titre,
+	description,
+	image,
+	lienVideo,
+	technique
+) => {
 	const result = await axios.put(`${API_URL}update/${token}/${id}`, {
-		title,
+		titre,
 		description,
-		src,
-		video,
+		image,
+		lienVideo,
 		technique,
 	});
 	return result.data;
@@ -32,5 +39,3 @@ export const deleteProg = async (id) => {
 	const result = await axios.delete(`${API_URL}delete/${token}/${id}`);
 	return result.data;
 };
-
-

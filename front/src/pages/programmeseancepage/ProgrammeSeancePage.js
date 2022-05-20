@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import {fetchProg, postProg, updateProg,deleteProg} from "../../services/progSeance.service"
+import {
+	fetchProg,
+	postProg,
+	updateProg,
+	deleteProg,
+} from "../../services/progSeance.service";
 import { Heading } from "../../components/heading/Heading";
 import ProgrammeSeanceForm from "../../components/programmeseanceform/ProgrammeSeanceForm";
 import ProgrammeSeanceList from "../../components/programmeseancelist/ProgrammeSeanceList";
@@ -24,25 +29,46 @@ export default function ProgrammeSeancePage() {
 		fetchProgrammes();
 	}, []);
 
-	
-	const addProgSeance = async (titre, description, technique, image, lienVideo) => {
-		const newProg = await postProg({titre, description, image, lienVideo,technique}) ;
-		setProgrammesSeance((Prog) => [
-			...Prog,{ ...newProg }]);
-	}
+	const addProgSeance = async (
+		titre,
+		description,
+		technique,
+		image,
+		lienVideo
+	) => {
+		const newProg = await postProg({
+			titre,
+			description,
+			image,
+			lienVideo,
+			technique,
+		});
+		setProgrammesSeance((Prog) => [...Prog, { ...newProg }]);
+	};
 
-	const UpdateProgSeance = async (id,titre, description, technique, image, lienVideo) => {
-		await updateProg(id,titre, description, image, lienVideo, technique);
+	const UpdateProgSeance = async (
+		id,
+		titre,
+		description,
+		technique,
+		image,
+		lienVideo
+	) => {
+		await updateProg(id, titre, description, image, lienVideo, technique);
 		const newProg = programmesSeance.map((programmesSeance) =>
-			programmesSeance.id === id ? { id,titre, description, image, lienVideo, technique } : programmesSeance
-		)
-		setProgrammesSeance(newProg)
-	}
+			programmesSeance.id === id
+				? { id, titre, description, image, lienVideo, technique }
+				: programmesSeance
+		);
+		setProgrammesSeance(newProg);
+	};
 
-	const deleteProgSeance = async(id) => {
-		await deleteProg(id)
-		setProgrammesSeance(programmesSeance.filter((index) => index.id !== id));
-	}
+	const deleteProgSeance = async (id) => {
+		await deleteProg(id);
+		setProgrammesSeance(
+			programmesSeance.filter((programmesSeance) => programmesSeance.id !== id)
+		);
+	};
 	return (
 		<div className="App">
 			<>
@@ -57,7 +83,6 @@ export default function ProgrammeSeancePage() {
 					deleteProgSeance={deleteProgSeance}
 				/>
 			</>
-			
 		</div>
 	);
 }

@@ -97,8 +97,8 @@ export default function ProgrammeSeance({
 								TitletoUpdate,
 								descriptiontoUpdate,
 								techniquetoUpdate,
-								imagetoUpdate,
-								lienVideotoUpdate
+								lienVideotoUpdate,
+								imagetoUpdate
 							);
 							setUpdateMode(false);
 						}}>

@@ -53,11 +53,11 @@ export default function ProgrammeSeanceForm(props) {
 						onChange={(e) => setTechnique(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
-					<Label for="nomFile">File</Label>
+					<Label>File</Label>
 					<Input
-						id="nomFile"
-						name="nomFile"
-						type="file"
+						id="image"
+						name="image"
+						type="text"
 						onChange={(e) => setImage(e.target.value)}
 					/>
 				</FormGroup>
