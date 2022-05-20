@@ -1,9 +1,10 @@
 ﻿import Axios from "axios";
 const token = localStorage.getItem("token");
+const API_URL = "http://localhost:5000/api/stat/";
 
 export const fetchStat = async () => {
 	// await delay(500)
-	const result = await Axios.get(`http://localhost:5000/api/stat/${token}`);
+	const result = await Axios.get(`${API_URL}findAll/${token}`);
 
 	return result.data;
 };
@@ -18,7 +19,7 @@ export const addStat = async (
 ) => {
 	// await delay(500)
 	const result = await Axios.post(
-		`http://localhost:5000/api/stat/${token}`,
+		API_URL + token,
 		Titre,
 		description,
 		timer,
@@ -32,19 +33,14 @@ export const addStat = async (
 
 export const UpStat = async (id, stat) => {
 	// await delay(500)
-	const result = await Axios.put(
-		`http://localhost:5000/api/stat/${token}` + id,
-		stat
-	);
+	const result = await Axios.put(`${API_URL}update/${token}/${id}`, stat);
 
 	return result.data;
 };
 
 export const Delstat = async (id) => {
 	// await delay(500)
-	const result = await Axios.delete(
-		`http://localhost:5000/api/stat/${token}` + id
-	);
+	const result = await Axios.delete(`${API_URL}delete/${token}/${id}`);
 
 	return result.data;
 };

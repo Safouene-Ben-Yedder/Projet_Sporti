@@ -23,7 +23,7 @@ exports.inviterJoueur = async (req, res) => {
 		return true;
 	}
 	if (decoded.role === "Coach") {
-		const { nom, prenom, email, tel } = req.body;
+		const { nom, prenom, email, tel, createdBy } = req.body;
 
 		if (!(nom && prenom && email && tel)) {
 			response.code = 1;
@@ -37,29 +37,37 @@ exports.inviterJoueur = async (req, res) => {
 					prenom: req.body.prenom,
 					email: req.body.email,
 					tel: req.body.tel,
+					createdBy: decoded.user_id,
 				});
 
 				const token = jwt.sign(
-					{ user_id: invitation._id, email, nom, prenom, tel },
+					{ user_id: invitation._id, email, nom, prenom, tel, createdBy },
 					process.env.TOKEN_KEY,
 					{ expiresIn: "2h" }
 				);
 
-				invitation.token = token;
+				invitation
+					.save()
+					.then((data) => {
+						res.send(data);
+					})
+					.catch((err) => {
+						res.status(500).send({
+							message: err.message || "Error",
+						});
+					});
 
-				await invitation.save();
-
-				response.code = 0;
-				response.msg = "Invitation created!";
-				response.data = {
-					id: invitation.id,
-					nom: invitation.nom,
-					prenom: invitation.prenom,
-					email: invitation.email,
-					tel: invitation.tel,
-					token: invitation.token,
-				};
-				res.send(response);
+				// response.code = 0;
+				// response.msg = "Invitation created!";
+				// response.data = {
+				// 	id: invitation.id,
+				// 	nom: invitation.nom,
+				// 	prenom: invitation.prenom,
+				// 	email: invitation.email,
+				// 	tel: invitation.tel,
+				// 	token: invitation.token,
+				// };
+				// res.send(response);
 
 				var mailOptions = {
 					from: "Sporti",
@@ -67,7 +75,7 @@ exports.inviterJoueur = async (req, res) => {
 					subject: "Invitation to Sporti",
 					text: ` Welcome ${invitation.nom} ${invitation.prenom} ,
 You are invited to Sporti
-click here to subscribe : http://localhost:3000/inviter/joueur/${invitation.token}`,
+click here to subscribe : http://localhost:3000/inviter/joueur/${token}`,
 				};
 				transporter.sendMail(mailOptions, function (error, info) {
 					if (error) {
