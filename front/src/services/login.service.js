@@ -1,6 +1,4 @@
 import axios from "axios";
-const token = localStorage.getItem("token");
-const API_URL = "http://localhost:5000/api/abonnement/";
 
 export const login = async (email, password) => {
 	const input = {
@@ -8,7 +6,7 @@ export const login = async (email, password) => {
 		password,
 	};
 	const { data } = await axios.post(
-		"http://localhost:5000/api/coach/login/:token",
+		"http://localhost:5000/api/coach/login/",
 		input
 	);
 	return data;
@@ -27,10 +25,4 @@ export const register = async (email, password, nom, prenom, dateNaissance) => {
 		input
 	);
 	return data;
-};
-export const updateAbonnement = async (abonnement) => {
-	const result = await axios.put(`${API_URL}coach/${token}`, {
-		abonnement,
-	});
-	return result.data;
 };
