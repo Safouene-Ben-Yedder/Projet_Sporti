@@ -1,7 +1,9 @@
 import Axios from "axios";
+const token = localStorage.getItem("token");
+const API_URL = "http://localhost:5000/api/competence/";
 export const fetchCompetence = async () => {
 	// await delay(500)
-	const result = await Axios.get("http://localhost:5000/api/competence/");
+	const result = await Axios.get(`${API_URL}findAll/${token}`);
 
 	return result.data;
 };
@@ -15,7 +17,7 @@ export const addCompetence = async (
 ) => {
 	// await delay(500)
 	const result = await Axios.post(
-		"http://localhost:5000/api/competence/",
+		API_URL + token,
 		nom,
 		description,
 		lien,
@@ -28,19 +30,13 @@ export const addCompetence = async (
 
 export const UpCompetence = async (id, competence) => {
 	// await delay(500)
-	const result = await Axios.put(
-		"http://localhost:5000/api/competence/" + id,
-		competence
-	);
+	const result = await Axios.put(`${API_URL}update/${token}/${id}`, competence);
 
 	return result.data;
 };
 
 export const DelCompetence = async (id) => {
 	// await delay(500)
-	const result = await Axios.delete(
-		"http://localhost:5000/api/competence/" + id
-	);
-
+	const result = await Axios.delete(`${API_URL}delete/${token}/${id}`);
 	return result.data;
 };
