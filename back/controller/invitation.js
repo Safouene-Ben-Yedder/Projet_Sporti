@@ -24,12 +24,7 @@ exports.inviterJoueur = async (req, res) => {
 	}
 
 	if (decoded.role === "Coach") {
-<<<<<<< HEAD
 		const { nom, prenom, email, tel } = req.body;
-=======
-		const { nom, prenom, email, tel} = req.body;
->>>>>>> 35ec1399bafb64e34dff932285feeaaeb3dcc05a
-
 		if (!(nom && prenom && email && tel)) {
 			response.code = 1;
 			response.msg = "All input is required";
@@ -46,11 +41,6 @@ exports.inviterJoueur = async (req, res) => {
 
 				const token = jwt.sign(
 					{ email, prenom, nom, tel, coach_id: decoded.user_id },
-					
-				});
-
-				const token = jwt.sign(
-					{ user_id: invitation._id, email, nom, prenom, tel },	
 					process.env.TOKEN_KEY,
 					{ expiresIn: "2h" }
 				);
