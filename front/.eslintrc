@@ -1,4 +1,4 @@
-{
+{/*
     "env": {
             "browser": true,
             "es2021": true,
@@ -42,5 +42,5 @@
             // ], 
             "react/jsx-uses-react": "error",   
             "react/jsx-uses-vars": "error" 
-        }
+        }*/
     }

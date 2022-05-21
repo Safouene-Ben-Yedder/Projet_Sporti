@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
-import { Form, FormGroup, Label,Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+
+import {
+	postSeance,
+	fetchSeance,
+	updateSeance,
+	deleteSeance,
+} from "../../services/seance.service";
 
 export default function SeancePage() {
-	const [seances, setSeances] = useState([
+	/*	const [seances, setSeances] = useState([
 		{
 			id: 1,
 			titre: "Séance YOGA",
@@ -43,6 +50,7 @@ export default function SeancePage() {
 		// 	progseance: "Programme 1",
 		// },
 	]);
+	*/
 	const [isVisible, setIsVisible] = useState(false);
 	const [Visible, setVisible] = useState(false);
 	const [updateMode, setUpdateMode] = useState(false);
@@ -50,7 +58,7 @@ export default function SeancePage() {
 	const [raison, setRaison] = useState("");
 	const [feed, setFeed] = useState("");
 	const [obj, setObj] = useState("");
-	function addSeance(
+	/*	function addSeance(
 		titre,
 		joueur,
 		horaire,
@@ -102,28 +110,122 @@ export default function SeancePage() {
 				: seance
 		);
 		setSeances(newSeances);
-	}
+	} */
 	const supp = () => {
 		setIsVisible(!isVisible);
 	};
 	const avis = () => {
 		setVisible(!isVisible);
 	};
+
+	/*
 	function deleteSeance(id) {
 		setSeances(seances.filter((index) => index.id !== id));
-	}
+	} */
+
+	const [Seance, setSeance] = useState([]);
+	const [loading, setLoading] = useState(false);
+	console.log(loading);
+
+	useEffect(() => {
+		const fetchSeances = async () => {
+			setLoading(true);
+			try {
+				const res = await fetchSeance();
+				setSeance(res);
+				setLoading(false);
+				console.log(res);
+			} catch (e) {
+				setLoading(false);
+			}
+		};
+		fetchSeances();
+	}, []);
+
+	const addSeances = async (
+		titre,
+		description,
+		date,
+		objectif,
+		competences,
+		stats,
+		lieuentrainements,
+		programmeSeances,
+		joueur
+	) => {
+		const newSeance = await postSeance({
+			titre,
+			description,
+			date,
+			objectif,
+			competences,
+			stats,
+			lieuentrainements,
+			programmeSeances,
+			joueur,
+		});
+		setSeance((Seance) => [...Seance, { ...newSeance }]);
+	};
+	const UpdateSeances = async (
+		id,
+		titre,
+		description,
+		date,
+		objectif,
+		competences,
+		stats,
+		lieuentrainements,
+		programmeSeances,
+		joueur
+	) => {
+		await updateSeance(
+			id,
+			titre,
+			description,
+			date,
+			objectif,
+			competences,
+			stats,
+			lieuentrainements,
+			programmeSeances,
+			joueur
+		);
+		const newSeance = Seance.map((Seance) =>
+			Seance.id === id
+				? {
+						id,
+						titre,
+						description,
+						date,
+						objectif,
+						competences,
+						stats,
+						lieuentrainements,
+						programmeSeances,
+						joueur,
+				  }
+				: Seance
+		);
+		setSeance(newSeance);
+	};
+
+	const deleteSeances = async (id) => {
+		await deleteSeance(id);
+		const newSeance = Seance.filter((Seance) => Seance.id !== id);
+		setSeance(newSeance);
+	};
 	return (
 		<div className="App">
 			<>
 				<Heading />
 				<h2> Ajouter une séance</h2>
-				<SeanceForm addSeance={addSeance} />
+				<SeanceForm addSeance={addSeances} />
 				<hr></hr>
 				<h2> Liste des séances </h2>
 				<SeanceList
-					seances={seances}
-					deleteSeance={deleteSeance}
-					UpdateSeance={UpdateSeance}
+					Seance={Seance}
+					deleteSeance={deleteSeances}
+					UpdateSeance={UpdateSeances}
 					supp={supp}
 					avis={avis}
 				/>
@@ -158,8 +260,8 @@ export default function SeancePage() {
 						)}
 					</>
 				)}
-					{Visible && (
-						<>
+				{Visible && (
+					<>
 						{!FeedBack ? (
 							<>
 								<Form>
@@ -190,15 +292,14 @@ export default function SeancePage() {
 										</Button>
 									</FormGroup>
 								</Form>
-								
 							</>
-							) : (
+						) : (
 							<>
 								<h5>Réponse envoyée!</h5>
 							</>
-							)}
+						)}
 					</>
-					)}
+				)}
 			</>
 		</div>
 	);

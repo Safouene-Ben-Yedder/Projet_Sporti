@@ -1,14 +1,22 @@
 const router = require("express").Router();
 const Seance = require("../controller/seance");
 const seance = require("../models/seance");
-var nodemailer = require("nodemailer");
-const User = require("../models/User");
-const cron = require("node-cron");
+//var nodemailer = require("nodemailer");
+//const User = require("../models/User");
+//const cron = require("node-cron");
+
 router.put("/update/:token/:id", Seance.update);
 router.get("/today/:token", Seance.findSeanceNowPlayer);
 router.get("/all/:token", Seance.findAllSeancePlayer);
 router.get("/detail/:token/:id", Seance.findSeancePlayer);
 
+router.post("/:token", seance.create);
+router.put("/update/:token/:id", seance.update);
+router.get("/findAll/:token/", seance.findAll);
+router.delete("/delete/:token/:id", seance.delete);
+router.get("/find/:token/:id", seance.find);
+
+/*
 var transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
@@ -16,6 +24,8 @@ var transporter = nodemailer.createTransport({
 		pass: "ProjetSporti9-",
 	},
 });
+
+
 //CREATE  séance
 router.post("/", async (req, res) => {
 	const newSeance = new seance(req.body);
@@ -78,5 +88,5 @@ router.get("/:id", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
-});
+}); */
 module.exports = router;

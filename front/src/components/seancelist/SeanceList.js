@@ -3,7 +3,7 @@ import Seance from "../seance/Seance";
 function SeanceList(props) {
 	return (
 		<div>
-			{props.seances.map(function (x) {
+			{props.Seance.map(function (x) {
 				return (
 					<Seance
 						key={x.id}
