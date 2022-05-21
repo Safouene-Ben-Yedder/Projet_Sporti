@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -107,6 +108,27 @@ exports.login = async (req, res) => {
 		console.log(err);
 	}
 };
+
+// affichage les joueurs d'un coach
+exports.playersList = (req, res) => {
+	const token = req.params.token;
+	var decoded = jwt_decode(token);
+
+	if (decoded.role === "Coach") {
+		User.find({ coach: decoded.user_id })
+			.then((data) => res.json(data))
+			.catch((err) => {
+				res.status(500).send({
+					message: err.message || "Error",
+				});
+			});
+	} else {
+		res.status(401).send({
+			message: "Unauthorized",
+		});
+	}
+};
+
 // affichage du profil d'un coach
 exports.showProfile = (req, res) => {
 	const token = req.params.token;

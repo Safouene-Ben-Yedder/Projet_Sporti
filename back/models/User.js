@@ -73,6 +73,10 @@ const userSchema = new Schema(
 		inviteNumber: {
 			type: Number,
 		},
+		coach: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+		},
 	},
 	{ timestamps: true }
 );

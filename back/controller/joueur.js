@@ -19,8 +19,8 @@ exports.register = async (req, res) => {
 		return true;
 	}
 
-	const email = decoded.email;
-	const { password, nom, prenom, dateNaissance } = req.body;
+	// const email = decoded.email;
+	const { email, password, nom, prenom, dateNaissance } = req.body;
 
 	if (Math.round(Date.now() / 1000) >= decoded.exp) {
 		response.msg = "Token expired";
@@ -41,16 +41,18 @@ exports.register = async (req, res) => {
 			}
 
 			const user = new User({
-				email: decoded.email,
+				email: req.body.email,
 				password: req.body.password,
 				nom: req.body.nom,
 				prenom: req.body.prenom,
 				dateNaissance: req.body.dateNaissance,
 				telephone: req.body.telephone,
+				droit: req.body.droit,
 				poids: req.body.poids,
 				taille: req.body.taille,
 				IMC: req.body.IMC,
 				role: "Joueur",
+				coach: decoded.user_id,
 				lastAuthentication: Date.now(),
 			});
 
@@ -78,6 +80,7 @@ exports.register = async (req, res) => {
 
 				firstAuth: "true",
 				role: user.role,
+				coach: user.coach,
 				token: accessToken,
 			};
 			res.send(response);
@@ -125,6 +128,7 @@ exports.login = async (req, res) => {
 					poids: user.poids,
 					taille: user.taille,
 					IMC: user.IMC,
+					coach: user.coach,
 					lastAuthentication: user.lastAuthentication,
 					firstAuth: "false",
 					role: user.role,

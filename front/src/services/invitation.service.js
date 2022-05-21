@@ -2,6 +2,7 @@
 const token = localStorage.getItem("token");
 export const invite = async (nom, prenom, email, tel) => {
 	// await delay(500)
+	console.log(token);
 	const result = await Axios.post(
 		`http://localhost:5000/api/invitation/${token}`,
 		nom,

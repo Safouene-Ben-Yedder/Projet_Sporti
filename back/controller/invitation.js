@@ -22,6 +22,7 @@ exports.inviterJoueur = async (req, res) => {
 		});
 		return true;
 	}
+
 	if (decoded.role === "Coach") {
 		const { nom, prenom, email, tel } = req.body;
 
@@ -40,7 +41,7 @@ exports.inviterJoueur = async (req, res) => {
 				});
 
 				const token = jwt.sign(
-					{ user_id: invitation._id, email, nom, prenom, tel },
+					{ email, prenom, nom, tel, coach_id: decoded.user_id },
 					process.env.TOKEN_KEY,
 					{ expiresIn: "2h" }
 				);
@@ -67,7 +68,7 @@ exports.inviterJoueur = async (req, res) => {
 					subject: "Invitation to Sporti",
 					text: ` Welcome ${invitation.nom} ${invitation.prenom} ,
 You are invited to Sporti
-click here to subscribe : http://localhost:3000/inviter/joueur/${invitation.token}`,
+click here to subscribe : http://localhost:3000/register-joueur/${token}`,
 				};
 				transporter.sendMail(mailOptions, function (error, info) {
 					if (error) {

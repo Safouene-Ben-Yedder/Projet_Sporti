@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/joueur/";
+const token = localStorage.getItem("token");
 
 export const register = (
 	nom,
@@ -8,31 +9,37 @@ export const register = (
 	dateNaissance,
 	email,
 	password,
-	ville,
 	telephone,
-	token
+	poids,
+	IMC,
+	droitier,
+	taille
 ) =>
 	axios
-		.post(`${API_URL}register/${token}`, {
+		.post(
+			`${API_URL}register/${token}`,
 			nom,
 			prenom,
 			dateNaissance,
 			email,
 			password,
-			ville,
 			telephone,
-		})
+			poids,
+			IMC,
+			droitier,
+			taille
+		)
 		.then((response) => {
 			if (typeof response.data.data !== "undefined") {
 				localStorage.setItem("user", response.data.data.token);
 			}
-			console.log("token: ", token);
+			console.log("token: ", response);
 			return response.data;
 		});
 
 export const login = (email, password) =>
 	axios
-		.post(`${API_URL}login`, {
+		.post(`${API_URL}login/`, {
 			email,
 			password,
 		})
