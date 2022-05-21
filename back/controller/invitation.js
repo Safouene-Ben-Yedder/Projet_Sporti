@@ -42,18 +42,15 @@ exports.inviterJoueur = async (req, res) => {
 					prenom: req.body.prenom,
 					email: req.body.email,
 					tel: req.body.tel,
-<<<<<<< HEAD
 				});
 
 				const token = jwt.sign(
 					{ email, prenom, nom, tel, coach_id: decoded.user_id },
-=======
 					
 				});
 
 				const token = jwt.sign(
-					{ user_id: invitation._id, email, nom, prenom, tel },
->>>>>>> 35ec1399bafb64e34dff932285feeaaeb3dcc05a
+					{ user_id: invitation._id, email, nom, prenom, tel },	
 					process.env.TOKEN_KEY,
 					{ expiresIn: "2h" }
 				);
