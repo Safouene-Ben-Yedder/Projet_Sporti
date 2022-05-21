@@ -6,11 +6,19 @@ function ModifierJoueurList(props) {
 			{props.ModifierJoueur.map(function (x) {
 				return (
 					<ModifierJoueur
-						id={x.id}
-						Nom={x.Nom}
-						Prenom={x.Prenom}
-						Actif={x.Actif}
-						Competence={x.Competence}
+						id={x._id}
+						nom={x.nom}
+						prenom={x.prenom}
+						dateNaissance={x.dateNaissance}
+						email={x.email}
+						telephone={x.telephone}
+						poids={x.poids}
+						taille={x.taille}
+						droit={x.droit}
+						IMC={x.IMC}
+						abonnement={x.abonnement}
+						// Actif={x.Actif}
+						Competences={x.Competences}
 						Stat={x.Stat}
 						UpdateJoueur={props.UpdateJoueur}
 						deleteJoueur={props.deleteJoueur}
