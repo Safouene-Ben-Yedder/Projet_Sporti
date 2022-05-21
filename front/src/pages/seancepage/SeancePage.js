@@ -3,6 +3,7 @@ import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
 import { Form, FormGroup, Label,Input, Button } from "reactstrap";
+import { annulerSeance } from "../../services/seance.service";
 
 export default function SeancePage() {
 	const [seances, setSeances] = useState([
@@ -47,9 +48,18 @@ export default function SeancePage() {
 	const [Visible, setVisible] = useState(false);
 	const [updateMode, setUpdateMode] = useState(false);
 	const [FeedBack, setFeedBack] = useState(false);
-	const [raison, setRaison] = useState("");
+	const [raison, setRaison] = useState(false);
 	const [feed, setFeed] = useState("");
 	const [obj, setObj] = useState("");
+
+	const annulerSeances = async (id, annuler) => {
+		await annulerSeance(id,annuler);
+		const newseance = seances.map((seances) =>
+			seances.id === id ? { id, annuler } : seances
+		)
+		setSeances(newseance)
+		setUpdateMode(true)
+	}
 	function addSeance(
 		titre,
 		joueur,
@@ -138,14 +148,14 @@ export default function SeancePage() {
 										</h3>
 										<select
 											value={raison}
-											onChange={(e) => setRaison(e.target.value)}>
+											onChange={() => setRaison(true)}>
 											<option value="r1">absence du joueur</option>
 											<option value="r2">imptempérie</option>
 										</select>
 										<Button
 											color="success"
 											type="button"
-											onClick={() => setUpdateMode(true)}>
+											onClick={() => annulerSeances(raison)}>
 											Envoyer
 										</Button>
 									</FormGroup>

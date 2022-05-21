@@ -5,6 +5,7 @@ var nodemailer = require("nodemailer");
 const User = require("../models/User");
 const cron = require("node-cron");
 router.put("/update/:token/:id", Seance.update);
+router.put("/annuler/:token/:id", Seance.annulerSeance);
 router.get("/today/:token", Seance.findSeanceNowPlayer);
 router.get("/all/:token", Seance.findAllSeancePlayer);
 router.get("/detail/:token/:id", Seance.findSeancePlayer);

@@ -34,6 +34,7 @@ export default function ModifierJoueurPage() {
 	// 		},
 	// 	]);
 	// }
+	
 	function UpdateJoueur(id, Nom, Prenom, Actif, Competence, Stat) {
 		const newModifierJoueur = ModifierJoueur.map((ModifierJoueur) =>
 			ModifierJoueur.id === id

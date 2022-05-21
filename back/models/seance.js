@@ -43,6 +43,9 @@ const seanceSchema = new mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
+		annuler : {
+			type: Boolean,
+		}
 	},
 
 	{ timestamps: true }

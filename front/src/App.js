@@ -29,7 +29,6 @@ import LoginPage from "./pages/loginCoach/LoginPage";
 import LoginDCoach from "./components/LoginFormCoach/LoginDCoach";
 import ProfilJoueurPage from "./pages/profilJoueurPage/ProfilJoueurPage";
 
-
 import InvitationPage from "./pages/invitationpage/InvitationPage";
 import PasswordForm from "./components/invitationform/passwordform";
 import CompetencePage from "./pages/competencepage/competencepage";

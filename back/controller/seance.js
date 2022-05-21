@@ -122,3 +122,95 @@ exports.findAllSeancePlayer = (req, res) => {
 			});
 		});
 };
+// annuler une séance créée par le coach par son ID (coach)
+exports.annulerSeance = (req, res) => {
+	const token = req.params.token;
+	try {
+	var decoded = jwt_decode(token);
+	} catch (error) {
+	res.send({
+		message: "Invalid token format",
+	});
+	return true;
+	}
+  
+	if (!req.body) {
+	return res.status(400).send({
+		message: "Data to update can not be empty!",
+	});
+	}
+	const id = req.params.id;
+  
+	if (decoded.role === "Coach") {
+	Seance.findOneAndUpdate(
+		{ _id: req.params.id, createdBy: decoded.user_id },
+		{
+		annuler: req.body.annuler,
+		},
+		{ useFindAndModify: false }
+	)
+		.then((data) => {
+		if (!data) {
+			res.status(404).send({
+			message: `Vous ne pouvez pas annuler cette seance avec id=${id}`,
+			});
+		} else res.send({ message: "Seance annulée" });
+		})
+		.catch((error) => {
+		res.status(500).send({
+			message: error+ "Error with id=" + id,
+		});
+		});
+	} else {
+	res.status(401).send({
+		message: "Unauthorized",
+	});
+	}
+};
+  
+  // annuler une séance créée par le coach par son ID (coach)
+  exports.feedBackSeance = (req, res) => {
+	const token = req.params.token;
+	try {
+	var decoded = jwt_decode(token);
+	} catch (error) {
+	res.send({
+		message: "Invalid token format",
+	});
+	return true;
+	}
+  
+	if (!req.body) {
+	return res.status(400).send({
+		message: "Data to update can not be empty!",
+	});
+	}
+	const id = req.params.id;
+  
+	if (decoded.role === "Coach") {
+	Seance.findOneAndUpdate(
+		{ _id: req.params.id, createdBy: decoded.user_id },
+		{
+	objectifAtteint: req.body.objectifAtteint,
+		feedback: req.body.feedback,
+		},
+		{ useFindAndModify: false }
+	)
+		.then((data) => {
+		if (!data) {
+			res.status(404).send({
+		message: `Vous ne pouvez pas donner un feedback dans cette seance avec id=${id}`,
+		});
+		} else res.send({ message: "Feedback ajouté" });
+		})
+		.catch(() => {
+		res.status(500).send({
+			message: "Error with id=" + id,
+		});
+		});
+	} else {
+	res.status(401).send({
+		message: "Unauthorized",
+	});
+	}
+  };

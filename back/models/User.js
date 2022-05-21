@@ -73,6 +73,7 @@ const userSchema = new Schema(
 		inviteNumber: {
 			type: Number,
 		},
+	
 	},
 	{ timestamps: true }
 );
