@@ -2,32 +2,42 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 
 export default function ModifierJoueur({
-	Nom,
-	Prenom,
+	nom,
+	prenom,
+	dateNaissance,
+	email,
+	telephone,
+	poids,taille,droit,IMC,abonnement,
 	Actif,
 	UpdateJoueur,
-	Competence,
+	Competences,
 	id,
 	Stat,
 	deleteJoueur,
 
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
-	const [NomtoUpdate, setNomtoUpdate] = useState(Nom);
-	const [PrenomtoUpdate, setPrenomtoUpdate] = useState(Prenom);
+	const [NomtoUpdate, setNomtoUpdate] = useState(nom);
+	const [PrenomtoUpdate, setPrenomtoUpdate] = useState(prenom);
 	const [ActiftoUpdate, setActiftoUpdate] = useState(Actif);
-	const [CompetencetoUpdate, setCompetencetoUpdate] = useState(Competence);
+	const [CompetencetoUpdate, setCompetencetoUpdate] = useState(Competences);
 	const [StattoUpdate, setStattoUpdate] = useState(Stat);
 
 	return (
 		<div className="ModifJoueur">
 			{!updateMode ? (
 				<>
-					<h1>Joueur {id}</h1>
-					<div className="Nom">Nom : {Nom}</div>
-					<div className="Prenom">Prenom : {Prenom} </div>
+					<h1>Joueur : {nom} {prenom} </h1>
+					<div className="Prenom">Date de naissance : {dateNaissance} </div>
+					<div className="Prenom">Email : {email} </div>
+					<div className="Prenom">Telephone : {telephone} </div>
+					<div className="Prenom">Poids : {poids} </div>
+					<div className="Prenom">Taille : {taille} </div>
+					<div className="Prenom">Droitier : {droit} </div>
+					<div className="Prenom">IMC : {IMC} </div>
+					<div className="Prenom">Abonnement : {abonnement} </div>
 					<div className="Actif">Actif : {Actif}</div>
-					<div className="Competence">Competence: {Competence}</div>
+					<div className="Competence">Competence: {Competences}</div>
 					<div className="Stat">Statistique: {Stat}</div>
 
 					<div className="actions">
@@ -46,7 +56,7 @@ export default function ModifierJoueur({
 						<input
 							type="text"
 							name="Nom"
-							value={Nom}
+							value={NomtoUpdate}
 							onChange={(e) => setNomtoUpdate(e.target.value)}
 						/>{" "}
 					</Label>
@@ -99,9 +109,9 @@ export default function ModifierJoueur({
 								Number(id),
 								NomtoUpdate,
 								PrenomtoUpdate,
-								ActiftoUpdate,
+								// ActiftoUpdate,
 								CompetencetoUpdate,
-								StattoUpdate
+								// StattoUpdate
 							);
 							setUpdateMode(false);
 						}}>

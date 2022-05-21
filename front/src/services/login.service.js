@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const API_URL = 'http://localhost:5000/api/coach/liste';
+
+const token = localStorage.getItem("token");
+
 export const login = async (email, password) => {
 	const input = {
 		email,
@@ -25,4 +29,11 @@ export const register = async (email, password, nom, prenom, dateNaissance) => {
 		input
 	);
 	return data;
+
+};
+
+export const listPlayers = async () => {
+	const result = await axios.get(`${API_URL}/${token}`);
+	console.log("fetched data = ", result);
+	return result.data;
 };

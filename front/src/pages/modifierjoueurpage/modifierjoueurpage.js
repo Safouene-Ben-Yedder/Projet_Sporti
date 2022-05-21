@@ -1,26 +1,12 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
 import ModifierJoueurList from "../../components/modifierjoueurlist/modifierjoueurlist";
+import { listPlayers } from "../../services/login.service";
 
 export default function ModifierJoueurPage() {
-	const [ModifierJoueur, setModifierJoueur] = useState([
-		{
-			id: 1,
-			Nom: "Foulen",
-			Prenom: "Foulen",
-			Actif: "Oui",
-			Competence: "Competence1",
-			Stat: "Stat1",
-		},
-		{
-			id: 2,
-			Nom: "Ben Foulen",
-			Prenom: "Foulen",
-			Actif: "Non",
-			Competence: "Competence2",
-			Stat: "Stat2",
-		},
-	]);
+	const [ModifierJoueur, setModifierJoueur] = useState([]);
+	const [loading, setLoading] = useState(false);
+	console.log(loading);
 	// function addModifierJoueur(Nom, Prenom, Actif, Competence, Stat) {
 	// 	setModifierJoueur([
 	// 		...ModifierJoueur,
@@ -34,6 +20,22 @@ export default function ModifierJoueurPage() {
 	// 		},
 	// 	]);
 	// }
+	useEffect(() => {
+		const listPlayer = async () => {
+			try {
+				console.log('h')
+				const res = await listPlayers();
+				setModifierJoueur(res);
+				setLoading(false);
+				console.log(res);
+			} catch (e) {
+				console.log(e.response);
+				setLoading(false);
+			}
+		};
+		listPlayer();
+	}, []);
+	
 	function UpdateJoueur(id, Nom, Prenom, Actif, Competence, Stat) {
 		const newModifierJoueur = ModifierJoueur.map((ModifierJoueur) =>
 			ModifierJoueur.id === id
