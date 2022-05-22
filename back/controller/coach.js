@@ -128,7 +128,24 @@ exports.playersList = (req, res) => {
 		});
 	}
 };
-
+// affichage un joueur d'un coach par ID
+module.exports.readPlayer = (req, res) => {
+	const token = req.params.token;
+	var decoded = jwt_decode(token);
+	if (decoded.role === "Coach") {
+		User.find({ _id: req.params.id })
+			.then((data) => res.json(data))
+			.catch((err) => {
+				res.status(500).send({
+					message: err.message || "Error",
+				});
+			});
+	} else {
+		res.status(401).send({
+			message: "Unauthorized",
+		});
+	}
+};
 // affichage du profil d'un coach
 exports.showProfile = (req, res) => {
 	const token = req.params.token;

@@ -1,23 +1,32 @@
+import React, { useEffect, useState } from "react"
 import { ListGroup, ListGroupItem } from "reactstrap";
+import { useParams } from "react-router-dom";
+import { readPlayer } from "../../services/login.service";
+
 export default function ProfilJoueur() {
-    const joueurs = [
-      {
-        nom: "Lazzem",
-        prenom: "Aya",
-        date: "14/08/1998",
-        email: "lazzemaya1@gmail.com",
-        poids: "56",
-        IMC: "21",
-        droitier:"oui",
-        taille:"162cm"
-      },
-    ];
+  const [loading, setLoading] = useState(true)
+    const [joueur, setJoueur] = useState({})
+    
+    const { id } = useParams();
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const result = await readPlayer(id);
+        console.log(result)
+        setJoueur(result[0]);
+        console.log(joueur);
+        setLoading(false);
+      };
+      fetchData();
+    }, [id]);
   
     return (
     <div>
-        
-        {joueurs.map((joueur) => (
-        <ListGroup>
+      {loading ? (
+        <div>Loading ... </div>
+      ) : (
+        <>
+          <ListGroup>
             <ListGroupItem>
               <div className="bold">Nom : {joueur.nom}</div> 
             </ListGroupItem>
@@ -25,7 +34,7 @@ export default function ProfilJoueur() {
               <div className="bold">Prénom : {joueur.prenom}</div> 
             </ListGroupItem>
             <ListGroupItem>
-              <div className="bold">Date de naissance : {joueur.date}</div> 
+              <div className="bold">Date de naissance : {joueur.dateNaissance}</div> 
             </ListGroupItem>
             <ListGroupItem>
               <div className="bold">email : {joueur.email}</div> 
@@ -37,14 +46,17 @@ export default function ProfilJoueur() {
               <div className="bold">IMC : {joueur.IMC}</div> 
             </ListGroupItem>
             <ListGroupItem>
-              <div className="bold">Droitier: {joueur.droitier}</div> 
+              <div className="bold">Droitier: {joueur.droit}</div> 
             </ListGroupItem>
             <ListGroupItem>
               <div className="bold">taille : {joueur.taille}</div> 
             </ListGroupItem>
            
         </ListGroup>
-        ))}
+        </>
+      )} 
+        
+       
         </div>
     );
   }
