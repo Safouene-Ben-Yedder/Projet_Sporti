@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Label } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 export default function ModifierJoueur({
 	nom,
@@ -47,6 +48,9 @@ export default function ModifierJoueur({
 						<Button color="danger" onClick={() => deleteJoueur(id)}>
 							Supprimer
 						</Button>
+						<Link to={`/profileJoueur/${id}`}>
+							aller au profil
+						</Link>
 					</div>
 				</>
 			) : (
