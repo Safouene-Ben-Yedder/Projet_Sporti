@@ -10,9 +10,10 @@ const competenceRoute = require("./routes/competence");
 const statRoute = require("./routes/stat");
 const authRoute = require("./routes/auth");
 const lieuEntrainementRoute = require("./routes/lieuEntrainement");
+const eventRoute = require("./routes/event");
+
 const seanceRoute = require("./routes/seance");
 const defiRoute = require("./routes/defi");
-const eventRoute = require("./routes/event");
 const disciplineRoute = require("./routes/discipline");
 const alerteRoute = require("./routes/alerte");
 const InvitationRoute = require("./routes/invitation");
@@ -56,6 +57,8 @@ app.use(cors(corsOptions));
 app.use("/api/competence", competenceRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/lieu", lieuEntrainementRoute);
+app.use("/api/event", eventRoute);
+
 app.use("/api/stat", statRoute);
 app.use("/api/seance", seanceRoute);
 app.use("/api/defi", defiRoute);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button, Checkbox } from "reactstrap";
 //import { Link } from "react-router-dom";
 import "./eventform.css";
@@ -7,11 +7,14 @@ export default function EventForm(props) {
 	const [nom, setNom] = useState("");
 	const [description, setDescription] = useState("");
 	const [date, setDate] = useState("");
-	const [publique, setPublique] = useState("");
+	const [publique, setPublique] = useState(false);
 
 	function handleAddEvent() {
 		props.addEvent(nom, description, date, publique);
 	}
+	useEffect(() => {
+		console.log(publique);
+	}, [publique]);
 	return (
 		<>
 			<Form className="ajout">
@@ -49,7 +52,7 @@ export default function EventForm(props) {
 						name="publique"
 						id=""
 						value={publique}
-						onChange={(e) => setPublique(e.target.value)}></Input>
+						onChange={() => setPublique(!publique)}></Input>
 				</FormGroup>
 
 				<Button color="success" type="button" onClick={handleAddEvent}>

@@ -1,4 +1,15 @@
 const router = require("express").Router();
+const event = require("../controller/event");
+
+router.post("/:token", event.create);
+router.put("/update/:token/:id", event.update);
+router.get("/findAll/:token/", event.findAll);
+router.delete("/delete/:token/:id", event.delete);
+router.get("/find/:token/:id", event.find);
+
+module.exports = router;
+
+/*const router = require("express").Router();
 const event = require("../models/event");
 
 //CREATE  Event
@@ -44,4 +55,4 @@ router.get("/:id", async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-module.exports = router;
+module.exports = router;  */

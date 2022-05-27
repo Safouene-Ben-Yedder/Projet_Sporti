@@ -1,4 +1,15 @@
 const router = require("express").Router();
+const defi = require("../controller/defi");
+
+router.post("/:token", defi.create);
+router.put("/update/:token/:id", defi.update);
+router.get("/findAll/:token/", defi.findAll);
+router.delete("/delete/:token/:id", defi.delete);
+router.get("/find/:token/:id", defi.find);
+
+module.exports = router;
+
+/* const router = require("express").Router();
 const defi = require("../models/defi");
 
 //CREATE  Defi
@@ -45,3 +56,4 @@ router.get("/:id", async (req, res) => {
 	}
 });
 module.exports = router;
+*/

@@ -19,8 +19,11 @@ const eventSchema = new mongoose.Schema(
 			type: Boolean,
 			required: true,
 		},
+		createdBy: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+		},
 	},
-
 	{ timestamps: true }
 );
 module.exports = mongoose.model("event", eventSchema);

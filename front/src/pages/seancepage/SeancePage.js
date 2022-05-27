@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
-import { Form, FormGroup, Label,Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export default function SeancePage() {
 	const [seances, setSeances] = useState([
@@ -98,7 +98,7 @@ export default function SeancePage() {
 						competence,
 						objectif,
 						statistique,
-				}
+				  }
 				: seance
 		);
 		setSeances(newSeances);
@@ -158,8 +158,8 @@ export default function SeancePage() {
 						)}
 					</>
 				)}
-					{Visible && (
-						<>
+				{Visible && (
+					<>
 						{!FeedBack ? (
 							<>
 								<Form>
@@ -190,15 +190,14 @@ export default function SeancePage() {
 										</Button>
 									</FormGroup>
 								</Form>
-								
 							</>
-							) : (
+						) : (
 							<>
 								<h5>Réponse envoyée!</h5>
 							</>
-							)}
+						)}
 					</>
-					)}
+				)}
 			</>
 		</div>
 	);

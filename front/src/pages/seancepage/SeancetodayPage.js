@@ -9,7 +9,7 @@ export default function SeancetodayPage() {
 			titre: "Séance YOGA",
 			joueur: "Ali",
 			horaire: 17,
-			date: "2022-04-10",
+			date: "2022-05-27",
 			lieu: "Vicking bardo",
 			competence: "30 secondes",
 			objectif: "Améliorer les performances",

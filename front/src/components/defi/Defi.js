@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Label, Button, Input } from "reactstrap";
 import "./defi.css";
 export default function Defi({
-
 	nom,
 	description,
 	objectif,
@@ -18,56 +17,53 @@ export default function Defi({
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
 	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
-	
+
 	return (
 		<div className="defi">
 			{!updateMode ? (
 				<>
 					{!doneMode ? (
-					<div>
-				
-						<div className="nom">{nom}</div>
-						<div className="description">{description}</div>
-						{objectif}
-						{lienVideo}
-						<div className="actions">
-							<Button color="primary" onClick={() => setUpdateMode(true)}>
-								Modifier
-							</Button>
-							<Button color="danger" onClick={() => deleteDefi(id)}>
-								Supprimer
-							</Button>
-							<Button color="success" onClick={() =>assigner()}>
-								Assigner défi
-							</Button>
-							<Button color="warning" onClick={() =>setDoneMode(true)}>
-								Done
-							</Button>
-						</div>
-					</div>
-					):(
 						<div>
-				
-						<div className="nom">{nom}</div>
-						<div className="description">{description}</div>
-						{objectif}
-						{lienVideo}
-						<div className="actions">
-							<Button color="primary" onClick={() => setUpdateMode(true)}>
-								Modifier
-							</Button>
-							<Button color="danger" onClick={() => deleteDefi(id)}>
-								Supprimer
-							</Button>
-							<Button color="success" onClick={() =>assigner()}>
-								Assigner défi
-							</Button>
-							<Input value="DONE" valid disabled/>
+							<div className="nom">{nom}</div>
+							<div className="description">{description}</div>
+							{objectif}
+							{lienVideo}
+							<div className="actions">
+								<Button color="primary" onClick={() => setUpdateMode(true)}>
+									Modifier
+								</Button>
+								<Button color="danger" onClick={() => deleteDefi(id)}>
+									Supprimer
+								</Button>
+								<Button color="success" onClick={() => assigner()}>
+									Assigner défi
+								</Button>
+								<Button color="warning" onClick={() => setDoneMode(true)}>
+									Done
+								</Button>
+							</div>
 						</div>
-					</div>
+					) : (
+						<div>
+							<div className="nom">{nom}</div>
+							<div className="description">{description}</div>
+							{objectif}
+							{lienVideo}
+							<div className="actions">
+								<Button color="primary" onClick={() => setUpdateMode(true)}>
+									Modifier
+								</Button>
+								<Button color="danger" onClick={() => deleteDefi(id)}>
+									Supprimer
+								</Button>
+								<Button color="success" onClick={() => assigner()}>
+									Assigner défi
+								</Button>
+								<Input value="DONE" valid disabled />
+							</div>
+						</div>
 					)}
-				</>			
-				
+				</>
 			) : (
 				<div>
 					<Label>
@@ -116,7 +112,8 @@ export default function Defi({
 						type="button"
 						onClick={() => {
 							UpdateDefi(
-								Number(id),
+								//Number(id),
+								id,
 								NomtoUpdate,
 								descriptiontoUpdate,
 								objectiftoUpdate,
@@ -129,6 +126,5 @@ export default function Defi({
 				</div>
 			)}
 		</div>
-		
 	);
 }
