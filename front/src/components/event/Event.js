@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./event.css";
 export default function Event({
-	key,
+	//key,
 	nom,
 	description,
 	publique,
@@ -10,7 +10,8 @@ export default function Event({
 	UpdateEvent,
 	id,
 	deleteEvent,
-	props,
+	setLoading,
+	//props,
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [NomtoUpdate, setNomtoUpdate] = useState(nom);
@@ -19,7 +20,7 @@ export default function Event({
 	const [datetoUpdate, setDatetoUpdate] = useState(date);
 
 	return (
-		<div className="event">
+		<div className="event" key={id}>
 			{!updateMode ? (
 				<>
 					<div className="nom">{nom}</div>
@@ -73,7 +74,10 @@ export default function Event({
 							type="date"
 							name="event"
 							value={datetoUpdate}
-							onChange={(e) => setDatetoUpdate(e.target.value)}
+							onChange={(e) => {
+								setDatetoUpdate(e.target.value);
+								setLoading(true);
+							}}
 						/>{" "}
 					</Label>
 
@@ -82,11 +86,13 @@ export default function Event({
 						type="button"
 						onClick={() => {
 							UpdateEvent(
-								Number(id),
+								// Number(id),
+								id,
 								NomtoUpdate,
 								descriptiontoUpdate,
-								publiquetoUpdate,
-								datetoUpdate
+
+								datetoUpdate,
+								publiquetoUpdate
 							);
 							setUpdateMode(false);
 						}}>

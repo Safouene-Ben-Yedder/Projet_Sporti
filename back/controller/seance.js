@@ -1,5 +1,50 @@
 const Seance = require("../models/seance");
 const jwt_decode = require("jwt-decode");
+
+//CREATE Seance
+exports.create = (req, res) => {
+	const token = req.params.token;
+
+	try {
+		var decoded = jwt_decode(token);
+	} catch (error) {
+		res.send({
+			message: "Invalid token format",
+		});
+		return true;
+	}
+	console.log("ajout ...");
+	if (decoded.role === "Coach") {
+		const seance = new Seance({
+			titre: req.body.titre,
+			date: req.body.date,
+			description: req.body.description,
+			joueur: req.body.joueur,
+			objectif: req.body.objectif,
+			lieuentrainements: req.body.lieuentrainements,
+			programmeSeances: req.body.programmeSeances,
+			competences: req.body.competences,
+			stats: req.body.stats,
+			createdBy: decoded.user_id,
+		});
+
+		seance
+			.save()
+			.then((data) => {
+				res.send(data);
+			})
+			.catch((err) => {
+				res.status(500).send({
+					message: err.message || "Error",
+				});
+			});
+	} else {
+		res.status(401).send({
+			message: "Unauthorized",
+		});
+	}
+};
+
 // modifier une séance créée par le coach par son ID (coach)
 exports.update = (req, res) => {
 	const token = req.params.token;
@@ -23,12 +68,16 @@ exports.update = (req, res) => {
 		Seance.findOneAndUpdate(
 			{ _id: req.params.id, createdBy: decoded.user_id },
 			{
-				nom: req.body.nom,
+				titre: req.body.titre,
 				date: req.body.date,
 				description: req.body.description,
 				joueur: req.body.joueur,
 				objectif: req.body.objectif,
+				lieuentrainements: req.body.lieuentrainements,
 				programmeSeances: req.body.programmeSeances,
+				competences: req.body.competences,
+				stats: req.body.stats,
+				createdBy: decoded.user_id,
 			},
 			{ useFindAndModify: false }
 		)
@@ -104,6 +153,8 @@ exports.findAllSeancePlayer = (req, res) => {
 		});
 		return true;
 	}
+
+	console.log("Seance find all");
 	Seance.find({ joueur: decoded.user_id });
 	var total = Seance.count();
 	Seance.find()

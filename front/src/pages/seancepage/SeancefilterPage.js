@@ -10,7 +10,6 @@ export default function SeancefilterPage() {
 		"date",
 		"lieu",
 	]);
-	      
 
 	const [seances] = useState([
 		{
