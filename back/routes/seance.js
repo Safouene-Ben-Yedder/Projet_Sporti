@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const Seance = require("../controller/seance");
-const seance = require("../models/seance");
-var nodemailer = require("nodemailer");
-const User = require("../models/User");
-const cron = require("node-cron");
+// const seance = require("../models/seance");
+// var nodemailer = require("nodemailer");
+// const User = require("../models/User");
+// const cron = require("node-cron");
 router.put("/update/:token/:id", Seance.update);
 router.get("/today/:token", Seance.findSeanceNowPlayer);
 router.get("/all/:token", Seance.findAllSeancePlayer);
 router.get("/detail/:token/:id", Seance.findSeancePlayer);
-
+/*
 var transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
@@ -16,8 +16,10 @@ var transporter = nodemailer.createTransport({
 		pass: "ProjetSporti9-",
 	},
 });
+
+
 //CREATE  séance
-router.post("/", async (req, res) => {
+router.post("/:token", async (req, res) => {
 	const newSeance = new seance(req.body);
 	try {
 		const savedSeance = await newSeance.save();
@@ -25,11 +27,12 @@ router.post("/", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
-
+	console.log("Ajout seance");
 	const joueur = await User.findById(req.body.prenom);
 	var mailOptions = {
 		from: "Sporti",
-		to: joueur.email,
+		to: req.body.email,
+
 		subject: "Sport",
 		text: ` vous avez une séance de sport demain  à  ${req.body.horaire} `,
 	};
@@ -78,5 +81,6 @@ router.get("/:id", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
-});
+});*/
+
 module.exports = router;

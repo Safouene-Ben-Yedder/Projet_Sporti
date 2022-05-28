@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
 import SeanceList from "../../components/seancelist/SeanceList";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+	postSeance,
+	fetchSeance,
+	updateSeance,
+	deleteSeance,
+} from "../../services/seance.service";
 
 export default function SeancePage() {
-	const [seances, setSeances] = useState([
+	/*	const [seances, setSeances] = useState([
 		{
 			id: 1,
 			titre: "Séance YOGA",
@@ -42,7 +48,8 @@ export default function SeancePage() {
 		// 	statistique: "100 mètres",
 		// 	progseance: "Programme 1",
 		// },
-	]);
+	]); */
+
 	const [isVisible, setIsVisible] = useState(false);
 	const [Visible, setVisible] = useState(false);
 	const [updateMode, setUpdateMode] = useState(false);
@@ -50,15 +57,115 @@ export default function SeancePage() {
 	const [raison, setRaison] = useState("");
 	const [feed, setFeed] = useState("");
 	const [obj, setObj] = useState("");
-	function addSeance(
+
+	const [seances, setSeances] = useState([]);
+	const [loading, setLoading] = useState(true);
+	// console.log(loading);
+
+	useEffect(() => {
+		const fetchSeances = async () => {
+			if (loading) {
+				try {
+					const res = await fetchSeance();
+
+					setSeances(res);
+					setLoading(false);
+					// console.log(res);
+				} catch (e) {
+					setLoading(false);
+				}
+			}
+		};
+
+		fetchSeances();
+	}, [seances]);
+
+	const addSeances = async (
 		titre,
-		joueur,
-		horaire,
+		description,
 		date,
-		lieu,
-		competence,
+		joueur,
 		objectif,
+		lieuentrainements,
+		programmeSeances,
+		competences,
+		stats
+	) => {
+		const newSeance = await postSeance({
+			titre,
+			description,
+			date,
+			joueur,
+			objectif,
+			lieuentrainements,
+			programmeSeances,
+			competences,
+			stats,
+		});
+		setSeances((Seance) => [...Seance, { ...newSeance }]);
+	};
+	const UpdateSeances = async (
+		id,
+		titre,
+		description,
+		date,
+		joueur,
+		objectif,
+		lieuentrainements,
+		programmeSeances,
+		competences,
+		stats
+	) => {
+		await updateSeance(
+			id,
+			titre,
+			description,
+			date,
+			joueur,
+			objectif,
+			lieuentrainements,
+			programmeSeances,
+			competences,
+			stats
+		);
+		const newSeance = seances.map((Seance) =>
+			Seance.id === id
+				? {
+						id,
+						titre,
+						date,
+						description,
+						joueur,
+						objectif,
+						lieuentrainements,
+						programmeSeances,
+						competences,
+						stats,
+				  }
+				: Seance
+		);
+		setSeances(newSeance);
+	};
+
+	const deleteSeances = async (id) => {
+		await deleteSeance(id);
+		const newSeance = seances.filter((Seance) => Seance._id !== id);
+		setSeances(newSeance);
+		//	setLoading(true);
+	};
+
+	/* function addSeance(
+		titre,
+		description,
+		date,
+		objectif,
+		competence,
 		statistique
+		lieu,
+		joueur,
+		competences,
+	
+		
 	) {
 		setSeances([
 			...seances,
@@ -111,19 +218,26 @@ export default function SeancePage() {
 	};
 	function deleteSeance(id) {
 		setSeances(seances.filter((index) => index.id !== id));
-	}
+	} */
+
+	const supp = () => {
+		setIsVisible(!isVisible);
+	};
+	const avis = () => {
+		setVisible(!isVisible);
+	};
 	return (
 		<div className="App">
 			<>
 				<Heading />
 				<h2> Ajouter une séance</h2>
-				<SeanceForm addSeance={addSeance} />
+				<SeanceForm addSeance={addSeances} />
 				<hr></hr>
 				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
-					deleteSeance={deleteSeance}
-					UpdateSeance={UpdateSeance}
+					deleteSeance={deleteSeances}
+					UpdateSeance={UpdateSeances}
 					supp={supp}
 					avis={avis}
 				/>

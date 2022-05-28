@@ -61,7 +61,7 @@ export default function EventPage() {
 
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(true);
-	console.log(loading);
+	// console.log(loading);
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -71,7 +71,7 @@ export default function EventPage() {
 
 					setEvents(res);
 					setLoading(false);
-					console.log(res);
+					// console.log(res);
 				} catch (e) {
 					setLoading(false);
 				}
@@ -97,7 +97,7 @@ export default function EventPage() {
 		await deleteEvent(id);
 		const newEvent = events.filter((Event) => Event._id !== id);
 		setEvents(newEvent);
-	//	setLoading(true);
+		//	setLoading(true);
 	};
 
 	return (

@@ -2,17 +2,18 @@ import { useState } from "react";
 import { Button, Label } from "reactstrap";
 import "./seance.css";
 export default function Seance({
+	id,
 	titre,
-	joueur,
-	horaire,
+	description,
 	date,
+	joueur,
+	objectif,
 	lieu,
-	UpdateSeance,
+	progseance,
 	competence,
 	statistique,
-	objectif,
-	progseance,
-	id,
+	UpdateSeance,
+
 	deleteSeance,
 	supp,
 	avis,
@@ -20,7 +21,7 @@ export default function Seance({
 	const [updateMode, setUpdateMode] = useState(false);
 	const [TitletoUpdate, setTitletoUpdate] = useState(titre);
 	const [joueurtoUpdate, setJoueurToUpdate] = useState(joueur);
-	const [horairetoUpdate, setHorairetoUpdate] = useState(horaire);
+	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [datetoUpdate, setDatetoUpdate] = useState(date);
 	const [lieutoUpdate, setLieutoUpdate] = useState(lieu);
 	const [competencetoUpdate, setCompetencetoUpdate] = useState(competence);
@@ -34,7 +35,7 @@ export default function Seance({
 				<>
 					<div className="titre">{titre}</div>
 					<div className="joueur">{joueur}</div>
-					<div className="horaire">{horaire}</div>
+					<div className="description">{description}</div>
 					<div>{date} </div>
 					<div> {lieu} </div>
 					<div> {competence} </div>
@@ -54,11 +55,7 @@ export default function Seance({
 							}}>
 							Annuler
 						</Button>
-						<Button
-							color="success"
-							onClick={() => 
-								avis()
-							}>
+						<Button color="success" onClick={() => avis()}>
 							Donner FeedBack
 						</Button>
 					</div>
@@ -86,12 +83,12 @@ export default function Seance({
 					</Label>
 					<Label>
 						{" "}
-						horaire
+						description
 						<input
 							type="time"
 							name="Seance"
-							value={horairetoUpdate}
-							onChange={(e) => setHorairetoUpdate(e.target.value)}
+							value={descriptiontoUpdate}
+							onChange={(e) => setDescriptiontoUpdate(e.target.value)}
 						/>
 					</Label>
 					<Label>
@@ -160,10 +157,10 @@ export default function Seance({
 						type="button"
 						onClick={() => {
 							UpdateSeance(
-								Number(id),
+								id,
 								TitletoUpdate,
 								joueurtoUpdate,
-								horairetoUpdate,
+								descriptiontoUpdate,
 								datetoUpdate,
 								lieutoUpdate,
 								competencetoUpdate,
