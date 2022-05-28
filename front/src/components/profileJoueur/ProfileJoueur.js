@@ -51,6 +51,9 @@ export default function ProfilJoueur() {
             <ListGroupItem>
               <div className="bold">taille : {joueur.taille}</div> 
             </ListGroupItem>
+            <ListGroupItem>
+              <div className="bold">Competences : {joueur.competences}</div> 
+            </ListGroupItem>
            
         </ListGroup>
         </>

@@ -77,6 +77,11 @@ const userSchema = new Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
+		firstLogin: {
+			type: Boolean,
+			default:true,
+		},
+
 	},
 	{ timestamps: true }
 );
