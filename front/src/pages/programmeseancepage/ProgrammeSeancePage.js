@@ -27,7 +27,7 @@ export default function ProgrammeSeancePage() {
 			}
 		};
 		fetchProgrammes();
-	}, []);
+	}, [programmesSeance]);
 
 	const addProgSeance = async (
 		titre,
