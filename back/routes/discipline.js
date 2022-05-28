@@ -43,4 +43,14 @@ router.get("/:id", async (req, res) => {
 		res.status(500).json(err);
 	}
 });
+
+//fetch
+router.get("/", async (req, res) => {
+	try {
+		const MyDiscipline = await discipline.find();
+		res.status(200).json(MyDiscipline);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 module.exports = router;

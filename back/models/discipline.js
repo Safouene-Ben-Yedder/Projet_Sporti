@@ -6,12 +6,6 @@ const disciplineSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		statistiques: [
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "stat",
-			},
-		],
 	},
 	{ timestamps: true }
 );

@@ -214,6 +214,21 @@ exports.abonnement = (req, res) => {
 		});
 	}
 };
+
+exports.update = ( async (req, res) => {
+	try {
+		const updatedDiscipline = await User.findByIdAndUpdate(
+			req.params.id,
+			{
+				$set: req.body,
+			},
+			{ new: true }
+		);
+		res.status(200).json(updatedDiscipline);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 // exports.updateAbonnement = async (req, res, next) => {
 // 	const { abonnement } = req.body;
 // 	if (!abonnement) {

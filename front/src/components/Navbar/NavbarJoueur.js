@@ -5,7 +5,7 @@ import { Navbar,NavItem, NavbarBrand } from "reactstrap";
 export const NavbarJoueur = () => {
 	return (
 		<Navbar color="dark" dark>
-			<NavbarBrand href="/profileJoueur">Profil</NavbarBrand>
+			<NavbarBrand href="/modifier">Liste joueur</NavbarBrand>
             <NavbarBrand href="/Competence">Competence</NavbarBrand>
             <NavbarBrand href="/Stat">statistique</NavbarBrand>
             <NavbarBrand href="/">Alerte</NavbarBrand>

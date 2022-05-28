@@ -8,7 +8,7 @@ const LoginPage = () => {
       email: '',
       password: '',
    });
-
+   
    const { email, password } = values;
 
    const handleChange = (email) => (e) => {
@@ -31,7 +31,10 @@ const LoginPage = () => {
          });
          localStorage.setItem('isCoach', true);
          // navigate('/');
+         // if (localStorage.getItem('firstLogin') == true)
          window.location = '/loginD';
+         // else
+         // window.location = '/modifier';
       } catch (err) {
          console.error(err.message);
          console.log('login failed!');
