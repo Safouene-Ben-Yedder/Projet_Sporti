@@ -35,7 +35,7 @@ export const PaiementForm = () => {
 			console.log(res);
 			setIsSubmit(true);
 			// redirection vers register joueur
-			window.location = "/register-joueur";
+			window.location = "/invitation";
 		} catch (err) {
 			console.error(err.message);
 			console.log("abonnement failed!");
@@ -99,9 +99,11 @@ export const PaiementForm = () => {
 
 				<h4> Vous avez choisi {abonnement} Passer à l'étape suivante </h4>
 
-				<Button type="submit">Passer</Button>
+				<Button name="btn-paiement" type="submit">
+					Passer
+				</Button>
 				<div div>
-					<Link className="link" to="/register-joueur">
+					<Link className="link" to="/paiement">
 						suivante
 					</Link>
 				</div>

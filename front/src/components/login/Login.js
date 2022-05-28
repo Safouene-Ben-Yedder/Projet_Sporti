@@ -9,6 +9,7 @@ export const Login = () => {
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
 	const [isSubmit, setIsSubmit] = useState(false);
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormValues({ ...formValues, [name]: value });
@@ -16,10 +17,16 @@ export const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setTimeout(async () => {
-			await login(formValues).then(
+			await login(formValues.email, formValues.password).then(
 				(res) => {
+					console.log(res);
 					setFormErrors(res);
-					// window.location.reload("/login-joueur");
+					localStorage.removeItem("token");
+					localStorage.setItem("isCoach", false);
+					localStorage.setItem("token", res.data.token);
+					localStorage.setItem("isJoueur", true);
+					// navigate('/');
+					window.location = "/espace-seance-joueur";
 				},
 				(e) => {
 					const resMessage =
@@ -41,27 +48,20 @@ export const Login = () => {
 	return (
 		<>
 			{Object.keys(formErrors).length === 0 && isSubmit && (
-				<div className="ui message success">Sign in successfully</div>
+				<div className="ui message success">Sign up successfully</div>
 			)}
 			<Form className="form" onSubmit={handleSubmit}>
 				<FormGroup>
 					<p></p>
 
 					<Label> Email </Label>
-					<Input
-						type="text"
-						name="email"
-						value={formValues.email}
-						onChange={handleChange}></Input>
+					<Input type="text" name="email" onChange={handleChange}></Input>
 				</FormGroup>
 				<FormGroup>
-					<p>{formErrors.password}</p>
-
 					<Label> password </Label>
 					<Input
 						type="password"
 						name="password"
-						value={formValues.password}
 						onChange={handleChange}></Input>
 				</FormGroup>
 				<Button type="submit">Login</Button>

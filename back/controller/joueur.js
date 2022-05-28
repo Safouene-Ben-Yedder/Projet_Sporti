@@ -72,12 +72,10 @@ exports.register = async (req, res) => {
 				nom: user.nom,
 				prenom: user.prenom,
 				dateNaissance: user.dateNaissance,
-
 				telephone: user.telephone,
 				poids: user.poids,
 				taille: user.taille,
 				IMC: user.IMC,
-
 				firstAuth: "true",
 				role: user.role,
 				coach: user.coach,
@@ -123,7 +121,6 @@ exports.login = async (req, res) => {
 					nom: user.nom,
 					prenom: user.prenom,
 					dateNaissance: user.dateNaissance,
-
 					telephone: user.telephone,
 					poids: user.poids,
 					taille: user.taille,

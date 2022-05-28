@@ -79,7 +79,6 @@ app.use("/api/coach/programme", findProgrammeSeance);
 app.use("/api/coach/programme", findAllProgrammeSeance);
 app.use("/api/coach/programme", updateProgrammeSeance);
 app.use("/api/coach/programme", deleteProgrammeSeance);
-
 app.listen(PORT, () => {
 	console.log(`Server listening on ${PORT}`);
 });
