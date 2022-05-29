@@ -175,7 +175,7 @@ export default function SeancefilterPage() {
 							<input
 								type="checkbox"
 								checked={searchColumns.includes(column)}
-								onChange={(e) => {
+								onChange={() => {
 									const checked = searchColumns.includes(column);
 									setSearchColumns((prev) =>
 										checked
