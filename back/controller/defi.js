@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 
 //fetch defi
 exports.findAll = (req, res) => {
-	console.log(" lenna ");
 	const token = req.params.token;
 	try {
 		var decoded = jwt_decode(token);
