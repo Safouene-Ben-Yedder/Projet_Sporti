@@ -21,34 +21,34 @@ describe("defi test", () => {
 		const lien = "lien";
 		cy.visit("http://localhost:3000/defi-page");
 
-		cy.get("#nomDefi").type(nom);
+		cy.get("#nomDefi").type(nom, { force: true });
 		// cy.wait(1000);
-		cy.get("#descDefi").type(desc);
+		cy.get("#descDefi").type(desc, { force: true });
 		// cy.wait(1000);
-		cy.get("#objdefi").type(obj);
+		cy.get("#objdefi").type(obj, { force: true });
 		// cy.wait(1000);
-		cy.get("#lienDefi").type(lien);
+		cy.get("#lienDefi").type(lien, { force: true });
 		// cy.wait(1000);
 
 		cy.get(".ajout > .btn");
 
 		// update defi
-		// cy.wait(1000);
-		// cy.get(":nth-child(1) > :nth-child(1) > .actions > .btn-primary");
+		cy.wait(1000);
+		cy.get(":nth-child(1) > :nth-child(1) > .actions > .btn-primary");
 
-		// cy.get(".defi > :nth-child(1) > :nth-child(2) > input")
-		// 	.clear()
-		// 	.type("test2");
-		// cy.wait(1000);
-		// cy.get(".defi > :nth-child(1) > :nth-child(3) > input")
-		// 	.clear()
-		// 	.type("lien2");
-		// cy.wait(1000);
-		// cy.get(":nth-child(1) > :nth-child(4) > select").select("Non");
-		// cy.wait(1000);
-		// cy.get(":nth-child(1) > div > :nth-child(1) > .star").click();
-		// cy.wait(1000);
-		// cy.get(":nth-child(1) > .btn").click();
+		cy.get(".defi > :nth-child(1) > :nth-child(2) > input")
+			.clear()
+			.type("test2");
+		cy.wait(1000);
+		cy.get(".defi > :nth-child(1) > :nth-child(3) > input")
+			.clear()
+			.type("lien2");
+		cy.wait(1000);
+		cy.get(":nth-child(1) > :nth-child(4) > select").select("Non");
+		cy.wait(1000);
+		cy.get(":nth-child(1) > div > :nth-child(1) > .star").click();
+		cy.wait(1000);
+		cy.get(":nth-child(1) > .btn").click();
 
 		//delete
 		cy.wait(2000);

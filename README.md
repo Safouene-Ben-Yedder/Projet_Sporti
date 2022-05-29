@@ -21,12 +21,12 @@ s'authentifier avec ( exemple )
     password =Test1234* 
 
 Naviguer selon les url suivants :
-http://localhost:3000/login-joueur
-http://localhost:3000/paiement
-http://localhost:3000/eventdetails
-http://localhost:3000/eventliste-page
-http://localhost:3000/profileJoueur/6288c35182ae1fc85e5ba07a
-http://localhost:3000/profileJoueur/espace-seance-joueur
+login : http://localhost:3000/login-joueur
+paiement : http://localhost:3000/paiement
+eventdetails : http://localhost:3000/eventdetails
+eventliste-page : http://localhost:3000/eventliste-page
+profileJoueur : http://localhost:3000/profileJoueur/6288c35182ae1fc85e5ba07a
+profileJoueur/espace-seance-joueur : http://localhost:3000/profileJoueur/espace-seance-joueur
 
 
 
@@ -37,17 +37,17 @@ s'authentifier avec ( exemple )
     password = 12345678a*A 
 
 Naviguer selon les url suivants :
-http://localhost:3000/auth-coach
-http://localhost:3000/register-page
-http://localhost:3000/event-page
-http://localhost:3000/defi-page
-http://localhost:3000/seance-page
-http://localhost:3000/seancefilter-page
-http://localhost:3000/seancetoday-page
-http://localhost:3000/Competence
-http://localhost:3000/prog-page
-http://localhost:3000/lieu-page
-http://localhost:3000/invitation
-http://localhost:3000/Stat
-http://localhost:3000/Modifier
+Login Coach : http://localhost:3000/auth-coach
+register-page : http://localhost:3000/register-page
+event-page : http://localhost:3000/event-page
+defi-page : http://localhost:3000/defi-page
+seance-page : http://localhost:3000/seance-page
+seancefilter-page : http://localhost:3000/seancefilter-page
+seancetoday-page : http://localhost:3000/seancetoday-page
+Competence : http://localhost:3000/Competence
+prog-page : http://localhost:3000/prog-page
+lieu-page : http://localhost:3000/lieu-page
+invitation : http://localhost:3000/invitation
+Stat : http://localhost:3000/Stat
+Modifier : http://localhost:3000/Modifier
 
