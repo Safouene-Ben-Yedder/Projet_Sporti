@@ -23,7 +23,7 @@ export default function EventForm(props) {
 					<Input
 						type="text"
 						name="programme"
-						id=""
+						id="nomevent"
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
@@ -32,7 +32,7 @@ export default function EventForm(props) {
 					<Input
 						type="text"
 						name="description"
-						id=""
+						id="descevent"
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
@@ -41,7 +41,7 @@ export default function EventForm(props) {
 					<Input
 						type="date"
 						name="date"
-						id=""
+						id="dateevent"
 						value={date}
 						onChange={(e) => setDate(e.target.value)}></Input>
 				</FormGroup>
@@ -50,7 +50,7 @@ export default function EventForm(props) {
 					<Input
 						type="checkbox"
 						name="publique"
-						id=""
+						id="publiqueevent"
 						value={publique}
 						onChange={() => setPublique(!publique)}></Input>
 				</FormGroup>

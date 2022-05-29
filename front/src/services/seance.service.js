@@ -29,8 +29,6 @@ export const updateSeance = async (
 	competences,
 	stats
 ) => {
-	
-
 	const result = await axios.put(`${API_URL}update/${token}/${id}`, {
 		titre,
 		description,
@@ -43,8 +41,6 @@ export const updateSeance = async (
 		stats,
 	});
 
-	console.log(result.data);
-	console.log("dddd");
 	return result.data;
 };
 
