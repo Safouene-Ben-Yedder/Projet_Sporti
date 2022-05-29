@@ -20,7 +20,7 @@ export default function DefiForm(props) {
 					<Input
 						type="text"
 						name="programme"
-						id=""
+						id="nomDefi"
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
@@ -29,7 +29,7 @@ export default function DefiForm(props) {
 					<Input
 						type="text"
 						name="description"
-						id=""
+						id="descDefi"
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
@@ -38,7 +38,7 @@ export default function DefiForm(props) {
 					<Input
 						type="text"
 						name="objectif"
-						id=""
+						id="objDefi"
 						value={objectif}
 						onChange={(e) => setObjectif(e.target.value)}></Input>
 				</FormGroup>
@@ -48,7 +48,7 @@ export default function DefiForm(props) {
 					<Input
 						type="text"
 						name="lienVideo"
-						id=""
+						id="lienDefi"
 						value={lienVideo}
 						onChange={(e) => setLienVideo(e.target.value)}></Input>
 				</FormGroup>

@@ -1,5 +1,5 @@
-import { useState , useEffect} from "react";
-import { NavbarJoueur} from "../../components/Navbar/NavbarJoueur";
+import { useState, useEffect } from "react";
+import { NavbarJoueur } from "../../components/Navbar/NavbarJoueur";
 import ModifierJoueurList from "../../components/modifierjoueurlist/modifierjoueurlist";
 import { listPlayers } from "../../services/login.service";
 
@@ -23,7 +23,6 @@ export default function ModifierJoueurPage() {
 	useEffect(() => {
 		const listPlayer = async () => {
 			try {
-				console.log('h')
 				const res = await listPlayers();
 				setModifierJoueur(res);
 				setLoading(false);
@@ -35,7 +34,7 @@ export default function ModifierJoueurPage() {
 		};
 		listPlayer();
 	}, []);
-	
+
 	function UpdateJoueur(id, Nom, Prenom, Actif, Competence, Stat) {
 		const newModifierJoueur = ModifierJoueur.map((ModifierJoueur) =>
 			ModifierJoueur.id === id
