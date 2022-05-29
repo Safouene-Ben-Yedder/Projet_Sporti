@@ -50,24 +50,32 @@ const RegisterPage = () => {
 					  style={{ backgroundColor: 'white' }}>
 					  <form>
 						 <SignupForm
+						 	id="nomC"
 							label='First Name'
+							placeholder='First Name'
 							type='text'
 							value={nom}
 							onChange={handleChange('nom')}
 						 />
 						 <SignupForm
+							id="prenomC"
+							placeholder='Last Name'
 							label='Last Name'
 							type='text'
 							value={prenom}
 							onChange={handleChange('prenom')}
 						 />
 						 <SignupForm
+						 	id="emailC"
+							placeholder='email'
 							label='email'
 							type='email'
 							value={email}
 							onChange={handleChange('email')}
 						 />
 						 <SignupForm
+						 	id="passC"
+							placeholder='password'
 							label='Password'
 							type='password'
 							value={password}
@@ -75,6 +83,8 @@ const RegisterPage = () => {
 							required
 						 />
                          <SignupForm
+						 	id="dateC"
+							placeholder='Date naissance'
 							label='dateNaissance'
 							type='date'
 							value={dateNaissance}
