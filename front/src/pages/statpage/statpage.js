@@ -20,7 +20,7 @@ export default function StatPage() {
 		console.log("useEffect");
 
 		fetchData();
-	}, []);
+	}, [Stat]);
 	const addStat = async (Titre, description, timer, lien, Visible, maxmin) => {
 		try {
 			const result = await newStat({
