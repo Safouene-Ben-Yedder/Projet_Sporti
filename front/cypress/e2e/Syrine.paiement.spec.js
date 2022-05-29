@@ -1,24 +1,28 @@
-describe("Crud programme", () => {
-	// eslint-disable-next-line jest/expect-expect
-	it("Testing add", () => {
-		// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
+/* eslint-disable jest/expect-expect */
+describe("invitation test", () => {
+	it("login", function () {
+		cy.once("uncaught:exception", () => false);
+		const email = "coach98@gmail.com";
+		const password = "12345678a*A";
 		cy.visit("http://localhost:3000/auth-coach");
-		// eslint-disable-next-line no-undef
-		cy.get(":nth-child(1) > .input-group > .form-control")
-			.should("be.visible")
-			.type("coach98@gmail.com");
-		// eslint-disable-next-line no-undef
-		cy.get(":nth-child(2) > .input-group > .form-control")
-			.should("be.visible")
-			.type("12345678a*A");
-		// eslint-disable-next-line no-undef
-		cy.get(".btn").should("be.visible").click();
+		cy.get("form > :nth-child(1)").type(email);
+		cy.get("form > :nth-child(2)").type(password);
+		cy.get(".btn").click();
+	});
+
+	it("easy test", () => {
+		// eslint-disable-next-line jest/valid-expect
+		expect(true).to.equal(true);
+	});
+	it("abonnement", () => {
+		cy.once("uncaught:exception", () => false);
 		//cy.url().should("eq", "http://localhost:3000/coach/home");
 		// eslint-disable-next-line no-undef
 		cy.visit("http://localhost:3000/paiement");
 		// eslint-disable-next-line no-undef
-		cy.get(":nth-child(2) > .form-check-input").should("be.visible").click();
+		cy.get(":nth-child(2) > .form-check-input").click();
 		// eslint-disable-next-line no-undef
-		cy.get(".btn").should("be.visible").click();
+		cy.get(".btn").click();
 	});
 });
