@@ -27,7 +27,7 @@ export default function LieuPage() {
 			}
 		};
 		fetchLieux();
-	}, []);
+	}, [Lieu]);
 
 	const addLieux = async (nom, ville, pays, adresse) => {
 		const newLieu = await postLieu({ nom, ville, pays, adresse });

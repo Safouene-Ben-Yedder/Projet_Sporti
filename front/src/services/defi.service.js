@@ -37,6 +37,15 @@ export const updateDefi = async (
 	return result.data;
 };
 
+export const assignerDefi = async (id,date,joueurs) => {
+	const result = await axios.put(`${API_URL}update/${token}/${id}`, {
+		date,
+		joueurs,
+	});
+	return result.data;
+};
+
+
 export const deleteDefi = async (id) => {
 	const result = await axios.delete(`${API_URL}delete/${token}/${id}`);
 	return result.data;

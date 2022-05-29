@@ -50,8 +50,8 @@ exports.create = (req, res) => {
 			description: req.body.description,
 			lienVideo: req.body.lienVideo,
 			objectif: req.body.objectif,
-			//	date: req.body.date,
-			//	joueurs: req.body.joueurs,
+			date: null,
+			joueurs: null,
 			createdBy: decoded.user_id,
 		});
 
@@ -113,8 +113,8 @@ exports.update = (req, res) => {
 				description: req.body.description,
 				lienVideo: req.body.lienVideo,
 				objectif: req.body.objectif,
-				//	date: req.body.date,
-				//	joueurs: req.body.joueurs,
+				date: req.body.date,
+				joueurs: req.body.joueurs,
 				createdBy: decoded.user_id,
 			},
 			{ useFindAndModify: false }

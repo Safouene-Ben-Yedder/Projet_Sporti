@@ -82,7 +82,7 @@ app.use("/api/edit/profile", editprofileCoachRoute);
 app.use("/api/seance/joueur", SeancePlayerNow);
 app.use("/api/seance/joueur", SeancePlayerAll);
 app.use("/api/seance/joueur", FindSeancePlayer);
-app.use("/api/seance/coach/update", updateSeance);
+app.use("/api/seance/coach/", updateSeance);
 app.use("/api/coach/programme", createProgrammeSeance);
 app.use("/api/coach/programme", findProgrammeSeance);
 app.use("/api/coach/programme", findAllProgrammeSeance);

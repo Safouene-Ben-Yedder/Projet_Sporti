@@ -31,10 +31,10 @@ const LoginPage = () => {
          });
          localStorage.setItem('isCoach', true);
          // navigate('/');
-         // if (localStorage.getItem('firstLogin') == true)
+         if (res.data.firstLogin == true)
          window.location = '/loginD';
-         // else
-         // window.location = '/modifier';
+         else
+         window.location = '/modifier';
       } catch (err) {
          console.error(err.message);
          console.log('login failed!');

@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { Label, Button, Input } from "reactstrap";
+import { useState, useEffect } from "react";
+import { Form, FormGroup, Label, Button } from "reactstrap";
+import { Input } from "reactstrap";
 import "./defi.css";
+import { listPlayers } from "../../services/login.service";
 export default function Defi({
 	nom,
 	description,
@@ -10,6 +12,7 @@ export default function Defi({
 	id,
 	deleteDefi,
 	assigner,
+	// assignerDefis
 }) {
 	const [updateMode, setUpdateMode] = useState(false);
 	const [doneMode, setDoneMode] = useState(false);
@@ -17,6 +20,25 @@ export default function Defi({
 	const [descriptiontoUpdate, setDescriptiontoUpdate] = useState(description);
 	const [objectiftoUpdate, setObjectiftoUpdate] = useState(objectif);
 	const [lienVideotoUpdate, setLienVideotoUpdate] = useState(lienVideo);
+
+	const [periode, setPeriode] = useState("");
+	const [isVisible, setIsVisible] = useState(false);
+	const [selectedJoueurs, setSelectedJoueurs] = useState("");
+	const [joueurs, setJoueurs] = useState([]);
+
+	useEffect(() => {
+			const listPlayer = async () => {
+			try {
+				const res = await listPlayers();
+				setJoueurs(res)
+				setSelectedJoueurs(res[0]._id)
+				console.log(res);
+			} catch (e) {
+				console.log('hh',e)
+			}
+		};
+		listPlayer();
+	}, []);
 
 	return (
 		<div className="defi">
@@ -35,7 +57,7 @@ export default function Defi({
 								<Button color="danger" onClick={() => deleteDefi(id)}>
 									Supprimer
 								</Button>
-								<Button color="success" onClick={() => assigner()}>
+								<Button color="success" onClick={() => setIsVisible(!isVisible)}>
 									Assigner défi
 								</Button>
 								<Button color="warning" onClick={() => setDoneMode(true)}>
@@ -56,14 +78,57 @@ export default function Defi({
 								<Button color="danger" onClick={() => deleteDefi(id)}>
 									Supprimer
 								</Button>
-								<Button color="success" onClick={() => assigner()}>
+								<Button color="success" onClick={() => setIsVisible(!isVisible)}>
 									Assigner défi
 								</Button>
 								<Input value="DONE" valid disabled />
 							</div>
 						</div>
 					)}
-				</>
+					{isVisible && (
+					<>
+						<Form>
+						<FormGroup>
+							<Label>
+								Période
+								<input
+									type="date"
+									name="periode"
+									value={periode}
+									onChange={(e) => setPeriode(e.target.value)}
+								/>
+							</Label>
+							<Label>
+								Séléctionner un joueur
+							</Label>
+
+							<select
+								value={selectedJoueurs}
+								onChange={(e) => setSelectedJoueurs(e.target.value)}>
+									{
+										joueurs.map(dis => <option label={dis.nom} value={dis._id}>{dis.nom}</option>)
+									}
+								
+							</select>
+							<Button
+								color="success"
+								type="button"
+								onClick={() => {
+									assigner(
+										id,
+										periode,
+										selectedJoueurs
+									
+									);
+									setIsVisible(false);}}>
+								Assigner
+							</Button>
+						</FormGroup>
+						</Form>
+					</>
+					)		
+			}
+			</>
 			) : (
 				<div>
 					<Label>
@@ -126,5 +191,7 @@ export default function Defi({
 				</div>
 			)}
 		</div>
+
+		
 	);
 }
