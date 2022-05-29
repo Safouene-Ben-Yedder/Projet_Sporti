@@ -40,8 +40,8 @@ export default function SeanceForm(props) {
 	function handleAddSeance() {
 		props.addSeance(
 			titre,
-			date,
 			description,
+			date,
 			joueur,
 			objectif,
 			lieu,
@@ -69,7 +69,7 @@ export default function SeanceForm(props) {
 						name="programme"
 						id=""
 						value={description}
-						onChange={(e) => setDescription(e.target.value)}></Input>
+						onChange={() => setDescription("dd")}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> Joueur </Label>
@@ -78,7 +78,7 @@ export default function SeanceForm(props) {
 						name="programme"
 						id=""
 						value={joueur}
-						onChange={(e) => setJoueur(e.target.value)}></Input>
+						onChange={() => setJoueur("6286d2719814ad2c3b5a3e58")}></Input>
 				</FormGroup>
 
 				<FormGroup>
@@ -88,7 +88,7 @@ export default function SeanceForm(props) {
 						name="date"
 						id=""
 						value={date}
-						onChange={(e) => setDate(e.target.value)}></Input>
+						onChange={() => setDate("2004-03-01")}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> Objectif </Label>

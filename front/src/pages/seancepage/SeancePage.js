@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useState, useEffect } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
@@ -128,6 +129,7 @@ export default function SeancePage() {
 			competences,
 			stats
 		);
+
 		const newSeance = seances.map((Seance) =>
 			Seance.id === id
 				? {

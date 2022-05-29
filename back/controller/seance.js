@@ -173,3 +173,45 @@ exports.findAllSeancePlayer = (req, res) => {
 			});
 		});
 };
+
+// //DELETE Seance
+exports.delete = (req, res) => {
+	const token = req.params.token;
+	try {
+		var decoded = jwt_decode(token);
+	} catch (error) {
+		res.send({
+			message: "Invalid token format",
+		});
+		return true;
+	}
+
+	const id = req.params.id;
+
+	if (decoded.role === "Coach") {
+		Seance.findOneAndRemove({
+			_id: req.params.id,
+			createdBy: decoded.user_id,
+		})
+			.then((data) => {
+				if (!data) {
+					res.status(404).send({
+						message: `Cannot delete Seance with id=${id}. Maybe Seance was not found!`,
+					});
+				} else {
+					res.send({
+						message: "Seance was deleted successfully!",
+					});
+				}
+			})
+			.catch(() => {
+				res.status(500).send({
+					message: "Could not delete Seance with id=" + id,
+				});
+			});
+	} else {
+		res.status(401).send({
+			message: "Unauthorized",
+		});
+	}
+};
