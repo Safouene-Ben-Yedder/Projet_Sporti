@@ -1,12 +1,12 @@
 import React from "react";
 import { Navbar, NavbarText } from "reactstrap";
 
-export const HeaderLoginCoach = () => {
+export default function HeadingNowPlayer() {
 	return (
-		<Navbar color="primary">
+		<Navbar color="dark">
 			<NavbarText className="h3 row col-12 d-flex justify-content-center text-white">
-				Authentification coach
+				Espace séances{" "}
 			</NavbarText>
 		</Navbar>
 	);
-};
+}
