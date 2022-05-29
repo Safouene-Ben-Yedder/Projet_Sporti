@@ -8,6 +8,7 @@ import ProgrammeSeanceList from "../programmeseancelist/ProgrammeSeanceList";
 import {
 	postProg,
 } from "../../services/progSeance.service";
+import { addStat as newStat } from "../../services/stat.service";
 import {fetchDiscipline,updateLogin} from "../../services/login.service"
 
 import JwtDecode from "jwt-decode";
@@ -38,20 +39,28 @@ export default function LoginDCoach() {
 	},[])
 	console.log(selectedDiscipline)
 	console.log(Discipline)
-    function addStat(Titre, description, lienVideo, Visible, timer, maxmin) {
-		setStat([
-			...Stat,
-			{
-				id: Stat.length + 1,
-				Titre: Titre,
-				description: description,
-				lienVideo: lienVideo,
-				Visible: Visible,
-				timer: timer,
-				maxmin: maxmin,
-			},
-		]);
-	}
+
+	const addStat = async (Titre, description, timer, lien, Visible, maxmin) => {
+		try {
+			const result = await newStat({
+				Titre,
+				description,
+				timer,
+				lien,
+				Visible,
+				maxmin,
+			});
+
+			setStat([
+				...Stat,
+				{
+					...result,
+				},
+			]);
+		} catch (e) {
+			console.log("error",e)
+;		}
+	};
     const addProgSeance = async (
 		titre,
 		description,
