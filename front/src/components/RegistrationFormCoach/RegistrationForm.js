@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SignupForm({ label, type, onChange }) {
+function SignupForm({ label, type, onChange,placeholder,id }) {
    return (
       <div className=' mb-3'>
          <label className='form-label'>{label}</label>
@@ -9,7 +9,9 @@ function SignupForm({ label, type, onChange }) {
                <i className='fa-solid fa-user'></i>
             </span>
             <input
+               id={id}
                type={type}
+               placeholder={placeholder}
                className='form-control'
                onChange={onChange}
                required
