@@ -1,52 +1,67 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { Form, FormGroup, Label, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import StatForm from "../statform/statform";
 import StatList from "../statlist/statlist";
 import ProgrammeSeanceForm from "../programmeseanceform/ProgrammeSeanceForm";
 import ProgrammeSeanceList from "../programmeseancelist/ProgrammeSeanceList";
-import { postProg } from "../../services/progSeance.service";
-import { fetchDiscipline, updateLogin } from "../../services/login.service";
+import {
+	postProg,
+} from "../../services/progSeance.service";
+import { addStat as newStat } from "../../services/stat.service";
+import {fetchDiscipline,updateLogin} from "../../services/login.service"
+
+import JwtDecode from "jwt-decode";
 
 export default function LoginDCoach() {
-	const [isSubmit, setIsSubmit] = useState(false);
-	const [Stat, setStat] = useState([]);
-	const [programmesSeance, setProgrammesSeance] = useState([]);
+	
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [Stat, setStat] = useState([]);
+    const [programmesSeance, setProgrammesSeance] = useState([]);
 	const [Discipline, setDiscipline] = useState([]);
 	const [selectedDiscipline, setSelectedDiscipline] = useState("tennis");
-	const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
 		e.preventDefault();
 		setIsSubmit(true);
-		await updateLogin("62870bfdf66fc3b0e3bbd4f8", true);
+		var decoded = JwtDecode(localStorage.getItem('token'));
+		console.log(decoded.user_id)
+		await updateLogin(decoded.user_id,false);
+
 	};
-	useEffect(() => {
-		fetchDiscipline()
-			.then((res) => {
-				setDiscipline(res);
-				setSelectedDiscipline(res[0]._id);
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
+	useEffect(()=>{
+		fetchDiscipline().then((res)=>{
+			setDiscipline(res)
+			setSelectedDiscipline(res[0]._id)
+			console.log(res);
+		}).catch((err)=>{
+			console.log(err)
+		})
+	},[])
+	console.log(selectedDiscipline)
+	console.log(Discipline)
+
+	const addStat = async (Titre, description, timer, lien, Visible, maxmin) => {
+		try {
+			const result = await newStat({
+				Titre,
+				description,
+				timer,
+				lien,
+				Visible,
+				maxmin,
 			});
-	}, []);
-	console.log(selectedDiscipline);
-	console.log(Discipline);
-	function addStat(Titre, description, lienVideo, Visible, timer, maxmin) {
-		setStat([
-			...Stat,
-			{
-				id: Stat.length + 1,
-				Titre: Titre,
-				description: description,
-				lienVideo: lienVideo,
-				Visible: Visible,
-				timer: timer,
-				maxmin: maxmin,
-			},
-		]);
-	}
-	const addProgSeance = async (
+
+			setStat([
+				...Stat,
+				{
+					...result,
+				},
+			]);
+		} catch (e) {
+			console.log("error",e)
+;		}
+	};
+    const addProgSeance = async (
 		titre,
 		description,
 		technique,
@@ -62,7 +77,7 @@ export default function LoginDCoach() {
 		});
 		setProgrammesSeance((Prog) => [...Prog, { ...newProg }]);
 	};
-
+	
 	return (
 		<>
 			<Form className="form" onSubmit={handleSubmit}>
@@ -71,27 +86,28 @@ export default function LoginDCoach() {
 					<select
 						value={selectedDiscipline}
 						onChange={(e) => setSelectedDiscipline(e.target.value)}>
-						{Discipline.map((dis) => (
-							<option label={dis.type} value={dis._id}>
-								{dis.type}
-							</option>
-						))}
+							{
+								Discipline.map(dis => <option label={dis.type} value={dis._id}>{dis.type}</option>)
+							}
+						
 					</select>
 				</FormGroup>
-				<Button type="submit">Discipline choisie!</Button>
+                <Button type="submit">Discipline choisie!</Button>
 			</Form>
-			{isSubmit && (
-				<>
-					<h2>Créer statistique </h2>
-					<StatForm addStat={addStat} />
-					<StatList Stat={Stat} />
-					<h2>Créer Plan de la séance </h2>
-					<ProgrammeSeanceForm addProgSeance={addProgSeance} />
-					<ProgrammeSeanceList programmesSeance={programmesSeance} />
+            {isSubmit && (
+                <>
+                    <h2>Créer statistique </h2>
+                    <StatForm addStat={addStat}/>
+                    <StatList Stat={Stat} />
+                    <h2>Créer Plan de la séance </h2>
+                    <ProgrammeSeanceForm addProgSeance={addProgSeance}/> 
+                    <ProgrammeSeanceList
+					programmesSeance={programmesSeance}
+					/>
 					<Link className="link" to="/modifier">
 						Go to profile
 					</Link>
-				</>
+                </>
 			)}
 		</>
 	);

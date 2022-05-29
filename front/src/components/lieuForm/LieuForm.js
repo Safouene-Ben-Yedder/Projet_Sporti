@@ -14,13 +14,13 @@ export default function LieuForm(props) {
 	}
 	return (
 		<>
-			<Form className="form">
+			<Form className="ajoutLieu">
 				<FormGroup>
 					<Label> Nom </Label>
 					<Input
 						type="text"
 						name="nom"
-						id=""
+						id="nomLieu"
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
 				</FormGroup>
@@ -29,7 +29,7 @@ export default function LieuForm(props) {
 					<Input
 						type="text"
 						name="ville"
-						id=""
+						id="villeLieu"
 						value={ville}
 						onChange={(e) => setVille(e.target.value)}></Input>
 				</FormGroup>
@@ -38,7 +38,7 @@ export default function LieuForm(props) {
 					<Input
 						type="text"
 						name="pays"
-						id=""
+						id="paysLieu"
 						value={pays}
 						onChange={(e) => setPays(e.target.value)}></Input>
 				</FormGroup>
@@ -47,7 +47,7 @@ export default function LieuForm(props) {
 					<Input
 						type="text"
 						name="adresse"
-						id=""
+						id="adresseLieu"
 						value={adresse}
 						onChange={(e) => setAdresse(e.target.value)}></Input>
 				</FormGroup>

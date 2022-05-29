@@ -95,7 +95,7 @@ exports.login = async (req, res) => {
 					role: user.role,
 					abonnement: user.abonnement,
 					lastAuthentication: user.lastAuthentication,
-					firstAuth: "false",
+					firstLogin : user.firstLogin,
 					token: accessToken,
 				};
 				res.send(response);
