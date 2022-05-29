@@ -10,7 +10,10 @@ import {
 } from "../../services/progSeance.service";
 import {fetchDiscipline,updateLogin} from "../../services/login.service"
 
+import JwtDecode from "jwt-decode";
+
 export default function LoginDCoach() {
+	
     const [isSubmit, setIsSubmit] = useState(false);
     const [Stat, setStat] = useState([]);
     const [programmesSeance, setProgrammesSeance] = useState([]);
@@ -19,7 +22,9 @@ export default function LoginDCoach() {
     const handleSubmit = async(e) => {
 		e.preventDefault();
 		setIsSubmit(true);
-		await updateLogin('62870bfdf66fc3b0e3bbd4f8',true);
+		var decoded = JwtDecode(localStorage.getItem('token'));
+		console.log(decoded.user_id)
+		await updateLogin(decoded.user_id,false);
 
 	};
 	useEffect(()=>{

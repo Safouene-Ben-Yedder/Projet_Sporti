@@ -236,8 +236,8 @@ export default function SeancePage() {
 				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
-					deleteSeance={deleteSeances}
-					UpdateSeance={UpdateSeances}
+					// deleteSeance={deleteSeances}
+					// UpdateSeance={UpdateSeances}
 					supp={supp}
 					avis={avis}
 				/>

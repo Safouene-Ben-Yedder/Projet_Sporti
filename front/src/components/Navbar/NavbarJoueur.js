@@ -8,7 +8,7 @@ export const NavbarJoueur = () => {
 			<NavbarBrand href="/modifier">Liste joueur</NavbarBrand>
             <NavbarBrand href="/Competence">Competence</NavbarBrand>
             <NavbarBrand href="/Stat">statistique</NavbarBrand>
-            <NavbarBrand href="/">Alerte</NavbarBrand>
+            <NavbarBrand href="/defi-page">Défi</NavbarBrand>
 			<NavItem>
 					<Link className="btn btn-primary " to="/">
 						Se déconnecter
