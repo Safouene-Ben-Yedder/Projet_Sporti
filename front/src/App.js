@@ -14,9 +14,11 @@ import EventForm from "./components/eventform/EventForm";
 import EventdetailsPage from "./pages/eventpage/EventdetailsPage";
 import EventListePage from "./pages/eventpage/EventListePage";
 
+import ProgrammeSeancePage from "./pages/programmeseancepage/ProgrammeSeancePage";
 import LieuPage from "./pages/lieupage/LieuPage";
 import RegisterJoueurPage from "./pages/registerJoueur/RegisterJoueurPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ProgrammeSeanceForm from "./components/programmeseanceform/ProgrammeSeanceForm";
 import { LoginJoueurPage } from "./pages/loginJoueur/LoginJoueurPage";
 import { PaiementForm } from "./components/paiementform/Paiementform";
 
@@ -41,8 +43,9 @@ function App() {
 		<div>
 			<Router>
 				<Switch>
-					<Route exact path="/">
-						<RegisterPage />
+					<Route exact path="/add" component={ProgrammeSeanceForm} />
+					<Route exact path="/prog-page">
+						<ProgrammeSeancePage />
 					</Route>
 
 					<Route exact path="/add1" component={SeanceForm} />

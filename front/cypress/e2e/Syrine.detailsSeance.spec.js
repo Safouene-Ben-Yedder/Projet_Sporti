@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable jest/expect-expect */
 describe("invitation test", () => {
 	it("login", function () {
 		cy.once("uncaught:exception", () => false);
