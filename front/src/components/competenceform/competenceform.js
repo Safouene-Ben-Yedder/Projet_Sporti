@@ -24,6 +24,7 @@ export default function CompetenceForm(props) {
 					<Input
 						type="text"
 						name="nom"
+						id="nomCompetence"
 						required
 						value={nom}
 						onChange={(e) => setNom(e.target.value)}></Input>
@@ -33,6 +34,7 @@ export default function CompetenceForm(props) {
 					<Input
 						type="textarea"
 						name="description"
+						id="descCompetence"
 						required
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
@@ -42,6 +44,7 @@ export default function CompetenceForm(props) {
 					<Input
 						type="text"
 						name="lien"
+						id="lienCompetence"
 						required
 						value={lien}
 						onChange={(e) => setlien(e.target.value)}></Input>
@@ -52,6 +55,7 @@ export default function CompetenceForm(props) {
 						required
 						value={visible}
 						onChange={(e) => setVisible(e.target.value)}>
+						<option></option>
 						<option value="oui">Oui</option>
 						<option value="non">Non</option>
 					</select>

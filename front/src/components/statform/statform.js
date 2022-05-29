@@ -21,7 +21,7 @@ export default function StatForm(props) {
 					<Input
 						type="text"
 						name="Titre"
-						id=""
+						// id="titre"
 						required
 						value={Titre}
 						onChange={(e) => setTitre(e.target.value)}></Input>
@@ -32,7 +32,7 @@ export default function StatForm(props) {
 						type="textarea"
 						name="description"
 						required
-						id=""
+						// id="desc"
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}></Input>
 				</FormGroup>
@@ -42,7 +42,7 @@ export default function StatForm(props) {
 						type="number"
 						name="timer"
 						required
-						id=""
+						// id="timer"
 						value={timer}
 						onChange={(e) => setTimer(e.target.value)}></Input>
 				</FormGroup>
@@ -52,13 +52,14 @@ export default function StatForm(props) {
 						type="text"
 						name="lien"
 						required
-						id=""
+						// id="lien"
 						value={lien}
 						onChange={(e) => setlien(e.target.value)}></Input>
 				</FormGroup>
 				<FormGroup>
 					<Label> Visible </Label>
 					<select value={Visible} onChange={(e) => setVisible(e.target.value)}>
+						<option></option>
 						<option value="Oui">Oui</option>
 						<option value="Non">Non</option>
 					</select>
@@ -67,6 +68,7 @@ export default function StatForm(props) {
 				<FormGroup>
 					<Label> Maximiser/Minimiser </Label>
 					<select value={maxmin} onChange={(e) => setMaxMin(e.target.value)}>
+						<option></option>
 						<option value="Maximiser">Maximiser</option>
 						<option value="Minimiser">Minimiser</option>
 					</select>
