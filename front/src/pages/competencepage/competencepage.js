@@ -25,7 +25,7 @@ export default function CompetencePage() {
 		console.log("useEffect");
 
 		fetchData();
-	}, []);
+	}, [Competence]);
 	const addCompetence = async (nom, description, lien, visible, rating) => {
 		try {
 			const result = await newCompetence({

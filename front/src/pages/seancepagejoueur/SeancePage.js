@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import { useState, useEffect } from "react";
 import { Heading } from "../../components/heading/Heading";
 import SeanceForm from "../../components/seanceform/SeanceForm";
@@ -129,7 +128,6 @@ export default function SeancePage() {
 			competences,
 			stats
 		);
-
 		const newSeance = seances.map((Seance) =>
 			Seance.id === id
 				? {
@@ -238,8 +236,8 @@ export default function SeancePage() {
 				<h2> Liste des séances </h2>
 				<SeanceList
 					seances={seances}
-					// deleteSeance={deleteSeances}
-					// UpdateSeance={UpdateSeances}
+					deleteSeance={deleteSeances}
+					UpdateSeance={UpdateSeances}
 					supp={supp}
 					avis={avis}
 				/>
