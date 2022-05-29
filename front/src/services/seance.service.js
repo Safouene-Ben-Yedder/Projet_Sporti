@@ -22,17 +22,19 @@ export const updateSeance = async (
 	titre,
 	description,
 	date,
+	joueur,
 	objectif,
-	competences,
-	stats,
 	lieuentrainements,
 	programmeSeances,
-	joueur
+	competences,
+	stats
 ) => {
+	
+
 	const result = await axios.put(`${API_URL}update/${token}/${id}`, {
 		titre,
-		date,
 		description,
+		date,
 		joueur,
 		objectif,
 		lieuentrainements,
@@ -40,6 +42,9 @@ export const updateSeance = async (
 		competences,
 		stats,
 	});
+
+	console.log(result.data);
+	console.log("dddd");
 	return result.data;
 };
 

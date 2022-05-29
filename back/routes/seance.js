@@ -4,10 +4,12 @@ const Seance = require("../controller/seance");
 // var nodemailer = require("nodemailer");
 // const User = require("../models/User");
 // const cron = require("node-cron");
+router.post("/:token", Seance.create);
 router.put("/update/:token/:id", Seance.update);
 router.get("/today/:token", Seance.findSeanceNowPlayer);
 router.get("/all/:token", Seance.findAllSeancePlayer);
 router.get("/detail/:token/:id", Seance.findSeancePlayer);
+router.delete("/delete/:token/:id", Seance.delete);
 /*
 var transporter = nodemailer.createTransport({
 	service: "gmail",

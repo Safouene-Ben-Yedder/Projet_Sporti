@@ -78,17 +78,17 @@ export default function Seance({
 							type="text"
 							name="Seance"
 							value={joueurtoUpdate}
-							onChange={(e) => setJoueurToUpdate(e.target.value)}
+							onChange={() => setJoueurToUpdate("6286d2719814ad2c3b5a3e58")}
 						/>
 					</Label>
 					<Label>
 						{" "}
 						description
 						<input
-							type="time"
+							type="text"
 							name="Seance"
 							value={descriptiontoUpdate}
-							onChange={(e) => setDescriptiontoUpdate(e.target.value)}
+							onChange={() => setDescriptiontoUpdate("ss")}
 						/>
 					</Label>
 					<Label>
@@ -98,7 +98,7 @@ export default function Seance({
 							type="Date"
 							name="Seance"
 							value={datetoUpdate}
-							onChange={(e) => setDatetoUpdate(e.target.value)}
+							onChange={() => setDatetoUpdate("2004-03-01")}
 						/>{" "}
 					</Label>
 					<Label>
@@ -114,7 +114,8 @@ export default function Seance({
 					<Label>
 						{" "}
 						lieu
-						<select onChange={(e) => setLieutoUpdate(e.lieutoUpdate)}>
+						<select
+							onChange={() => setLieutoUpdate("6286d2719814ad2c3b5a3e58")}>
 							<option>{lieutoUpdate} </option>
 							<option value="30 secondes">30 secondes </option>
 							<option value="40 secondes">40 secondes </option>
@@ -124,7 +125,10 @@ export default function Seance({
 					<Label>
 						{" "}
 						competence
-						<select onChange={(e) => setCompetencetoUpdate(e.target.value)}>
+						<select
+							onChange={() =>
+								setCompetencetoUpdate("62865184c4b6faffc61c7634")
+							}>
 							<option>{competencetoUpdate} </option>
 							<option value="30 secondes">30 secondes </option>
 							<option value="40 secondes">40 secondes </option>
@@ -134,7 +138,10 @@ export default function Seance({
 					<Label>
 						{" "}
 						Statistiques
-						<select onChange={(e) => setStatistiqueToUpdate(e.target.value)}>
+						<select
+							onChange={() =>
+								setStatistiqueToUpdate("6288243e437599ed76d62504")
+							}>
 							<option>{statistiqueToUpdate} </option>
 							<option value="respiration">respiration </option>
 							<option value="200 mètres">200 mètres</option>
@@ -145,7 +152,10 @@ export default function Seance({
 					<Label>
 						{" "}
 						Programme Seance
-						<select onChange={(e) => setProgseancetoUpdate(e.target.value)}>
+						<select
+							onChange={() =>
+								setProgseancetoUpdate("6286ec836b3d82008a3d8273")
+							}>
 							<option>{progseanceToUpdate} </option>
 							<option value="Programme 1">Programme 1 </option>
 							<option value="Programme 2">Programme 2</option>
@@ -159,13 +169,13 @@ export default function Seance({
 							UpdateSeance(
 								id,
 								TitletoUpdate,
-								joueurtoUpdate,
 								descriptiontoUpdate,
 								datetoUpdate,
-								lieutoUpdate,
-								competencetoUpdate,
+								joueurtoUpdate,
 								objectiftoUpdate,
+								lieutoUpdate,
 								progseanceToUpdate,
+								competencetoUpdate,
 								statistiqueToUpdate
 							);
 							setUpdateMode(false);

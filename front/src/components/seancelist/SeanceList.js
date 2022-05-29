@@ -6,17 +6,17 @@ function SeanceList(props) {
 			{props.seances.map(function (x) {
 				return (
 					<Seance
-						key={x._id}
+						//key={x._id}
 						id={x._id}
 						titre={x.titre}
 						description={x.description}
-						joueur={x.joueur}
 						date={x.date.slice(0, 10)}
+						joueur={x.joueur}
 						objectif={x.objectif}
-						competence={x.competence}
-						statistique={x.statistique}
 						lieu={x.lieu}
 						progseance={x.progseance}
+						competence={x.competence}
+						statistique={x.statistique}
 						//	horaire={x.horaire}
 						UpdateSeance={props.UpdateSeance}
 						deleteSeance={props.deleteSeance}
