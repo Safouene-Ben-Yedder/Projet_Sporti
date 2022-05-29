@@ -4,7 +4,8 @@ import SeanceForm from "./components/seanceform/SeanceForm";
 
 import SeancetodayPage from "./pages/seancepage/SeancetodayPage";
 import SeancefilterPage from "./pages/seancepage/SeancefilterPage";
-
+import SeancetodayPagePlayer from "./pages/seancepagejoueur/SeancetodayPagePlayer";
+import SeancefilterPagePlayer from "./pages/seancepagejoueur/SeancefilterPagePlayer";
 import DefiPage from "./pages/defipage/DefiPage";
 import DefiForm from "./components/defiform/DefiForm";
 
@@ -118,6 +119,13 @@ function App() {
 					</Route>
 					<Route path="/espace-seance-joueur">
 						<EspaceSeancePage />
+					</Route>
+					<Route exact path="/seancetodayplayer-page">
+						<SeancetodayPagePlayer />
+					</Route>
+
+					<Route exact path="/seancefilterplayer-page">
+						<SeancefilterPagePlayer />
 					</Route>
 					<Route path="/addPass" component={PasswordForm} />
 				</Switch>
