@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "./paiement.css";
 import {
 	updateAbonnement,
@@ -38,7 +38,7 @@ export const PaiementForm = () => {
 			window.location = "/invitation";
 		} catch (err) {
 			console.error(err.message);
-			console.log("abonnement failed!");
+			console.log("okay");
 		}
 	};
 
@@ -102,11 +102,11 @@ export const PaiementForm = () => {
 				<Button name="btn-paiement" type="submit">
 					Passer
 				</Button>
-				<div div>
+				{/* <div div>
 					<Link className="link" to="/paiement">
 						suivante
 					</Link>
-				</div>
+				</div> */}
 			</Form>
 		</>
 	);
